@@ -317,8 +317,9 @@ $("#gDetail").addEventListener("click",ev=>{const j=ev.target.closest("[data-jum
 new ResizeObserver(drawEdges).observe(gEl);
 
 /* deadlines */
-const dls=DATA.entries.filter(e=>e.deadline).sort((a,b)=>daysLeft(a.deadline)<0===daysLeft(b.deadline)<0?(daysLeft(a.deadline)<0?b.deadline.localeCompare(a.deadline):a.deadline.localeCompare(b.deadline)):(daysLeft(a.deadline)<0?1:-1));
-$("#dlList").innerHTML=dls.length?"":`<p class="note">目前沒有即將截止的活動。DC 上的活動、競賽和獎學金同步進來後會出現在這裡。</p>`;if(dls.length)$("#dlList").innerHTML=dls.map(e=>{const d=daysLeft(e.deadline);return `<div class="dl-row"><span class="d">${e.deadline.replace(/-/g,"/")}</span><div><b>${esc(e.title)}</b><div class="note">${esc(e.summary)}</div></div><span class="left${d<0?" past":""}">${d<0?"已截止，明年留意":d===0?"今天截止":`還有 ${d} 天`}</span></div>`}).join("");
+function renderDeadlines(){const dls=DATA.entries.filter(e=>e.deadline&&daysLeft(e.deadline)>-30).sort((a,b)=>daysLeft(a.deadline)<0===daysLeft(b.deadline)<0?(daysLeft(a.deadline)<0?b.deadline.localeCompare(a.deadline):a.deadline.localeCompare(b.deadline)):(daysLeft(a.deadline)<0?1:-1));
+$("#dlList").innerHTML=dls.length?"":`<p class="note">目前沒有即將截止的活動。DC 上的活動、競賽和獎學金同步進來後會出現在這裡。</p>`;if(dls.length)$("#dlList").innerHTML=dls.map(e=>{const d=daysLeft(e.deadline);return `<div class="dl-row"><span class="d">${e.deadline.replace(/-/g,"/")}</span><div><b>${esc(e.title)}</b><div class="note">${esc(e.summary)}</div></div><span class="left${d<0?" past":""}">${d<0?"已截止，明年留意":d===0?"今天截止":`還有 ${d} 天`}</span></div>`}).join("");}
+renderDeadlines();
 
 /* trial + forms */
 function setForm(el,url,label){if(url){el.href=url}else{el.removeAttribute("href");el.setAttribute("aria-disabled","true");el.classList.add("ghost");el.textContent=label+"（準備中）";el.style.opacity=.6}}
@@ -376,7 +377,7 @@ fetch("dc.json",{cache:"no-store"}).then(r=>r.ok?r.json():null).then(d=>{
   byId=Object.fromEntries(DATA.entries.map(e=>[e.id,e]));
   corpus=DATA.entries.map(e=>({e,text:(e.title+" "+e.summary+" "+(e.tags||[]).join(" ")+" "+(e.tips||[]).join(" ")+" "+e.grade).toLowerCase()}));
   kb=DATA.entries.map(e=>`[${e.id}] ${e.title}｜${e.grade}｜${CATS[e.cat]}｜${e.summary}｜出處 ${e.source} ${e.date}`).join("\n");
-  DC.n=fresh.length;DC.updated=d.updated||"";renderStats();renderChips();renderCards();
+  DC.n=fresh.length;DC.updated=d.updated||"";renderStats();renderChips();renderCards();renderDeadlines();
 }).catch(()=>{});
 </script>
 </body></html>

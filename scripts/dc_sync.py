@@ -17,6 +17,11 @@ TOKEN = os.environ.get("DISCORD_BOT_TOKEN", "").strip()
 GUILD = os.environ.get("DISCORD_GUILD_ID", "").strip()
 CHANNELS = [c.strip() for c in os.environ.get("DISCORD_CHANNEL_IDS", "").split(",") if c.strip()]
 KEEP_DAYS = 400
+# 論壇貼文只收有這些標籤的（聊天、家族、便當會這類不收）
+TAG_ALLOW = [t.strip() for t in os.environ.get("DISCORD_TAG_ALLOW", "活動資訊,學術資源,職涯機會,福利與贈品").split(",") if t.strip()]
+DATE = re.compile(r"(?<![\d/])(\d{1,2})/(\d{1,2})(?![\d/])")
+STRONG = re.compile(r"截止|報名|deadline", re.I)
+WEAK = re.compile(r"前|至|到")
 URL = re.compile(r"https?://[^\s<>)]+")
 MENTION = re.compile(r"<[@#][!&]?\d+>|<a?:\w+:\d+>")
 
@@ -63,16 +68,54 @@ def clean(text):
     return re.sub(r"\s+", " ", text).strip()
 
 
+def find_deadline(text, posted):
+    """找截止日：先找「截止、報名、deadline」後面最近的 M/D，沒有再找含「前、至、到」句子裡最晚的 M/D。"""
+    try:
+        base = datetime.fromisoformat(posted.replace("Z", "+00:00")).date()
+    except ValueError:
+        return None
+
+    def to_date(m, d):
+        m, d = int(m), int(d)
+        for y in (base.year, base.year + 1):
+            try:
+                dt = datetime(y, m, d).date()
+            except ValueError:
+                return None
+            if base <= dt <= base + timedelta(days=300):
+                return dt
+        return None
+
+    text = text or ""
+    for k in STRONG.finditer(text):
+        for m in DATE.finditer(text[k.end():k.end() + 30]):
+            dt = to_date(*m.groups())
+            if dt:
+                return dt.isoformat()
+    best = None
+    for sent in re.split(r"[。\n！!？?]", text):
+        if WEAK.search(sent):
+            for m, d in DATE.findall(sent):
+                dt = to_date(m, d)
+                if dt:
+                    best = max(best, dt) if best else dt
+    return best.isoformat() if best else None
+
+
 def entry(kind, cid, mid, title, content, tags, chname, when, url):
     links = sorted(set(URL.findall(content or "")))[:5]
     body = clean(URL.sub("", content or ""))
-    return {
+    due = find_deadline((title or "") + "\n" + (content or ""), when)
+    e = {
         "id": f"dc{mid}", "cat": classify(tags + [chname, title]), "title": clean(title)[:60] or "（沒有標題）",
         "grade": "不限", "tags": ["DC", *tags[:2]], "summary": body[:160] + ("…" if len(body) > 160 else ""),
         "tips": [], "source": f"立德 DC #{chname}", "date": when[:10],
         "link": f"https://discord.com/channels/{GUILD}/{cid}/{mid}", "linkLabel": "到 DC 看原文",
         "extraLinks": links, "kind": kind,
     }
+    if due:
+        e["deadline"] = due
+    return e
 
 
 def main():
@@ -108,6 +151,8 @@ def main():
                     continue
                 first = get(f"/channels/{t['id']}/messages/{t['id']}") or {}
                 tags = [tagname.get(x, "") for x in t.get("applied_tags", []) if tagname.get(x)]
+                if TAG_ALLOW and not any(tag in TAG_ALLOW for tag in tags):
+                    continue
                 out.append(entry("post", t["id"], t["id"], t["name"], first.get("content", ""), tags, name, created or first.get("timestamp", ""), None))
         else:  # 文字、公告頻道：只收有連結的訊息
             for m in get(f"/channels/{cid}/messages?limit=100") or []:
