@@ -104,6 +104,31 @@ def find_deadline(text, posted):
     return best.isoformat() if best else None
 
 
+def find_events(text, posted):
+    """活動當天的日期：內文所有 M/D（發文後 300 天內），去掉只出現在「截止、報名」後面的那個。"""
+    try:
+        base = datetime.fromisoformat(posted.replace("Z", "+00:00")).date()
+    except ValueError:
+        return []
+    found = set()
+    for m in DATE.finditer(text or ""):
+        before = (text or "")[max(0, m.start() - 8):m.start()]
+        if CUT.search(before):
+            continue
+        mo, d = int(m[1]), int(m[2])
+        if not (1 <= mo <= 12 and 1 <= d <= 31):
+            continue
+        for y in (base.year, base.year + 1):
+            try:
+                dt = datetime(y, mo, d).date()
+            except ValueError:
+                break
+            if base <= dt <= base + timedelta(days=300):
+                found.add(dt.isoformat())
+                break
+    return sorted(found)[:6]
+
+
 def entry(kind, cid, mid, title, content, tags, chname, when, url):
     links = sorted(set(URL.findall(content or "")))[:5]
     body = clean(URL.sub("", content or ""))
@@ -117,6 +142,9 @@ def entry(kind, cid, mid, title, content, tags, chname, when, url):
     }
     if due:
         e["deadline"] = due
+    ev = [x for x in find_events((title or "") + "\n" + (content or ""), when) if x != due]
+    if ev:
+        e["events"] = ev
     return e
 
 

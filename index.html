@@ -229,6 +229,23 @@ nav.tabs a{font-size:18px;padding:9px 22px}
 .dl-row>div{min-width:0}
 .dl-row .note{display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
 @media (max-width:720px){.dl-row{grid-template-columns:1fr}.dl-row .left{justify-self:start}.dl-row .d{justify-self:start;padding:4px 14px;grid-auto-flow:column;gap:6px;align-items:baseline}}
+.remind{background:var(--ink);color:#fff;border:3px solid var(--line);border-radius:26px;padding:20px 24px;box-shadow:6px 6px 0 var(--sun);margin:6px 0 26px;display:grid;gap:14px}
+.rem-head{display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+.rem-head h2{font-size:30px;color:var(--sun)}
+.rem-head .note{color:#c9cee6}
+.rem-bell{width:30px;height:30px;border-radius:50% 50% 40% 40%;background:var(--sun);border:3px solid #fff;position:relative}
+.rem-bell::after{content:"";position:absolute;left:50%;bottom:-8px;width:8px;height:8px;margin-left:-4px;border-radius:50%;background:#fff}
+.rem-list{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:14px}
+.rem-item{display:grid;grid-template-columns:auto minmax(0,1fr);gap:14px;align-items:center;text-align:left;background:#fff;color:var(--ink);border:3px solid #fff;border-radius:18px;padding:10px 14px;cursor:pointer;transition:transform .08s}
+.rem-item:hover{transform:translate(-2px,-2px)}
+.rem-date{display:grid;justify-items:center;background:var(--sky);border:2.5px solid var(--line);border-radius:14px;padding:4px 10px;min-width:64px;line-height:1.1}
+.rem-item.due .rem-date{background:var(--pink)}
+.rem-date b{font-family:var(--f-display);font-weight:400;font-size:24px}
+.rem-date small{font-size:13px}
+.rem-body{display:grid;gap:2px;min-width:0}
+.rem-kind{font-size:13px;color:var(--muted);font-weight:700}
+.rem-item.due .rem-kind{color:var(--late)}
+.rem-title{font-family:var(--f-display);font-size:18px;line-height:1.35;overflow:hidden;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical}
 </style>
 
 <div class="wrap">
@@ -261,6 +278,10 @@ nav.tabs a{font-size:18px;padding:9px 22px}
 </nav>
 
 <section class="view" id="v-library">
+  <section class="remind" id="remindBox" hidden aria-labelledby="remH">
+    <div class="rem-head"><span class="rem-bell" aria-hidden="true"></span><h2 id="remH">近期提醒</h2><span class="note">接下來三週的立德活動與報名截止</span></div>
+    <div class="rem-list" id="remind"></div>
+  </section>
   <section class="pin" aria-labelledby="pinH">
     <div class="pin-head"><span class="pin-tag">置頂</span><h2 id="pinH">聊勝於無：跟老皮、Wendy 約一對一</h2></div>
     <p class="pin-lede">想聊修課、專案、升學或生活，都可以約。先看時段表找空檔，再加 Wendy 的 LINE 約時間。</p>
@@ -424,7 +445,20 @@ $("#gDetail").addEventListener("click",ev=>{const j=ev.target.closest("[data-jum
 new ResizeObserver(drawEdges).observe(gEl);
 
 /* deadlines */
-function renderDeadlines(){const up=DATA.entries.filter(e=>e.id.startsWith("dc")&&e.deadline&&daysLeft(e.deadline)>=0).sort((a,b)=>a.deadline.localeCompare(b.deadline)).slice(0,3);const recent=DATA.entries.filter(e=>e.id.startsWith("dc")&&!up.includes(e)).sort((a,b)=>b.date.localeCompare(a.date)).slice(0,8-up.length);const soon=[...up,...recent];$("#soonBox").hidden=!soon.length;$("#soon").innerHTML=soon.map(e=>`<button class="soon-card" data-entry="${e.id}"><span class="soon-d">${e.deadline&&daysLeft(e.deadline)>=0?(daysLeft(e.deadline)===0?"今天截止":`還有 ${daysLeft(e.deadline)} 天`):esc(e.date.slice(5).replace("-","/"))}</span><b>${esc(e.title)}</b><span class="note">${esc(e.source)}</span></button>`).join("");const dls=DATA.entries.filter(e=>e.deadline&&daysLeft(e.deadline)>-30).sort((a,b)=>daysLeft(a.deadline)<0===daysLeft(b.deadline)<0?(daysLeft(a.deadline)<0?b.deadline.localeCompare(a.deadline):a.deadline.localeCompare(b.deadline)):(daysLeft(a.deadline)<0?1:-1));
+function renderRemind(){
+  const W=["日","一","二","三","四","五","六"], items=[];
+  for(const e of DATA.entries){ if(!e.id.startsWith("dc"))continue;
+    for(const d of (e.events||[])){const n=daysLeft(d); if(n>=0&&n<=21) items.push({d,n,e,kind:"活動"});}
+    if(e.deadline){const n=daysLeft(e.deadline); if(n>=0&&n<=10) items.push({d:e.deadline,n,e,kind:"報名截止"});}
+  }
+  items.sort((a,b)=>a.d.localeCompare(b.d)||(a.kind==="報名截止"?-1:1));
+  const seen=new Set(), list=items.filter(x=>{const k=x.e.id+x.kind;if(seen.has(k))return false;seen.add(k);return true}).slice(0,6);
+  $("#remindBox").hidden=!list.length;
+  $("#remind").innerHTML=list.map(x=>{const dt=new Date(x.d+"T00:00:00");return `<button class="rem-item ${x.kind==="報名截止"?"due":""}" data-entry="${x.e.id}">
+    <span class="rem-date"><b>${dt.getMonth()+1}/${dt.getDate()}</b><small>週${W[dt.getDay()]}</small></span>
+    <span class="rem-body"><span class="rem-kind">${x.kind}・${x.n===0?"今天":x.n===1?"明天":"還有 "+x.n+" 天"}</span><span class="rem-title">${esc(x.e.title)}</span></span></button>`}).join("");
+}
+function renderDeadlines(){renderRemind();const up=DATA.entries.filter(e=>e.id.startsWith("dc")&&e.deadline&&daysLeft(e.deadline)>=0).sort((a,b)=>a.deadline.localeCompare(b.deadline)).slice(0,3);const recent=DATA.entries.filter(e=>e.id.startsWith("dc")&&!up.includes(e)).sort((a,b)=>b.date.localeCompare(a.date)).slice(0,8-up.length);const soon=[...up,...recent];$("#soonBox").hidden=!soon.length;$("#soon").innerHTML=soon.map(e=>`<button class="soon-card" data-entry="${e.id}"><span class="soon-d">${e.deadline&&daysLeft(e.deadline)>=0?(daysLeft(e.deadline)===0?"今天截止":`還有 ${daysLeft(e.deadline)} 天`):esc(e.date.slice(5).replace("-","/"))}</span><b>${esc(e.title)}</b><span class="note">${esc(e.source)}</span></button>`).join("");const dls=DATA.entries.filter(e=>e.deadline&&daysLeft(e.deadline)>-30).sort((a,b)=>daysLeft(a.deadline)<0===daysLeft(b.deadline)<0?(daysLeft(a.deadline)<0?b.deadline.localeCompare(a.deadline):a.deadline.localeCompare(b.deadline)):(daysLeft(a.deadline)<0?1:-1));
 $("#dlList").innerHTML=dls.length?"":`<p class="note">目前沒有即將截止的活動。DC 上的活動、競賽和獎學金同步進來後會出現在這裡。</p>`;if(dls.length)$("#dlList").innerHTML=dls.map(e=>{const d=daysLeft(e.deadline);return `<div class="dl-row"><span class="d"><small>${e.deadline.slice(0,4)}</small>${e.deadline.slice(5).replace("-","/")}</span><div><b>${esc(e.title)}</b><div class="note">${esc(e.summary)}</div></div><span class="left${d<0?" past":""}">${d<0?(e.id.startsWith("dc")?"已截止":"已截止，明年留意"):d===0?"今天截止":`還有 ${d} 天`}</span></div>`}).join("");}
 renderDeadlines();
 
@@ -454,6 +488,7 @@ function showAnswer(text,ids,mode){
   a.innerHTML=`<div class="txt">${esc(text)}</div>${ids.length?`<div class="cites">${ids.filter(i=>byId[i]).map(i=>`<button class="cite" data-entry="${i}">${esc(byId[i].title)}</button>`).join("")}</div>`:""}<div class="mode">${mode}</div>`;
 }
 $("#answer").addEventListener("click",ev=>{const b=ev.target.closest("[data-entry]");if(b)showEntry(b.dataset.entry)});
+$("#remind").addEventListener("click",ev=>{const b=ev.target.closest("[data-entry]");if(b)showEntry(b.dataset.entry)});
 $("#soon").addEventListener("click",ev=>{const b=ev.target.closest("[data-entry]");if(b)showEntry(b.dataset.entry)});
 let ctrl=null;
 async function ask(q){
