@@ -448,7 +448,7 @@ new ResizeObserver(drawEdges).observe(gEl);
 function renderRemind(){
   const W=["日","一","二","三","四","五","六"], items=[];
   for(const e of DATA.entries){ if(!e.id.startsWith("dc"))continue;
-    for(const d of (e.events||[])){const n=daysLeft(d); if(n>=0&&n<=21) items.push({d,n,e,kind:"活動"});}
+    {const d=(e.events||[]).find(x=>daysLeft(x)>=0); if(d){const n=daysLeft(d); if(n<=21) items.push({d,n,e,kind:"活動"});}}
     if(e.deadline){const n=daysLeft(e.deadline); if(n>=0&&n<=10) items.push({d:e.deadline,n,e,kind:"報名截止"});}
   }
   items.sort((a,b)=>a.d.localeCompare(b.d)||(a.kind==="報名截止"?-1:1));
