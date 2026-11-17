@@ -374,6 +374,29 @@ nav.tabs a{font-size:18px;padding:9px 22px}
 .cr-files a{font-weight:500}
 .cr-eg{background:#f1f3f4;border-radius:6px;padding:8px 10px;margin:8px 0!important;color:#202124!important;font-size:13px!important;line-height:1.6}
 .cr-box p+p{margin-top:8px}
+
+.cr-main{display:grid;gap:14px;min-width:0}
+.cr-compose{padding:0;overflow:hidden}
+.cr-compose-open{display:flex;align-items:center;gap:14px;width:100%;background:none;border:none;padding:14px 20px;font:inherit;color:var(--cr-mut);cursor:pointer;text-align:left}
+.cr-compose-open:hover{background:#f8f9fa;color:#1a73e8}
+#myForm{display:grid;gap:10px;padding:16px 20px}
+#myForm[hidden]{display:none!important}
+.my-row{display:grid;gap:4px}
+.my-row label{font-size:13px;color:var(--cr-mut)}
+.my-row input,.my-row select,.my-row textarea{font:inherit;border:1px solid var(--cr-line);border-radius:6px;padding:8px 10px;background:#fff;color:var(--cr-ink)}
+.my-row input:focus,.my-row select:focus,.my-row textarea:focus{outline:2px solid #1a73e8;border-color:transparent}
+.my-3{grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
+.my-3>div{display:grid;gap:4px}
+.my-3 label{font-size:13px;color:var(--cr-mut)}
+.my-btns{display:flex;gap:10px}
+.my-btns .cr-go{border:none;cursor:pointer;font:inherit;font-weight:500}
+.my-cancel,.my-btn{font:inherit;background:#fff;border:1px solid var(--cr-line);border-radius:6px;padding:7px 14px;cursor:pointer;color:var(--cr-ink)}
+.my-btn:hover,.my-cancel:hover{background:#f1f3f4}
+.my-btn.del{color:#c5221f}
+.my-chip{font-size:12px;font-weight:400;background:#f1f3f4;color:var(--cr-mut);border-radius:999px;padding:1px 8px;vertical-align:2px}
+.cr-card.mine{border-left:4px solid #5f6368}
+.cr-card.done{opacity:.6}
+@media (max-width:640px){.my-3{grid-template-columns:1fr}}
 </style>
 
 <div class="wrap">
@@ -485,7 +508,24 @@ nav.tabs a{font-size:18px;padding:9px 22px}
         <p class="cr-eg">【作業】期中反思<br>請寫 500 字，截止 11/25 23:59<br>https://classroom.google.com/...</p>
         <p>第一行是標題，寫「截止 月/日 時:分」會變成截止時間，貼 Classroom 網址會變成繳交按鈕，附檔照平常上傳。每兩小時更新一次。</p></div>
     </aside>
+    <div class="cr-main">
+    <div class="cr-card cr-compose" id="myCompose">
+      <button class="cr-compose-open" type="button" id="myOpen"><span class="cr-ic hw" style="--c:#5f6368" aria-hidden="true"></span><span>＋ 新增我的作業提醒（只有你看得到）</span></button>
+      <form id="myForm" hidden>
+        <div class="my-row"><label for="myTitle">作業名稱</label><input id="myTitle" required maxlength="80" placeholder="例如：期中反思 500 字"></div>
+        <div class="my-row my-3">
+          <div><label for="myGen">班級</label><select id="myGen"><option value="F">Foxtrot（F）</option><option value="G">Gopher（G）</option><option value="H">Hawk（H）</option><option value="ALL">不分屆</option></select></div>
+          <div><label for="myDate">截止日期</label><input id="myDate" type="date" required></div>
+          <div><label for="myTime">時間</label><input id="myTime" type="time" value="23:59"></div>
+        </div>
+        <div class="my-row"><label for="myLink">Classroom 連結（選填）</label><input id="myLink" type="url" placeholder="https://classroom.google.com/..."></div>
+        <div class="my-row"><label for="myNote">備註（選填）</label><textarea id="myNote" rows="2" maxlength="500" placeholder="要準備什麼、跟誰一組"></textarea></div>
+        <p class="cr-hint">存在這台裝置的瀏覽器裡，只有你看得到。換裝置或清除瀏覽器資料就會不見。</p>
+        <div class="my-btns"><button class="cr-go" type="submit">新增</button><button class="my-cancel" type="button" id="myCancel">取消</button></div>
+      </form>
+    </div>
     <div class="cr-stream" id="crStream"><div class="cr-card cr-empty-card"><p>還沒有佈告。管理者按右上角「發布佈告」就會出現在這裡。</p></div></div>
+    </div>
   </div>
 </section>
 
@@ -709,7 +749,7 @@ function renderRemind(){
     {const d=(e.events||[]).find(x=>daysLeft(x)>=0); if(d){const n=daysLeft(d); if(n<=21) items.push({d,n,e,kind:"活動"});}}
     if(e.deadline){const n=daysLeft(e.deadline); if(n>=0&&n<=10) items.push({d:e.deadline,n,e,kind:"報名截止"});}
   }
-  for(const p of (BB||[])){const n=bbDue(p); if(n!==null&&n>=0&&n<=10) items.push({d:p.due,n,e:{id:"bb"+p.number,title:(GENS[p.gen]?GENS[p.gen].code+"｜":"")+p.title},kind:"作業截止 "+p.dueTime,bb:p.number});}
+  for(const p of (typeof allPosts==="function"&&typeof MY!=="undefined"?allPosts():(BB||[]))){if(p.done)continue;const n=bbDue(p); if(n!==null&&n>=0&&n<=10) items.push({d:p.due,n,e:{id:"bb"+p.number,title:(p.mine?"我的｜":GENS[p.gen]?GENS[p.gen].code+"｜":"")+p.title},kind:"作業截止 "+p.dueTime,bb:p.number});}
   items.sort((a,b)=>a.d.localeCompare(b.d)||(a.kind==="活動"?1:-1));
   const seen=new Set(), list=items.filter(x=>{const k=x.e.id+x.kind;if(seen.has(k))return false;seen.add(k);return true}).slice(0,8);
   $("#remindBox").hidden=!list.length;
@@ -776,28 +816,49 @@ var GENS={F:{name:"Foxtrot",code:"F",full:"第六屆 Foxtrot",color:"#1e8e3e",bg
   H:{name:"Hawk",code:"H",full:"第八屆 Hawk",color:"#e8710a",bg:"linear-gradient(120deg,#c26401,#e8710a 60%,#fcad70)"}};
 var BB=[], bbGen=(()=>{try{return localStorage.getItem("bbGen")||""}catch(e){return ""}})();
 function bbDue(p){return p.kind==="作業"&&p.due?daysLeft(p.due):null}
+/* 我的作業：存在自己的瀏覽器 */
+function myLoad(){try{return JSON.parse(localStorage.getItem("myHW")||"[]")}catch(e){return []}}
+function mySave(v){try{localStorage.setItem("myHW",JSON.stringify(v));return true}catch(e){return false}}
+var MY=myLoad();
+function myPosts(){return MY.map(m=>({id:m.id,number:m.id,gen:m.gen,kind:"作業",title:m.title,
+  html:m.note?`<p>${linkify(m.note).replace(/\n/g,"<br>")}</p>`:"",due:m.due,dueTime:m.time||"23:59",classroom:m.link||"",
+  author:"我自己",created:m.created,edited:false,mine:true,done:!!m.done}))}
+function allPosts(){return [...myPosts(),...BB].sort((a,b)=>b.created.localeCompare(a.created))}
+function bbOpen(p){return bbDue(p)!==null&&bbDue(p)>=0&&!p.done}
 function renderBoard(){
-  const cls=$("#crClasses");
+  const ALL=allPosts(), cls=$("#crClasses");
   cls.innerHTML=[["","全部班級","#5f6368","linear-gradient(120deg,#3c4043,#5f6368)"],...Object.entries(GENS).map(([k,g])=>[k,g.full,g.color,g.bg])].map(([k,n,c,bg])=>{
-    const cnt=BB.filter(p=>(!k||p.gen===k||p.gen==="ALL")&&bbDue(p)!==null&&bbDue(p)>=0).length;
+    const cnt=ALL.filter(p=>(!k||p.gen===k||p.gen==="ALL")&&bbOpen(p)).length;
     return `<button class="cr-class${bbGen===k?" on":""}" data-g="${k}" style="--c:${c};--bg:${bg}"><span class="cr-cb"></span><b>${n}</b><span>${cnt?cnt+" 項作業待交":"沒有待交作業"}</span></button>`}).join("");
   const g=GENS[bbGen];
   $("#crBanner").style.background=g?g.bg:"linear-gradient(120deg,#3c4043,#5f6368)";
   $("#crName").textContent=g?`創新領導 ${g.name}（${g.code}）`:"全部班級";
   $("#crSub").textContent=g?`${g.full}的公告與作業`:"立德三屆的公告與作業";
-  const list=BB.filter(p=>!bbGen||p.gen===bbGen||p.gen==="ALL");
-  const due=list.filter(p=>bbDue(p)!==null&&bbDue(p)>=0).sort((a,b)=>(a.due+a.dueTime).localeCompare(b.due+b.dueTime));
-  $("#crDue").innerHTML=due.length?due.slice(0,6).map(p=>{const n=bbDue(p);return `<a class="cr-due" href="#bb-${p.number}"><span>${n===0?"今天":n===1?"明天":p.due.slice(5).replace("-","/")} ${esc(p.dueTime)}</span><b>${esc(p.title)}</b></a>`}).join(""):`<p class="cr-empty">太好了，近期沒有要交的作業！</p>`;
+  if(g) $("#myGen").value=bbGen;
+  const list=ALL.filter(p=>!bbGen||p.gen===bbGen||p.gen==="ALL");
+  const due=list.filter(bbOpen).sort((a,b)=>(a.due+a.dueTime).localeCompare(b.due+b.dueTime));
+  $("#crDue").innerHTML=due.length?due.slice(0,8).map(p=>{const n=bbDue(p);return `<a class="cr-due" href="#bb-${p.number}"><span>${n===0?"今天":n===1?"明天":p.due.slice(5).replace("-","/")} ${esc(p.dueTime)}${p.mine?"・我的":""}</span><b>${esc(p.title)}</b></a>`}).join(""):`<p class="cr-empty">太好了，近期沒有要交的作業！</p>`;
   $("#crStream").innerHTML=list.length?list.map(p=>{
-    const gg=GENS[p.gen], n=bbDue(p), color=gg?gg.color:"#5f6368";
-    return `<article class="cr-card" id="bb-${p.number}">
-      <header class="cr-h"><span class="cr-ic ${p.kind==="作業"?"hw":"ann"}" style="--c:${color}" aria-hidden="true"></span>
-        <div><div class="cr-t">${p.kind==="作業"?"作業：":""}${esc(p.title)}</div><div class="cr-m">${esc(p.author)}・${esc(p.created)}${p.edited?"（已編輯）":""}・${gg?gg.full:"全部班級"}</div></div></header>
-      ${p.kind==="作業"&&p.due?`<div class="cr-duebar ${n!==null&&n<0?"past":n!==null&&n<=2?"soon":""}">截止：${p.due.replace(/-/g,"/")} ${esc(p.dueTime)}${n===null?"":n<0?"・已截止":n===0?"・今天到期":"・還有 "+n+" 天"}</div>`:""}
+    const gg=GENS[p.gen], n=bbDue(p), color=p.mine?"#5f6368":gg?gg.color:"#5f6368";
+    return `<article class="cr-card${p.mine?" mine":""}${p.done?" done":""}" id="bb-${p.number}">
+      <header class="cr-h"><span class="cr-ic hw${p.kind==="作業"?"":" ann"}" style="--c:${color}" aria-hidden="true"></span>
+        <div><div class="cr-t">${p.kind==="作業"?"作業：":""}${esc(p.title)}${p.mine?' <span class="my-chip">只有你看得到</span>':""}</div><div class="cr-m">${esc(p.author)}・${esc(p.created)}${p.edited?"（已編輯）":""}・${gg?gg.full:"全部班級"}</div></div></header>
+      ${p.kind==="作業"&&p.due?`<div class="cr-duebar ${p.done?"past":n!==null&&n<0?"past":n!==null&&n<=2?"soon":""}">截止：${p.due.replace(/-/g,"/")} ${esc(p.dueTime)}${p.done?"・已完成":n===null?"":n<0?"・已截止":n===0?"・今天到期":"・還有 "+n+" 天"}</div>`:""}
       <div class="cr-content">${p.html||""}</div>
-      ${p.kind==="作業"?`<div class="cr-actions"><a class="cr-go" href="${esc(p.classroom||"https://classroom.google.com/")}" target="_blank" rel="noopener">到 Google Classroom 繳交</a><span class="cr-hint">作業不要交在這裡，請到 Classroom 繳交</span></div>`:""}
-    </article>`}).join(""):`<div class="cr-card cr-empty-card"><p>${bbGen?"這個班級還沒有佈告。":"還沒有佈告。"}管理者按右上角「發布佈告」就會出現在這裡。</p></div>`;
+      ${p.kind==="作業"?`<div class="cr-actions"><a class="cr-go" href="${esc(p.classroom||"https://classroom.google.com/")}" target="_blank" rel="noopener">到 Google Classroom 繳交</a>${p.mine?`<button class="my-btn" type="button" data-done="${p.id}">${p.done?"改回未完成":"✓ 標記完成"}</button><button class="my-btn del" type="button" data-del="${p.id}">刪除</button>`:`<span class="cr-hint">作業不要交在這裡，請到 Classroom 繳交</span>`}</div>`:""}
+    </article>`}).join(""):`<div class="cr-card cr-empty-card"><p>${bbGen?"這個班級還沒有佈告。":"還沒有佈告。"}幹部在 DC 用【作業】【公告】發，或用上面新增自己的作業提醒。</p></div>`;
 }
+$("#myOpen").onclick=()=>{$("#myForm").hidden=false;$("#myOpen").hidden=true;$("#myTitle").focus()};
+$("#myCancel").onclick=()=>{$("#myForm").hidden=true;$("#myOpen").hidden=false};
+$("#myForm").addEventListener("submit",ev=>{ev.preventDefault();
+  const now=new Date(),pad=n=>String(n).padStart(2,"0");
+  MY.push({id:"my"+now.getTime(),title:$("#myTitle").value.trim(),gen:$("#myGen").value,due:$("#myDate").value,time:$("#myTime").value||"23:59",
+    link:/^https:\/\//.test($("#myLink").value.trim())?$("#myLink").value.trim():"",note:$("#myNote").value.trim(),done:false,
+    created:`${now.getFullYear()}-${pad(now.getMonth()+1)}-${pad(now.getDate())} ${pad(now.getHours())}:${pad(now.getMinutes())}`});
+  $("#myForm").reset();$("#myTime").value="23:59";$("#myForm").hidden=true;$("#myOpen").hidden=false;renderBoard();renderRemind();});
+$("#crStream").addEventListener("click",ev=>{const d=ev.target.closest("[data-done]"),x=ev.target.closest("[data-del]");
+  if(d){const m=MY.find(v=>v.id===d.dataset.done);if(m){m.done=!m.done;mySave(MY);renderBoard();renderRemind()}}
+  if(x){if(x.dataset.sure){MY=MY.filter(v=>v.id!==x.dataset.del);mySave(MY);renderBoard();renderRemind()}else{x.dataset.sure="1";x.textContent="再按一次確定刪除";setTimeout(()=>{if(x.isConnected){delete x.dataset.sure;x.textContent="刪除"}},3000)}}});
 $("#crClasses").addEventListener("click",ev=>{const b=ev.target.closest("[data-g]");if(!b)return;bbGen=b.dataset.g;try{localStorage.setItem("bbGen",bbGen)}catch(e){}renderBoard()});
 renderBoard();
 if(CFG.bulletinForm) $("#crPost").href=CFG.bulletinForm;
