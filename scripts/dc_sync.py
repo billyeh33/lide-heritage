@@ -7,7 +7,7 @@
   DISCORD_CHANNEL_IDS 要同步的頻道 ID，用逗號分隔（論壇頻道或文字頻道）
 沒有設定時直接結束，不會失敗。
 """
-import json, os, re, sys, time, urllib.request, urllib.error
+import json, os, re, sys, time, urllib.parse, urllib.request, urllib.error
 from datetime import datetime, timedelta, timezone
 from pathlib import Path
 
@@ -47,8 +47,8 @@ def get(path):
                 continue
             if e.code == 401:
                 sys.exit("Bot token 不對，請重新產生並更新 GitHub Secret")
-            if e.code in (403, 404):
-                print(f"沒有權限或找不到：{path}")
+            if e.code in (400, 403, 404):
+                print(f"略過 {e.code}：{path} {body[:120]}")
                 return None
             raise
     return None
@@ -137,7 +137,7 @@ def main():
             threads = {t["id"]: t for t in active if t.get("parent_id") == cid}
             before = None
             while True:
-                r = get(f"/channels/{cid}/threads/archived/public?limit=100" + (f"&before={before}" if before else ""))
+                r = get(f"/channels/{cid}/threads/archived/public?limit=100" + (f"&before={urllib.parse.quote(before)}" if before else ""))
                 if not r or not r.get("threads"):
                     break
                 for t in r["threads"]:
