@@ -1,8 +1,11 @@
-"""立德家傳 獎學金同步：每天讀清華助學系統公開的「收件中」獎學金，存成 scholarships.json。
+"""立德家傳 獎學金同步：每天讀公開的獎學金清單，存成 scholarships.json。
 
-資料來源：https://meo110.wwlc.nthu.edu.tw/ 首頁的公開 API（不用登入，只讀）。
+資料來源（都不用登入，只讀）：
+  1. 清華助學系統 https://meo110.wwlc.nthu.edu.tw/ 收件中的公告（API）
+  2. 教育部圓夢助學網 民間團體、政府機關獎助學金（只收大專院校或研究所能申請的）
+陽明交大的校外獎學金系統只開放校內網路，抓不到。
 """
-import json, re, urllib.request
+import html, json, re, time, urllib.request
 from datetime import datetime, timedelta, timezone
 from pathlib import Path
 
@@ -24,7 +27,7 @@ def clean(text):
     return re.sub(r"\s+", " ", text).strip()
 
 
-def main():
+def nthu():
     req = urllib.request.Request(API, headers={"User-Agent": "LideHeritageScholarship (github-actions, 1.0)"})
     with urllib.request.urlopen(req, timeout=30) as r:
         items = json.loads(r.read())["result"]["data"]
@@ -54,6 +57,94 @@ def main():
             "deadline": a.get("receive_end_date") or None, "link": SITE + "/", "linkLabel": "到清華助學系統申請",
             "extraLinks": att,
         })
+    return out
+
+
+MOE = "https://www.edu.tw/helpdreams/"
+MOE_LISTS = [("2BBF7170197CE7D3", "0A01A72AAB9E5CD4", "民間"), ("11EFF33070D6DF4B", "931FF851D2FB2128", "政府")]
+
+
+def fetch(url, tries=3):
+    for i in range(tries):
+        try:
+            req = urllib.request.Request(url, headers={"User-Agent": "Mozilla/5.0 (LideHeritageScholarship)"})
+            with urllib.request.urlopen(req, timeout=40) as r:
+                return html.unescape(r.read().decode("utf-8", "replace"))
+        except Exception:
+            if i == tries - 1:
+                raise
+            time.sleep(3)
+
+
+def roc(d):
+    m = re.match(r"(\d{2,3})[-/](\d{1,2})[-/](\d{1,2})", d or "")
+    return f"{int(m[1]) + 1911}-{int(m[2]):02d}-{int(m[3]):02d}" if m else None
+
+
+def moe():
+    out = []
+    for n, sms, kind in MOE_LISTS:
+        page = fetch(f"{MOE}Grants.aspx?n={n}&sms={sms}")
+        rows = re.findall(r'href="(Grants_Content\.aspx[^"]+)">(.*?)</a>\s*</td><td[^>]*>(.*?)</td><td[^>]*>(.*?)</td>', page, flags=re.S)
+        for href, name, org, end in rows:
+            name, org = clean(re.sub(r"<[^>]+>", "", name)), clean(re.sub(r"<[^>]+>", "", org))
+            try:
+                d = fetch(MOE + href)
+            except Exception as e:
+                print("略過", name, e)
+                continue
+            text = re.sub(r"<script.*?</script>", "", d, flags=re.S)
+            cells = [clean(x) for x in re.split(r"<[^>]+>", text)]
+            cells = [c for c in cells if c]
+            def field(label):
+                try:
+                    i = cells.index(label)
+                except ValueError:
+                    return ""
+                return cells[i + 1] if i + 1 < len(cells) else ""
+            level = field("學 制")
+            if level and not any(k in level for k in ("大專", "大學", "研究所")):
+                continue
+            ident, area = field("獎助身分"), field("戶籍地限制")
+            nums = [int(x.replace(",", "")) for x in re.findall(r"[\d,]+", re.sub(r"預計總名額.*", "", field("獎助內容")))]
+            amt = money(nums[0], nums[-1]) if nums else ""
+            period = field("申請期間")
+            how = field("申請方式")
+            url = field("說明網址")
+            summary = "　".join(x for x in [f"金額 {amt}" if amt else "", f"限 {ident}" if ident and ident != "不拘" else "",
+                                             f"戶籍 {area}" if area and area not in ("不拘", "不限") else ""] if x)
+            out.append({
+                "id": "moe" + re.sub(r"\W", "", href.split("s=")[-1])[:20], "cat": "perk", "title": name, "grade": "不限",
+                "tags": ["獎學金", kind], "summary": (summary + "。" if summary else "") + f"提供單位：{org}。",
+                "tips": [x for x in [f"申請期間 {period}" if period else "", how[:60], f"學制：{level}" if level else ""] if x],
+                "source": "教育部圓夢助學網", "date": datetime.now(TW).strftime("%Y-%m-%d"),
+                "deadline": roc(clean(end)), "link": MOE + href, "linkLabel": "看完整辦法",
+                "extraLinks": [url] if url.startswith("http") else [],
+            })
+            time.sleep(0.5)
+    return out
+
+
+def grams(name):
+    name = re.sub(r"\d{3}\s*(學)?年(度)?|第[^屆]*屆|[（(].*?[)）]|[「」【】\s、，]|獎助學金|獎學金|助學金|財團法人|社團法人", "", name)
+    return {name[i:i + 4] for i in range(len(name) - 3)}
+
+
+def main():
+    items = []
+    for f in (nthu, moe):
+        try:
+            got = f()
+            print(f.__name__, len(got), "筆")
+            items += got
+        except Exception as e:
+            print(f.__name__, "抓取失敗：", e)
+    # 清大的全部保留，教育部的如果跟清大某筆名稱有連續 4 個字相同就略過
+    nthu_grams = set().union(*[grams(e["title"]) for e in items if e["id"].startswith("sch")] or [set()])
+    out = [e for e in items if e["id"].startswith("sch") or not (grams(e["title"]) & nthu_grams)]
+    if not out:
+        print("兩個來源都沒抓到，保留舊資料")
+        return
     out.sort(key=lambda x: x["deadline"] or "9999")
     data = {"updated": datetime.now(TW).strftime("%Y-%m-%d %H:%M"), "entries": out}
     old = json.loads(OUT.read_text(encoding="utf-8")) if OUT.exists() else {}
