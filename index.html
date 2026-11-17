@@ -295,6 +295,27 @@ nav.tabs a{font-size:18px;padding:9px 22px}
 .m-dot{display:inline-block;width:12px;height:12px;border-radius:4px;margin:0 4px 0 10px;vertical-align:-1px;border:1.5px solid var(--line)}
 .m-dot.ev{background:var(--sky)}.m-dot.due{background:var(--pink)}.m-dot.sch{background:var(--sun)}.m-dot.cal{background:var(--mint)}
 @media (max-width:720px){.fresh>li{grid-template-columns:1fr}.f-when{position:static;justify-self:start}.quick{grid-template-columns:repeat(2,1fr)}}
+
+.lide-hero{background:linear-gradient(135deg,#fff 0%,var(--sky-soft) 60%,var(--pink-soft) 100%);border:3px solid var(--line);border-radius:26px;padding:24px 28px;box-shadow:6px 6px 0 var(--ink);margin-bottom:22px}
+.lide-hero h2{font-size:34px;margin-bottom:8px}
+.lide-hero p{font-size:18px;max-width:72ch;margin:0 0 14px}
+.lide-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:18px;margin-bottom:26px}
+.lide-card{border:3px solid var(--line);border-radius:22px;padding:16px 20px;box-shadow:4px 4px 0 var(--ink)}
+.lide-card.c1{background:var(--mint-soft)}.lide-card.c2{background:var(--sun-soft)}.lide-card.c3{background:var(--grape-soft)}
+.lide-card h3{font-size:22px;margin-bottom:8px}
+.lide-card ul{margin:0;padding-left:1.2em;display:grid;gap:6px}
+.gens{list-style:none;margin:0;padding:0;display:grid;gap:8px}
+.gens li{display:flex;align-items:baseline;gap:10px;background:#fff;border:2px solid var(--line);border-radius:12px;padding:4px 12px}
+.gens b{font-family:var(--f-display);font-weight:400;font-size:22px;min-width:90px}
+.lide-h{font-size:24px;margin:6px 0 12px}
+.lide-links{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:14px;margin-bottom:24px}
+.ll{display:grid;gap:2px;text-decoration:none;color:var(--ink);background:#fff;border:3px solid var(--line);border-radius:18px;padding:12px 16px;box-shadow:3px 3px 0 var(--ink);transition:transform .08s}
+.ll:hover{transform:translate(-2px,-2px);background:var(--sun-soft)}
+.ll b{font-family:var(--f-display);font-weight:400;font-size:20px}
+.ll span{font-size:14px;color:var(--muted)}
+.lide-gens{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:18px}
+.lide-gens a{font-family:var(--f-display);text-decoration:none;color:var(--ink);background:var(--pink-soft);border:2.5px solid var(--line);border-radius:999px;padding:4px 16px;box-shadow:2px 2px 0 var(--ink)}
+.lide-contact{font-size:14px}
 </style>
 
 <div class="wrap">
@@ -322,6 +343,7 @@ nav.tabs a{font-size:18px;padding:9px 22px}
 <nav class="tabs" aria-label="分頁">
   <a href="#library">家傳庫</a>
   <a href="#freshman">立德新生</a>
+  <a href="#lide">關於立德</a>
   <a href="#graph">知識圖譜</a>
   <a href="#deadlines">截止日</a>
   <a href="#trial">分享家傳・聯絡</a>
@@ -337,6 +359,7 @@ nav.tabs a{font-size:18px;padding:9px 22px}
     <a class="qk q5" href="https://www.lib.nthu.edu.tw/" target="_blank" rel="noopener"><b>圖書館</b><span>借書・研究小間</span></a>
     <a class="qk q6" href="https://affairs.site.nthu.edu.tw/p/404-1165-317480.php?Lang=zh-tw" target="_blank" rel="noopener"><b>校園公車</b><span>本學期時刻表</span></a>
     <a class="qk q7" href="https://dgaa.site.nthu.edu.tw/p/412-1209-2942.php?Lang=zh-tw" target="_blank" rel="noopener"><b>學校行事曆</b><span>考試・假期・選課</span></a>
+    <a class="qk q1" href="https://www.nthu-leadership-program.com/" target="_blank" rel="noopener"><b>立德官網</b><span>計畫介紹・各屆成果</span></a>
     <a class="qk q8" href="https://sthousing.site.nthu.edu.tw/" target="_blank" rel="noopener"><b>住宿組</b><span>宿舍申請・公告</span></a>
   </nav>
   <section class="remind" id="remindBox" hidden aria-labelledby="remH">
@@ -411,6 +434,49 @@ nav.tabs a{font-size:18px;padding:9px 22px}
       <li>下學期的選課在寒假前就開始，記得看 <a href="https://curricul.site.nthu.edu.tw/" target="_blank" rel="noopener">課務組</a> 公告。</li>
       <li>學期結束時，把這學期的筆記、考古、活動心得分享給學弟妹，之後學業專區會改成以家傳換家傳。</li></ul></div></li>
   </ol>
+</section>
+
+<section class="view" id="v-lide" hidden>
+  <div class="lide-hero">
+    <div><h2>關於立德計畫</h2>
+    <p>清華大學立德領導人才培育計畫，2015 年由校友鄭志凱引介美國華裔企業家朱偉人先生創立，現在隸屬清華住宿書院。核心精神是「受助、自助、助人」，相信領導不是少數人的專利，只要你的行動能讓別人更敢夢想、更願意學習、做得更多，你就是領導者。</p>
+    <a class="btn" href="https://www.nthu-leadership-program.com/" target="_blank" rel="noopener">立德官網 ↗</a></div>
+  </div>
+  <div class="lide-grid">
+    <div class="lide-card c1"><h3>怎麼培訓</h3><ul>
+      <li>以專題式學習為主軸，三年完成三個專案，在實作與反思中練領導力。</li>
+      <li>搭配清華學院學士班「創新領導專題」系列課，6 學期 9 學分，從大二修到大四。</li>
+      <li>理論課加業界案例討論，再到大中小三種規模的實作。</li></ul></div>
+    <div class="lide-card c2"><h3>大家怎麼串連</h3><ul>
+      <li>Discord：各屆即時交流，本站每天從這裡整理活動與資源。</li>
+      <li>LinkedIn：記錄學習反思，累積履歷。</li>
+      <li>Notion：專案協作與進度追蹤。</li>
+      <li>校友、業師、核心團隊和學長姐，都是立德的支持網絡。</li></ul></div>
+    <div class="lide-card c3"><h3>各屆代號</h3>
+      <ol class="gens">
+        <li><b>Echo</b><span>第五屆・2022 立德 3.0 重啟</span></li>
+        <li><b>Foxtrot</b><span>第六屆・2023</span></li>
+        <li><b>Gopher</b><span>第七屆・2024</span></li>
+        <li><b>Hawk</b><span>第八屆・2026</span></li>
+      </ol>
+      <p class="note">第一到四屆在 2015 到 2019 年間招收，2019 年因疫情暫停招生。</p></div>
+  </div>
+  <h3 class="lide-h">官網上的資料</h3>
+  <div class="lide-links">
+    <a class="ll" href="https://www.nthu-leadership-program.com/projects-8" target="_blank" rel="noopener"><b>專案實作</b><span>各屆成果報告與成發影片</span></a>
+    <a class="ll" href="https://www.nthu-leadership-program.com/projects-7" target="_blank" rel="noopener"><b>海報資料庫</b><span>歷屆海報宣讀</span></a>
+    <a class="ll" href="https://drive.google.com/drive/folders/1t4lqBNUWalCPQVHfmT-WQa7r3y0dePKU?usp=drive_link" target="_blank" rel="noopener"><b>立德季刊</b><span>2023 年起，學生主編</span></a>
+    <a class="ll" href="https://www.nthu-leadership-program.com/news" target="_blank" rel="noopener"><b>活動紀錄</b><span>講座、沙龍、合作活動</span></a>
+    <a class="ll" href="https://www.nthu-leadership-program.com/副本-立德計畫2-0" target="_blank" rel="noopener"><b>計畫歷程</b><span>2015 年到現在</span></a>
+    <a class="ll" href="https://www.nthu-leadership-program.com/計畫成員" target="_blank" rel="noopener"><b>計畫成員</b><span>核心團隊與業師</span></a>
+    <a class="ll" href="https://www.nthu-leadership-program.com/joinus" target="_blank" rel="noopener"><b>加入立德</b><span>招生資訊，每年四月左右</span></a>
+    <a class="ll" href="https://www.nthu-leadership-program.com/projects-7-1" target="_blank" rel="noopener"><b>Echo 妖獸圖鑑</b><span>第五屆的作品</span></a>
+  </div>
+  <h3 class="lide-h">各屆學員介紹</h3>
+  <div class="lide-gens">
+    <a href="https://www.nthu-leadership-program.com/第七屆學員" target="_blank" rel="noopener">第七屆</a><a href="https://www.nthu-leadership-program.com/第六屆學員" target="_blank" rel="noopener">第六屆</a><a href="https://www.nthu-leadership-program.com/第五屆學員" target="_blank" rel="noopener">第五屆</a><a href="https://www.nthu-leadership-program.com/第四屆學員" target="_blank" rel="noopener">第四屆</a><a href="https://www.nthu-leadership-program.com/第三屆學員" target="_blank" rel="noopener">第三屆</a><a href="https://www.nthu-leadership-program.com/第二屆學員" target="_blank" rel="noopener">第二屆</a><a href="https://www.nthu-leadership-program.com/副本-計畫成員" target="_blank" rel="noopener">第一屆</a>
+  </div>
+  <p class="note lide-contact">立德辦公室在清大教育館 2F 通識中心，可以到現場翻季刊。信箱 leadership@gapp.nthu.edu.tw，電話 (03) 5162567。以上整理自立德官網，以官網為準。</p>
 </section>
 
 <section class="view" id="v-deadlines" hidden>
@@ -623,7 +689,7 @@ document.querySelector(".seg").addEventListener("click",ev=>{const b=ev.target.c
   document.querySelectorAll(".seg [data-view]").forEach(c=>c.setAttribute("aria-pressed",c===b));
   const mo=b.dataset.view==="month"; $("#monthBox").hidden=!mo; $("#dlList").hidden=mo; if(mo)renderMonth();});
 /* routing */
-const views=["library","freshman","graph","deadlines","trial","about"];
+const views=["library","freshman","lide","graph","deadlines","trial","about"];
 function route(){const h=location.hash.slice(1);const v=views.includes(h)?h:"library";
   views.forEach(x=>{$("#v-"+x).hidden=x!==v});
   document.querySelectorAll("nav.tabs a").forEach(a=>a.toggleAttribute("aria-current",a.getAttribute("href")==="#"+v)&&a.setAttribute("aria-current","page"));
