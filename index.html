@@ -246,10 +246,20 @@ nav.tabs a{font-size:18px;padding:9px 22px}
 .rem-kind{font-size:13px;color:var(--muted);font-weight:700}
 .rem-item.due .rem-kind{color:var(--late)}
 .rem-title{font-family:var(--f-display);font-size:18px;line-height:1.35;overflow:hidden;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical}
+.countdown{position:absolute;top:24px;right:28px;z-index:2;display:grid;justify-items:center;gap:2px;background:var(--pink);border:3px solid var(--line);border-radius:22px;padding:10px 22px 12px;box-shadow:5px 5px 0 var(--ink);transform:rotate(2deg);min-width:170px}
+.countdown.is-class{background:var(--mint)}
+.cd-label{font-family:var(--f-display);font-size:18px}
+.cd-num{font-family:var(--f-display);font-size:18px;line-height:1}
+.cd-num b{font-weight:400;font-size:56px;margin-right:4px;font-variant-numeric:tabular-nums}
+.cd-sub{font-size:13px;font-weight:700}
+.hero .d1{top:auto;bottom:150px;right:40px}
+.hero .d4{top:150px;right:250px}
+@media (max-width:720px){.countdown{position:static;transform:none;justify-self:start;margin-bottom:6px;min-width:0}.cd-num b{font-size:40px}}
 </style>
 
 <div class="wrap">
-<header class="top hero"><svg class="deco d1" viewBox="0 0 40 40" aria-hidden="true"><path d="M20 3 L24 16 L37 20 L24 24 L20 37 L16 24 L3 20 L16 16 Z" fill="#ffd34d" stroke="#24263b" stroke-width="2.5" stroke-linejoin="round"/></svg><svg class="deco d2" viewBox="0 0 40 40" aria-hidden="true"><circle cx="20" cy="20" r="15" fill="#ff9ec4" stroke="#24263b" stroke-width="2.5"/><circle cx="20" cy="20" r="6" fill="#fff" stroke="#24263b" stroke-width="2.5"/></svg><svg class="deco d3" viewBox="0 0 40 40" aria-hidden="true"><path d="M6 30 Q14 8 20 20 T34 10" fill="none" stroke="#6fdcb0" stroke-width="5" stroke-linecap="round"/></svg><svg class="deco d4" viewBox="0 0 40 40" aria-hidden="true"><rect x="7" y="7" width="26" height="26" rx="6" fill="#b9a3ff" stroke="#24263b" stroke-width="2.5" transform="rotate(14 20 20)"/></svg><svg class="deco d5" viewBox="0 0 40 40" aria-hidden="true"><path d="M20 6 L23 17 L34 20 L23 23 L20 34 L17 23 L6 20 L17 17 Z" fill="#7cc4ff" stroke="#24263b" stroke-width="2.5" stroke-linejoin="round"/></svg>
+<header class="top hero">
+  <div class="countdown" id="cd" hidden><span class="cd-label" id="cdLabel">寒假倒數</span><span class="cd-num"><b id="cdNum">0</b>天</span><span class="cd-sub" id="cdSub"></span></div><svg class="deco d1" viewBox="0 0 40 40" aria-hidden="true"><path d="M20 3 L24 16 L37 20 L24 24 L20 37 L16 24 L3 20 L16 16 Z" fill="#ffd34d" stroke="#24263b" stroke-width="2.5" stroke-linejoin="round"/></svg><svg class="deco d2" viewBox="0 0 40 40" aria-hidden="true"><circle cx="20" cy="20" r="15" fill="#ff9ec4" stroke="#24263b" stroke-width="2.5"/><circle cx="20" cy="20" r="6" fill="#fff" stroke="#24263b" stroke-width="2.5"/></svg><svg class="deco d3" viewBox="0 0 40 40" aria-hidden="true"><path d="M6 30 Q14 8 20 20 T34 10" fill="none" stroke="#6fdcb0" stroke-width="5" stroke-linecap="round"/></svg><svg class="deco d4" viewBox="0 0 40 40" aria-hidden="true"><rect x="7" y="7" width="26" height="26" rx="6" fill="#b9a3ff" stroke="#24263b" stroke-width="2.5" transform="rotate(14 20 20)"/></svg><svg class="deco d5" viewBox="0 0 40 40" aria-hidden="true"><path d="M20 6 L23 17 L34 20 L23 23 L20 34 L17 23 L6 20 L17 17 Z" fill="#7cc4ff" stroke="#24263b" stroke-width="2.5" stroke-linejoin="round"/></svg>
   <div class="brand"><svg class="mascot" viewBox="0 0 80 80" aria-hidden="true"><path d="M40 22 C30 15 16 15 8 19 V64 C16 60 30 60 40 67 Z" fill="#7cc4ff" stroke="#24263b" stroke-width="3" stroke-linejoin="round"/><path d="M40 22 C50 15 64 15 72 19 V64 C64 60 50 60 40 67 Z" fill="#ffd34d" stroke="#24263b" stroke-width="3" stroke-linejoin="round"/><circle cx="24" cy="38" r="3.2" fill="#24263b"/><circle cx="56" cy="38" r="3.2" fill="#24263b"/><path d="M33 47 Q40 53 47 47" fill="none" stroke="#24263b" stroke-width="3" stroke-linecap="round"/><circle cx="18" cy="46" r="3.5" fill="#ff9ec4"/><circle cx="62" cy="46" r="3.5" fill="#ff9ec4"/><path d="M40 8 L40 22" stroke="#24263b" stroke-width="3" stroke-linecap="round"/><circle cx="40" cy="7" r="4" fill="#ff9ec4" stroke="#24263b" stroke-width="2.5"/></svg><div class="brand-txt"><h1>立德家傳</h1><span class="credit">設計者　工院27 葉家源</span></div><span class="seal">一到八屆</span></div>
   <p class="lede">立德一到八屆在 DC 上分享的活動、資源、競賽和好康，每天自動整理到這裡，再加上學長姐留下來的修課資料。每一筆都寫出處和日期，點了就能回 DC 看原文。</p>
   <div class="stats" id="stats"></div>
@@ -466,6 +476,20 @@ renderDeadlines();
 
 
 document.querySelectorAll("[data-copy]").forEach(b=>b.onclick=async()=>{try{await navigator.clipboard.writeText(b.dataset.copy);b.textContent="已複製"}catch(e){const r=document.createRange();r.selectNodeContents(document.getElementById("lineId"));const sel=getSelection();sel.removeAllRanges();sel.addRange(r);b.textContent="已選取"}setTimeout(()=>b.textContent="複製",1500)});
+/* 寒暑假／開學倒數：讀 calendar.json（每天從清大教務處行事曆同步），沒有就用內建的 */
+const CAL0 = [{"date": "2026-06-15", "kind": "break", "label": "暑假", "title": "暑假開始Summer"}, {"date": "2026-09-07", "kind": "classes", "label": "開學", "title": "全校各級學生上課開始、註冊日"}, {"date": "2026-12-28", "kind": "break", "label": "寒假", "title": "寒假開始"}, {"date": "2027-02-15", "kind": "classes", "label": "開學", "title": "全校各級學生上課開始、註冊日"}, {"date": "2027-06-07", "kind": "break", "label": "暑假", "title": "暑假開始"}];
+function renderCountdown(cal){
+  const ev=((cal&&cal.events)||CAL0||[]).filter(e=>daysLeft(e.date)>=0);
+  const br=ev.find(e=>e.kind==="break"), cl=ev.find(e=>e.kind==="classes");
+  const pick=br&&(!cl||br.date<cl.date)?br:cl; if(!pick)return;
+  const n=daysLeft(pick.date), W=["日","一","二","三","四","五","六"], dt=new Date(pick.date+"T00:00:00");
+  $("#cd").hidden=false; $("#cd").classList.toggle("is-class",pick.kind==="classes");
+  $("#cdLabel").textContent=pick.kind==="break"?`${pick.label}倒數`:"開學倒數";
+  $("#cdNum").textContent=n;
+  $("#cdSub").textContent=n===0?(pick.kind==="break"?`今天開始放${pick.label}！`:"今天開學！"):`${dt.getMonth()+1}/${dt.getDate()}（${W[dt.getDay()]}）${pick.kind==="break"?"開始放"+pick.label:"上課"}`;
+}
+renderCountdown(null);
+fetch("calendar.json",{cache:"no-store"}).then(r=>r.ok?r.json():null).then(c=>{if(c)renderCountdown(c)}).catch(()=>{});
 /* routing */
 const views=["library","graph","deadlines","trial","about"];
 function route(){const h=location.hash.slice(1);const v=views.includes(h)?h:"library";

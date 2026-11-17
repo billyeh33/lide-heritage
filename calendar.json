@@ -1,0 +1,36 @@
+{
+ "updated": "2026-11-17 15:21",
+ "source": "清華大學教務處行事曆",
+ "events": [
+  {
+   "date": "2026-06-15",
+   "kind": "break",
+   "label": "暑假",
+   "title": "暑假開始Summer"
+  },
+  {
+   "date": "2026-09-07",
+   "kind": "classes",
+   "label": "開學",
+   "title": "全校各級學生上課開始、註冊日"
+  },
+  {
+   "date": "2026-12-28",
+   "kind": "break",
+   "label": "寒假",
+   "title": "寒假開始"
+  },
+  {
+   "date": "2027-02-15",
+   "kind": "classes",
+   "label": "開學",
+   "title": "全校各級學生上課開始、註冊日"
+  },
+  {
+   "date": "2027-06-07",
+   "kind": "break",
+   "label": "暑假",
+   "title": "暑假開始"
+  }
+ ]
+}
