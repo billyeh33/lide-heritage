@@ -140,11 +140,70 @@ section.view{padding-top:14px}
 .soon-card:hover{background:var(--sun-soft);transform:translate(-1px,-1px)}
 .soon-card b{font-family:var(--f-display);font-weight:400;font-size:16px;line-height:1.4}
 .soon-d{justify-self:start;font-family:var(--f-display);font-size:13px;background:var(--sun);border:2px solid var(--line);border-radius:999px;padding:0 10px}
+
+/* ---- 放大版面與美編 ---- */
+.wrap{max-width:1440px}
+body{font-size:17px}
+header.top{padding-block:34px 24px}
+.hero{position:relative;margin-top:22px;background:linear-gradient(135deg,#ffffff 0%,#e6f3ff 55%,#fff1f7 100%);border:3px solid var(--line);border-radius:28px;padding:34px 40px 30px;box-shadow:6px 6px 0 var(--ink);overflow:hidden}
+.deco{position:absolute;width:44px;height:44px;pointer-events:none}
+.d1{top:22px;right:56px;width:56px;height:56px;transform:rotate(12deg)}
+.d2{top:110px;right:180px;width:36px;height:36px}
+.d3{top:120px;right:36px;width:56px;height:56px}
+.d4{top:40px;right:260px;width:34px;height:34px}
+.d5{top:176px;right:150px;width:30px;height:30px}
+.brand{gap:18px}
+.brand-txt{display:grid;gap:4px}
+.mascot{width:96px;height:96px}
+.brand h1{font-size:64px;text-shadow:4px 4px 0 var(--sun)}
+.credit{justify-self:start;font-family:var(--f-display);font-size:15px;background:var(--ink);color:#fff;border-radius:999px;padding:2px 14px;box-shadow:2px 2px 0 var(--pink)}
+.seal{font-size:17px;padding:4px 14px;align-self:flex-start;margin-top:10px}
+.lede{font-size:19px;max-width:70ch;color:var(--ink)}
+.stats{gap:14px;font-size:15px}
+.stats span{padding:6px 16px;border-radius:14px}
+.stats b{font-size:30px}
+.ask{padding:20px;border-radius:22px;background:#fff}
+.ask input{font-size:18px;padding:13px 16px}
+.btn{font-size:17px;padding:10px 22px}
+.hint{font-size:15px}.hint button{font-size:15px;padding:3px 14px}
+nav.tabs{margin-top:30px;gap:10px}
+nav.tabs a{font-size:18px;padding:9px 22px}
+.soon-h{font-size:32px;display:flex;align-items:center;gap:10px}
+.soon-h::before{content:"";width:18px;height:18px;border-radius:50%;background:var(--pink);border:3px solid var(--line)}
+.soon{grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:18px;margin-bottom:30px}
+.soon-card{padding:16px 18px;border-radius:20px;box-shadow:4px 4px 0 var(--ink);gap:8px}
+.soon-card:nth-child(3n+2){background:var(--sky-soft)}.soon-card:nth-child(3n){background:var(--mint-soft)}
+.soon-card b{font-size:20px}
+.soon-d{font-size:14px;padding:1px 12px}
+.chip{font-size:16px;padding:5px 16px}
+.filters select,.filters input{font-size:16px;padding:8px 14px}
+.grid{grid-template-columns:repeat(auto-fill,minmax(360px,1fr));gap:24px}
+.card{border-width:3px;border-radius:22px;box-shadow:5px 5px 0 var(--ink)}
+.card .meta{padding:10px 18px;border-bottom-width:3px}
+.card>*{margin-inline:20px}
+.card h3{font-size:22px}
+.card p{font-size:16.5px}
+.card ul{font-size:15.5px}
+.card footer{font-size:13px}
+.tag{font-size:13px;padding:1px 10px}
+.panel,.dl-row,.graphbox{border-width:3px}
+.dl-row .d{font-size:22px}
+.site-foot{margin-top:48px;background:var(--ink);color:#fff;border-radius:28px;padding:28px 34px;display:grid;gap:6px;box-shadow:6px 6px 0 var(--sun)}
+.site-foot p{margin:0;color:#d8dcf0}
+.foot-brand{font-family:var(--f-display);font-size:30px;color:var(--sun)}
+.foot-credit{font-size:16px}.foot-credit b{color:#fff;font-weight:700}
+@media (max-width:720px){
+  .hero{padding:24px 20px;border-radius:22px}
+  .deco{display:none}.d1{display:block;top:14px;right:14px;width:36px;height:36px}
+  .brand h1{font-size:42px}.mascot{width:64px;height:64px}
+  .grid,.soon{grid-template-columns:1fr}
+  .lede{font-size:17px}
+}
 </style>
 
 <div class="wrap">
-<header class="top">
-  <div class="brand"><svg class="mascot" viewBox="0 0 80 80" aria-hidden="true"><path d="M40 22 C30 15 16 15 8 19 V64 C16 60 30 60 40 67 Z" fill="#7cc4ff" stroke="#24263b" stroke-width="3" stroke-linejoin="round"/><path d="M40 22 C50 15 64 15 72 19 V64 C64 60 50 60 40 67 Z" fill="#ffd34d" stroke="#24263b" stroke-width="3" stroke-linejoin="round"/><circle cx="24" cy="38" r="3.2" fill="#24263b"/><circle cx="56" cy="38" r="3.2" fill="#24263b"/><path d="M33 47 Q40 53 47 47" fill="none" stroke="#24263b" stroke-width="3" stroke-linecap="round"/><circle cx="18" cy="46" r="3.5" fill="#ff9ec4"/><circle cx="62" cy="46" r="3.5" fill="#ff9ec4"/><path d="M40 8 L40 22" stroke="#24263b" stroke-width="3" stroke-linecap="round"/><circle cx="40" cy="7" r="4" fill="#ff9ec4" stroke="#24263b" stroke-width="2.5"/></svg><h1>立德家傳</h1><span class="seal">一到八屆</span></div>
+<header class="top hero"><svg class="deco d1" viewBox="0 0 40 40" aria-hidden="true"><path d="M20 3 L24 16 L37 20 L24 24 L20 37 L16 24 L3 20 L16 16 Z" fill="#ffd34d" stroke="#24263b" stroke-width="2.5" stroke-linejoin="round"/></svg><svg class="deco d2" viewBox="0 0 40 40" aria-hidden="true"><circle cx="20" cy="20" r="15" fill="#ff9ec4" stroke="#24263b" stroke-width="2.5"/><circle cx="20" cy="20" r="6" fill="#fff" stroke="#24263b" stroke-width="2.5"/></svg><svg class="deco d3" viewBox="0 0 40 40" aria-hidden="true"><path d="M6 30 Q14 8 20 20 T34 10" fill="none" stroke="#6fdcb0" stroke-width="5" stroke-linecap="round"/></svg><svg class="deco d4" viewBox="0 0 40 40" aria-hidden="true"><rect x="7" y="7" width="26" height="26" rx="6" fill="#b9a3ff" stroke="#24263b" stroke-width="2.5" transform="rotate(14 20 20)"/></svg><svg class="deco d5" viewBox="0 0 40 40" aria-hidden="true"><path d="M20 6 L23 17 L34 20 L23 23 L20 34 L17 23 L6 20 L17 17 Z" fill="#7cc4ff" stroke="#24263b" stroke-width="2.5" stroke-linejoin="round"/></svg>
+  <div class="brand"><svg class="mascot" viewBox="0 0 80 80" aria-hidden="true"><path d="M40 22 C30 15 16 15 8 19 V64 C16 60 30 60 40 67 Z" fill="#7cc4ff" stroke="#24263b" stroke-width="3" stroke-linejoin="round"/><path d="M40 22 C50 15 64 15 72 19 V64 C64 60 50 60 40 67 Z" fill="#ffd34d" stroke="#24263b" stroke-width="3" stroke-linejoin="round"/><circle cx="24" cy="38" r="3.2" fill="#24263b"/><circle cx="56" cy="38" r="3.2" fill="#24263b"/><path d="M33 47 Q40 53 47 47" fill="none" stroke="#24263b" stroke-width="3" stroke-linecap="round"/><circle cx="18" cy="46" r="3.5" fill="#ff9ec4"/><circle cx="62" cy="46" r="3.5" fill="#ff9ec4"/><path d="M40 8 L40 22" stroke="#24263b" stroke-width="3" stroke-linecap="round"/><circle cx="40" cy="7" r="4" fill="#ff9ec4" stroke="#24263b" stroke-width="2.5"/></svg><div class="brand-txt"><h1>立德家傳</h1><span class="credit">設計者　工院27 葉家源</span></div><span class="seal">一到八屆</span></div>
   <p class="lede">立德一到八屆在 DC 上分享的活動、資源、競賽和好康，每天自動整理到這裡，再加上學長姐留下來的修課資料。每一筆都寫出處和日期，點了就能回 DC 看原文。</p>
   <div class="stats" id="stats"></div>
   <div class="ask">
@@ -236,6 +295,11 @@ section.view{padding-top:14px}
     <p class="note">創新領導專題六 Foxtrot 葉家源 專案。業師：洪振翔老師。</p>
   </div>
 </section>
+<footer class="site-foot">
+  <div class="foot-brand">立德家傳</div>
+  <p>每天早上 6 點自動同步立德 Discord 與清華助學系統的獎學金。資料有疑慮請在 DC 私訊管理員。</p>
+  <p class="foot-credit">設計者　<b>工院27 葉家源</b>・創新領導專題六 Foxtrot</p>
+</footer>
 </div>
 
 <script>
@@ -326,7 +390,7 @@ $("#gDetail").addEventListener("click",ev=>{const j=ev.target.closest("[data-jum
 new ResizeObserver(drawEdges).observe(gEl);
 
 /* deadlines */
-function renderDeadlines(){const up=DATA.entries.filter(e=>e.id.startsWith("dc")&&e.deadline&&daysLeft(e.deadline)>=0).sort((a,b)=>a.deadline.localeCompare(b.deadline)).slice(0,3);const recent=DATA.entries.filter(e=>e.id.startsWith("dc")&&!up.includes(e)).sort((a,b)=>b.date.localeCompare(a.date)).slice(0,6-up.length);const soon=[...up,...recent];$("#soonBox").hidden=!soon.length;$("#soon").innerHTML=soon.map(e=>`<button class="soon-card" data-entry="${e.id}"><span class="soon-d">${e.deadline&&daysLeft(e.deadline)>=0?(daysLeft(e.deadline)===0?"今天截止":`還有 ${daysLeft(e.deadline)} 天`):esc(e.date.slice(5).replace("-","/"))}</span><b>${esc(e.title)}</b><span class="note">${esc(e.source)}</span></button>`).join("");const dls=DATA.entries.filter(e=>e.deadline&&daysLeft(e.deadline)>-30).sort((a,b)=>daysLeft(a.deadline)<0===daysLeft(b.deadline)<0?(daysLeft(a.deadline)<0?b.deadline.localeCompare(a.deadline):a.deadline.localeCompare(b.deadline)):(daysLeft(a.deadline)<0?1:-1));
+function renderDeadlines(){const up=DATA.entries.filter(e=>e.id.startsWith("dc")&&e.deadline&&daysLeft(e.deadline)>=0).sort((a,b)=>a.deadline.localeCompare(b.deadline)).slice(0,3);const recent=DATA.entries.filter(e=>e.id.startsWith("dc")&&!up.includes(e)).sort((a,b)=>b.date.localeCompare(a.date)).slice(0,8-up.length);const soon=[...up,...recent];$("#soonBox").hidden=!soon.length;$("#soon").innerHTML=soon.map(e=>`<button class="soon-card" data-entry="${e.id}"><span class="soon-d">${e.deadline&&daysLeft(e.deadline)>=0?(daysLeft(e.deadline)===0?"今天截止":`還有 ${daysLeft(e.deadline)} 天`):esc(e.date.slice(5).replace("-","/"))}</span><b>${esc(e.title)}</b><span class="note">${esc(e.source)}</span></button>`).join("");const dls=DATA.entries.filter(e=>e.deadline&&daysLeft(e.deadline)>-30).sort((a,b)=>daysLeft(a.deadline)<0===daysLeft(b.deadline)<0?(daysLeft(a.deadline)<0?b.deadline.localeCompare(a.deadline):a.deadline.localeCompare(b.deadline)):(daysLeft(a.deadline)<0?1:-1));
 $("#dlList").innerHTML=dls.length?"":`<p class="note">目前沒有即將截止的活動。DC 上的活動、競賽和獎學金同步進來後會出現在這裡。</p>`;if(dls.length)$("#dlList").innerHTML=dls.map(e=>{const d=daysLeft(e.deadline);return `<div class="dl-row"><span class="d">${e.deadline.replace(/-/g,"/")}</span><div><b>${esc(e.title)}</b><div class="note">${esc(e.summary)}</div></div><span class="left${d<0?" past":""}">${d<0?(e.id.startsWith("dc")?"已截止":"已截止，明年留意"):d===0?"今天截止":`還有 ${d} 天`}</span></div>`}).join("");}
 renderDeadlines();
 
