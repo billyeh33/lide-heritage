@@ -318,7 +318,7 @@ new ResizeObserver(drawEdges).observe(gEl);
 
 /* deadlines */
 function renderDeadlines(){const dls=DATA.entries.filter(e=>e.deadline&&daysLeft(e.deadline)>-30).sort((a,b)=>daysLeft(a.deadline)<0===daysLeft(b.deadline)<0?(daysLeft(a.deadline)<0?b.deadline.localeCompare(a.deadline):a.deadline.localeCompare(b.deadline)):(daysLeft(a.deadline)<0?1:-1));
-$("#dlList").innerHTML=dls.length?"":`<p class="note">目前沒有即將截止的活動。DC 上的活動、競賽和獎學金同步進來後會出現在這裡。</p>`;if(dls.length)$("#dlList").innerHTML=dls.map(e=>{const d=daysLeft(e.deadline);return `<div class="dl-row"><span class="d">${e.deadline.replace(/-/g,"/")}</span><div><b>${esc(e.title)}</b><div class="note">${esc(e.summary)}</div></div><span class="left${d<0?" past":""}">${d<0?"已截止，明年留意":d===0?"今天截止":`還有 ${d} 天`}</span></div>`}).join("");}
+$("#dlList").innerHTML=dls.length?"":`<p class="note">目前沒有即將截止的活動。DC 上的活動、競賽和獎學金同步進來後會出現在這裡。</p>`;if(dls.length)$("#dlList").innerHTML=dls.map(e=>{const d=daysLeft(e.deadline);return `<div class="dl-row"><span class="d">${e.deadline.replace(/-/g,"/")}</span><div><b>${esc(e.title)}</b><div class="note">${esc(e.summary)}</div></div><span class="left${d<0?" past":""}">${d<0?(e.id.startsWith("dc")?"已截止":"已截止，明年留意"):d===0?"今天截止":`還有 ${d} 天`}</span></div>`}).join("");}
 renderDeadlines();
 
 /* trial + forms */

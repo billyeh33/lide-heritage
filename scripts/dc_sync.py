@@ -20,7 +20,8 @@ KEEP_DAYS = 400
 # 論壇貼文只收有這些標籤的（聊天、家族、便當會這類不收）
 TAG_ALLOW = [t.strip() for t in os.environ.get("DISCORD_TAG_ALLOW", "活動資訊,學術資源,職涯機會,福利與贈品").split(",") if t.strip()]
 DATE = re.compile(r"(?<![\d/])(\d{1,2})/(\d{1,2})(?![\d/])")
-STRONG = re.compile(r"截止|報名|deadline", re.I)
+CUT = re.compile(r"截止|deadline|due", re.I)
+STRONG = re.compile(r"報名", re.I)
 WEAK = re.compile(r"前|至|到")
 URL = re.compile(r"https?://[^\s<>)]+")
 MENTION = re.compile(r"<[@#][!&]?\d+>|<a?:\w+:\d+>")
@@ -87,11 +88,12 @@ def find_deadline(text, posted):
         return None
 
     text = text or ""
-    for k in STRONG.finditer(text):
-        for m in DATE.finditer(text[k.end():k.end() + 30]):
-            dt = to_date(*m.groups())
-            if dt:
-                return dt.isoformat()
+    for pat in (CUT, STRONG):
+        for k in pat.finditer(text):
+            for m in DATE.finditer(text[k.end():k.end() + 30]):
+                dt = to_date(*m.groups())
+                if dt:
+                    return dt.isoformat()
     best = None
     for sent in re.split(r"[。\n！!？?]", text):
         if WEAK.search(sent):
