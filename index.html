@@ -397,6 +397,30 @@ nav.tabs a{font-size:18px;padding:9px 22px}
 .cr-card.mine{border-left:4px solid #5f6368}
 .cr-card.done{opacity:.6}
 @media (max-width:640px){.my-3{grid-template-columns:1fr}}
+
+.map-head h2{font-size:32px;margin-bottom:6px}
+.map-head p{margin:0 0 16px;font-size:17px;max-width:80ch}
+.mapbox{background:#fff;border:3px solid var(--line);border-radius:26px;box-shadow:6px 6px 0 var(--ink);padding:10px;margin-bottom:16px}
+#imap{width:100%;height:auto;display:block}
+.m-edge{fill:none;stroke:#9fb3d6;opacity:.55;transition:opacity .15s}
+.m-edge.on{stroke:var(--ink);opacity:.9}
+.m-edge.dim{opacity:.12}
+.m-node{cursor:pointer;outline:none}
+.m-shadow{fill:var(--ink)}
+.m-dot{stroke:var(--ink);stroke-width:3;transition:transform .12s;transform-box:fill-box;transform-origin:center}
+.m-node:hover .m-dot,.m-node:focus-visible .m-dot{transform:scale(1.06)}
+.m-node.on .m-dot{stroke-width:5}
+.m-node.empty{opacity:.4}
+.m-label{font-family:var(--f-display);font-size:20px;fill:var(--ink);pointer-events:none}
+.m-count{font-size:14px;fill:var(--ink);opacity:.75;pointer-events:none}
+.m-center{font-family:var(--f-display);font-size:44px;fill:var(--ink)}
+.m-center2{font-size:16px;fill:var(--muted)}
+.map-chips{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:18px}
+.map-chips .chip{background:#fff;border-left:10px solid var(--tc)}
+.map-chips .chip.on{background:var(--ink);color:#fff}
+#mapDetail h3{font-size:26px;margin-bottom:8px}
+.m-hub{fill:#fff;stroke:var(--ink);stroke-width:3}
+.m-edge{opacity:.5}
 </style>
 
 <div class="wrap">
@@ -426,7 +450,7 @@ nav.tabs a{font-size:18px;padding:9px 22px}
   <a href="#board">作業佈告</a>
   <a href="#freshman">立德新生</a>
   <a href="#lide">關於立德</a>
-  <a href="#graph">知識圖譜</a>
+  <a href="#map">興趣地圖</a>
   <a href="#deadlines">截止日</a>
   <a href="#trial">分享家傳・聯絡</a>
   <a href="#about">收錄規則</a>
@@ -485,11 +509,11 @@ nav.tabs a{font-size:18px;padding:9px 22px}
   <div class="grid" id="cards"></div>
 </section>
 
-<section class="view" id="v-graph" hidden>
-  <p class="note">每一欄是年級，每一列是主題。點一個節點，會標出它的先修和下一步，下面列出相關家傳。</p>
-  <div class="legend"><span>線條：先修、接著修、同時準備、學長姐建議接著做</span><span>黃框：跟選取節點有關</span></div>
-  <div class="graphbox"><div class="graph" id="graph"></div></div>
-  <div class="detail" id="gDetail"><p class="note">還沒選節點。先點「工程統計」或「研究所推甄」看看。</p></div>
+<section class="view" id="v-map" hidden>
+  <div class="map-head"><div><h2>立德興趣地圖</h2><p>你對什麼有興趣？點一個主題，下面會列出相關的立德活動、獎學金和家傳，快截止的排前面。圓越大代表這個主題的機會越多，線越粗代表兩個主題常出現在同一則活動裡。每天跟著 DC 和獎學金自動更新。</p></div></div>
+  <div class="mapbox"><svg id="imap" viewBox="0 0 1200 700" role="img" aria-label="立德興趣地圖"></svg></div>
+  <div class="map-chips" id="mapChips"></div>
+  <div class="detail" id="mapDetail"><p class="note">點上面任何一個主題看看，例如「創業」或「獎學金」。</p></div>
 </section>
 
 <section class="view cr" id="v-board" hidden>
@@ -699,46 +723,60 @@ function showEntry(id){
   requestAnimationFrame(()=>{const el=document.getElementById("card-"+id);if(!el)return;el.scrollIntoView({behavior:"smooth",block:"center"});el.classList.add("flash");setTimeout(()=>el.classList.remove("flash"),1800)});
 }
 
-/* graph */
-const G=DATA.graph, gEl=$("#graph");
-let html=`<div class="g-h"></div>`+G.cols.map(c=>`<div class="g-h">${c}</div>`).join("");
-for(const lane of G.lanes){
-  html+=`<div class="g-lane l-${lane.id}">${lane.name}</div>`;
-  for(let c=0;c<G.cols.length;c++){
-    html+=`<div class="g-cell">${G.nodes.filter(n=>n.lane===lane.id&&n.col===c).map(n=>`<button class="node l-${n.lane}" data-n="${n.id}">${esc(n.label)}</button>`).join("")}</div>`;
-  }
+/* 興趣地圖：用關鍵字把所有家傳、DC 貼文、獎學金分到主題 */
+const TOPICS=[
+ {k:"startup",n:"創業",c:"#ff9ec4",w:["創業","新創","創投","車庫","黑客松","商業模式","pitch","Epoch","Start","創創","募資"]},
+ {k:"ai",n:"AI 與科技",c:"#7cc4ff",w:["AI","人工智慧","機器學習","程式","數位","Python","GPT","科技","資料","演算法","耐能","智匯"]},
+ {k:"semi",n:"半導體",c:"#b9a3ff",w:["半導體","台積","聯發科","晶片","IC","製程","日月光","TSIA","晶豪","固態","TCAD","電子"]},
+ {k:"green",n:"永續",c:"#6fdcb0",w:["永續","ESG","環保","碳","氣候","生態","綠色","SDG","溪","自然"]},
+ {k:"edu",n:"教育與公益",c:"#ffd34d",w:["教育","公益","志工","服務","偏鄉","弱勢","社會","老師","兒少","g0v","市政"]},
+ {k:"global",n:"海外與交換",c:"#7cc4ff",w:["海外","交換","國際","出國","留學","雅思","IELTS","英文","美國","史丹佛","上海","跨國"]},
+ {k:"career",n:"職涯與實習",c:"#ffd34d",w:["職涯","實習","求職","企業","參訪","履歷","面試","徵才","讀碩","研究所","推甄","Tesla","特斯拉"]},
+ {k:"lead",n:"領導與成長",c:"#ff9ec4",w:["領導","工作坊","讀書會","設計思考","Design Thinking","反思","聊勝於無","議題","討論會","沙龍","創領"]},
+ {k:"sch",n:"獎學金",c:"#6fdcb0",w:["獎學金","助學金","獎助","補助"]},
+ {k:"study",n:"課業資源",c:"#b9a3ff",w:["考古","講義","作業","修課","課程","期中","期末","雲端資料"]},
+ {k:"perk",n:"福利好康",c:"#ffd34d",w:["免費","優惠","福利","贈品","好康","學生方案","午餐","便當","食物"]},
+ {k:"art",n:"藝文生活",c:"#ff9ec4",w:["音樂","藝術","表演","電影","劇團","展覽","攝影","聲音","生活","登山","高山"]}
+];
+let mapSel="";
+function topicsOf(e){const t=(e.title+" "+(e.summary||"")+" "+(e.tags||[]).filter(x=>x!=="DC").join(" ")).toLowerCase();
+  const hit=TOPICS.filter(T=>T.w.some(w=>t.includes(w.toLowerCase()))).map(T=>T.k);
+  if(e.cat==="perk"&&(e.tags||[]).includes("獎學金")&&!hit.includes("sch"))hit.push("sch");
+  if(e.cat==="course"&&!hit.includes("study"))hit.push("study");
+  return hit}
+function interestData(){const by={},co={};TOPICS.forEach(T=>by[T.k]=[]);
+  for(const e of DATA.entries){const ts=topicsOf(e);ts.forEach(k=>by[k].push(e));
+    for(let i=0;i<ts.length;i++)for(let j=i+1;j<ts.length;j++){const key=[ts[i],ts[j]].sort().join("|");co[key]=(co[key]||0)+1}}
+  return {by,co}}
+function renderInterest(){
+  const {by,co}=interestData(), svg=$("#imap"), cx=600, cy=350, rx=470, ry=265, N=TOPICS.length;
+  const pos={}; TOPICS.forEach((T,i)=>{const a=-Math.PI/2+i*2*Math.PI/N; pos[T.k]=[cx+rx*Math.cos(a), cy+ry*Math.sin(a)]});
+  const maxCo=Math.max(1,...Object.values(co));
+  let h=`<defs><radialGradient id="mapGlow"><stop offset="0" stop-color="#fff"/><stop offset="1" stop-color="#eef7ff"/></radialGradient></defs>`;
+  h+=`<ellipse cx="${cx}" cy="${cy}" rx="${rx+60}" ry="${ry+55}" fill="url(#mapGlow)" stroke="#c9d4e6" stroke-width="2" stroke-dasharray="6 8"/>`;
+  const ranked=Object.entries(co).filter(([,v])=>v>=2).sort((a,b)=>b[1]-a[1]);
+  const shown=mapSel?ranked.filter(([k])=>k.split("|").includes(mapSel)):ranked.slice(0,14);
+  for(const [key,v] of shown){ const [a,b]=key.split("|"), [x1,y1]=pos[a], [x2,y2]=pos[b];
+    const on=mapSel&&(a===mapSel||b===mapSel);
+    const mx=(x1+x2)/2+(cx-(x1+x2)/2)*0.35, my=(y1+y2)/2+(cy-(y1+y2)/2)*0.35;
+    h+=`<path class="m-edge${on?" on":""}" d="M${x1},${y1} Q${mx},${my} ${x2},${y2}" stroke-width="${(1.2+5*v/maxCo).toFixed(1)}"><title>${TOPICS.find(t=>t.k===a).n} × ${TOPICS.find(t=>t.k===b).n}：${v} 筆</title></path>`}
+  h+=`<circle cx="${cx}" cy="${cy}" r="92" class="m-hub"/><text x="${cx}" y="${cy-4}" text-anchor="middle" class="m-center">立德</text><text x="${cx}" y="${cy+26}" text-anchor="middle" class="m-center2">${DATA.entries.length} 筆機會與家傳</text>`;
+  for(const T of TOPICS){const n=by[T.k].length, r=Math.min(64,32+5*Math.sqrt(n)), [x,y]=pos[T.k], on=mapSel===T.k;
+    h+=`<g class="m-node${on?" on":""}${n?"":" empty"}" data-t="${T.k}" tabindex="0" role="button" aria-label="${T.n}，${n} 筆">
+      <circle cx="${x}" cy="${y}" r="${r+5}" class="m-shadow"/><circle cx="${x}" cy="${y}" r="${r}" fill="${T.c}" class="m-dot"/>
+      <text x="${x}" y="${y-2}" text-anchor="middle" class="m-label">${T.n}</text><text x="${x}" y="${y+20}" text-anchor="middle" class="m-count">${n} 筆</text></g>`}
+  svg.innerHTML=h;
+  $("#mapChips").innerHTML=TOPICS.map(T=>`<button class="chip${mapSel===T.k?" on":""}" data-t="${T.k}" aria-pressed="${mapSel===T.k}" style="--tc:${T.c}">${T.n} <span class="count">${by[T.k].length}</span></button>`).join("");
+  if(mapSel){const T=TOPICS.find(t=>t.k===mapSel), list=[...by[mapSel]].sort((a,b)=>(dlRank(a)-dlRank(b))||(dlRank(a)===0?a.deadline.localeCompare(b.deadline):(b.id.startsWith("dc")-a.id.startsWith("dc"))||b.date.localeCompare(a.date)));
+    const rel=Object.entries(co).filter(([k,v])=>v>=2&&k.split("|").includes(mapSel)).sort((a,b)=>b[1]-a[1]).slice(0,4).map(([k,v])=>{const o=k.split("|").find(x=>x!==mapSel);return `<button class="cite" data-t="${o}">${TOPICS.find(t=>t.k===o).n}・${v} 筆</button>`}).join("");
+    $("#mapDetail").innerHTML=`<h3>${T.n}　<span class="count">${list.length} 筆</span></h3>${rel?`<div class="nexts"><span>常一起出現：</span>${rel}</div>`:""}<div class="grid">${list.slice(0,24).map(card).join("")}</div>${list.length>24?`<p class="note">還有 ${list.length-24} 筆，可以到家傳庫用關鍵字「${esc(T.n)}」找。</p>`:""}`}
 }
-gEl.innerHTML=html+`<svg aria-hidden="true"></svg>`;
-const svg=gEl.querySelector("svg");
-let selected=null;
-function drawEdges(){
-  if(gEl.offsetParent===null)return;
-  const box=gEl.getBoundingClientRect();
-  svg.setAttribute("viewBox",`0 0 ${box.width} ${box.height}`);
-  svg.innerHTML=G.edges.map(([a,b,t],i)=>{
-    const A=gEl.querySelector(`[data-n="${a}"]`).getBoundingClientRect(),B=gEl.querySelector(`[data-n="${b}"]`).getBoundingClientRect();
-    const x1=A.left+A.width/2-box.left,y1=A.top+A.height/2-box.top,x2=B.left+B.width/2-box.left,y2=B.top+B.height/2-box.top;
-    const mx=(x1+x2)/2;
-    const on=selected&&(a===selected||b===selected);
-    return `<path class="edge${on?" on":""}" d="M${x1},${y1} C${mx},${y1} ${mx},${y2} ${x2},${y2}"><title>${t}</title></path>`;
-  }).join("");
-}
-gEl.addEventListener("click",ev=>{
-  const b=ev.target.closest("[data-n]");if(!b)return;
-  selected=b.dataset.n;
-  const n=G.nodes.find(x=>x.id===selected);
-  const ins=G.edges.filter(e=>e[1]===selected), outs=G.edges.filter(e=>e[0]===selected);
-  const rel=new Set([...ins.map(e=>e[0]),...outs.map(e=>e[1])]);
-  gEl.querySelectorAll(".node").forEach(x=>{x.classList.toggle("on",x.dataset.n===selected);x.classList.toggle("rel",rel.has(x.dataset.n))});
-  const lbl=id=>G.nodes.find(x=>x.id===id).label;
-  $("#gDetail").innerHTML=`<h3>${esc(n.label)}</h3>
-    <div class="nexts">${ins.length?`<span>之前：</span>`+ins.map(e=>`<button class="cite" data-jump="${e[0]}">${esc(lbl(e[0]))}・${e[2]}</button>`).join(""):""}
-    ${outs.length?`<span>之後：</span>`+outs.map(e=>`<button class="cite" data-jump="${e[1]}">${esc(lbl(e[1]))}・${e[2]}</button>`).join(""):""}</div>
-    <div class="grid">${n.refs.map(r=>byId[r]).filter(Boolean).map(card).join("")}</div>`;
-  drawEdges();
-});
-$("#gDetail").addEventListener("click",ev=>{const j=ev.target.closest("[data-jump]");if(j)gEl.querySelector(`[data-n="${j.dataset.jump}"]`).click()});
-new ResizeObserver(drawEdges).observe(gEl);
+function pickTopic(k){mapSel=mapSel===k?"":k;renderInterest(); if(mapSel)requestAnimationFrame(()=>$("#mapDetail").scrollIntoView({behavior:"smooth",block:"start"}))}
+$("#imap").addEventListener("click",ev=>{const g=ev.target.closest("[data-t]");if(g)pickTopic(g.dataset.t)});
+$("#imap").addEventListener("keydown",ev=>{if(ev.key==="Enter"||ev.key===" "){const g=ev.target.closest("[data-t]");if(g){ev.preventDefault();pickTopic(g.dataset.t)}}});
+$("#mapChips").addEventListener("click",ev=>{const b=ev.target.closest("[data-t]");if(b)pickTopic(b.dataset.t)});
+$("#mapDetail").addEventListener("click",ev=>{const b=ev.target.closest("[data-t]");if(b)pickTopic(b.dataset.t)});
+renderInterest();
 
 /* deadlines */
 function renderRemind(){
@@ -884,11 +922,11 @@ Promise.all([Promise.all(["bulletin.json","board_dc.json"].map(u=>fetch(u,{cache
   BB=[...map.values()].sort((a,b)=>b.created.localeCompare(a.created)); renderBoard(); renderRemind();
 });
 /* routing */
-const views=["library","board","freshman","lide","graph","deadlines","trial","about"];
+const views=["library","board","freshman","lide","map","deadlines","trial","about"];
 function route(){const h=location.hash.slice(1);const v=views.includes(h)?h:"library";
   views.forEach(x=>{$("#v-"+x).hidden=x!==v});
   document.querySelectorAll("nav.tabs a").forEach(a=>a.toggleAttribute("aria-current",a.getAttribute("href")==="#"+v)&&a.setAttribute("aria-current","page"));
-  if(v==="graph")requestAnimationFrame(drawEdges)}
+  if(v==="map")renderInterest()}
 addEventListener("hashchange",route);route();
 
 /* ask */
@@ -941,7 +979,7 @@ Promise.all([getJSON("dc.json"),getJSON("scholarships.json"),getJSON("assignment
   const a=mergeExtra(dc), b=mergeExtra(sch), c=mergeExtra(hw);
   if(!a.length&&!b.length&&!c.length)return;
   DC.n=a.length;DC.updated=(dc&&dc.updated)||(sch&&sch.updated)||"";DC.sch=b.length;
-  renderStats();renderChips();renderCards();renderDeadlines();if(!$("#monthBox").hidden)renderMonth();
+  renderStats();renderChips();renderCards();renderDeadlines();renderInterest();if(!$("#monthBox").hidden)renderMonth();
 });
 </script>
 </body></html>
