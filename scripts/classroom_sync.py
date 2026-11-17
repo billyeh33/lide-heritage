@@ -11,7 +11,15 @@ from pathlib import Path
 
 OUT = Path(__file__).resolve().parent.parent / "assignments.json"
 TW = timezone(timedelta(hours=8))
-CONF = [l.split("|", 1) for l in os.environ.get("CLASSROOM_ICS", "").splitlines() if "|" in l]
+CONF = []
+for _line in os.environ.get("CLASSROOM_ICS", "").splitlines():
+    _line = _line.strip()
+    if not _line:
+        continue
+    if "|" in _line and not _line.startswith("http"):
+        CONF.append(_line.split("|", 1))
+    elif _line.startswith("http"):
+        CONF.append(["創領六", _line])  # 只貼網址時的預設名稱
 
 
 def unfold(text):
@@ -44,7 +52,7 @@ def main():
             with urllib.request.urlopen(req, timeout=40) as r:
                 text = unfold(r.read().decode("utf-8", "replace"))
         except Exception as e:
-            print(f"{label} 讀取失敗：{e}")
+            print(f"{label} 讀取失敗：{type(e).__name__} {str(e)[:80]}")
             continue
         n = 0
         for block in re.findall(r"BEGIN:VEVENT(.*?)END:VEVENT", text, flags=re.S):
