@@ -1,0 +1,33 @@
+name: 每天同步 DC 家傳
+
+on:
+  schedule:
+    - cron: "0 22 * * *"   # 台灣時間每天早上 6 點
+  workflow_dispatch:        # 也可以在 Actions 頁面手動按 Run workflow
+
+permissions:
+  contents: write
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: 讀 DC 白名單頻道
+        env:
+          DISCORD_BOT_TOKEN: ${{ secrets.DISCORD_BOT_TOKEN }}
+          DISCORD_GUILD_ID: ${{ secrets.DISCORD_GUILD_ID }}
+          DISCORD_CHANNEL_IDS: ${{ secrets.DISCORD_CHANNEL_IDS }}
+        run: python3 scripts/dc_sync.py
+      - name: 有新內容就更新網站
+        run: |
+          if [ -n "$(git status --porcelain dc.json)" ]; then
+            git config user.name "lide-heritage-bot"
+            git config user.email "lide-heritage-bot@users.noreply.github.com"
+            git add dc.json
+            git commit -m "同步 DC 家傳 $(TZ=Asia/Taipei date +%F)"
+            git push
+          fi
