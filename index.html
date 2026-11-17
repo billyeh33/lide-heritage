@@ -213,6 +213,12 @@ nav.tabs a{font-size:18px;padding:9px 22px}
 .pb-pi{background:var(--sky-soft)}.pb-wendy{background:var(--pink-soft)}.pb-dc{background:var(--mint-soft)}
 .tag.dl.past{background:#eceff5;color:var(--muted)}
 .card:has(.tag.dl.past){opacity:.72}
+.contact{display:grid;gap:10px;background:#fff;border:3px solid var(--line);border-radius:18px;padding:14px 18px;box-shadow:4px 4px 0 var(--ink);margin:6px 0 12px}
+.contact>b{font-family:var(--f-display);font-weight:400;font-size:22px}
+.c-row{display:flex;align-items:center;gap:10px;flex-wrap:wrap;font-size:18px}
+.c-k{font-family:var(--f-display);background:var(--mint-soft);border:2px solid var(--line);border-radius:999px;padding:0 12px;font-size:15px}
+.c-v{font-variant-numeric:tabular-nums}
+.c-copy{padding:2px 12px;font-size:14px}
 </style>
 
 <div class="wrap">
@@ -297,8 +303,12 @@ nav.tabs a{font-size:18px;padding:9px 22px}
     </div>
     <div class="panel">
       <h2>我也有家傳想分享</h2>
-      <p>修課心得、考古連結、活動或競賽經驗、獎學金資訊都可以。審核後會放上來，並寫上你的屆別。</p>
-      <p><a class="btn ghost" id="submitBtn" target="_blank" rel="noopener">投稿家傳</a></p>
+      <p>修課心得、考古連結、活動或競賽經驗、獎學金資訊都可以。私訊我，審核後會放上來，並寫上你的屆別。</p>
+      <div class="contact">
+        <b>聯絡葉家源</b>
+        <div class="c-row"><span class="c-k">LINE ID</span><span class="c-v" id="lineId">0968157896</span><button class="btn ghost c-copy" type="button" data-copy="0968157896">複製</button></div>
+        <div class="c-row"><span class="c-k">IG</span><span class="c-v">搜尋 葉家源 <a href="https://www.instagram.com/y.c.y.2004/" target="_blank" rel="noopener">y.c.y.2004</a></span></div>
+      </div>
       <p class="note">考古和講義只收你自己整理或原作者同意分享的。不放解答本、整本課本和別人的個資。</p>
     </div>
   </div>
@@ -426,11 +436,12 @@ renderDeadlines();
 
 /* trial + forms */
 function setForm(el,url,label){if(url){el.href=url}else{el.removeAttribute("href");el.setAttribute("aria-disabled","true");el.classList.add("ghost");el.textContent=label+"（準備中）";el.style.opacity=.6}}
-setForm($("#formBtn"),CFG.feedbackForm,"試用回饋表");setForm($("#submitBtn"),CFG.submitForm,"投稿表單");
+setForm($("#formBtn"),CFG.feedbackForm,"試用回饋表");
 let t0=null,tick=null;
 $("#timerBtn").onclick=()=>{if(tick){clearInterval(tick);tick=null;$("#timerBtn").textContent="重新計時";return}
   t0=Date.now();$("#timerBtn").textContent="停止";tick=setInterval(()=>{const s=Math.floor((Date.now()-t0)/1000);$("#timer").textContent=`${String(Math.floor(s/60)).padStart(2,"0")}:${String(s%60).padStart(2,"0")}`},500)};
 
+document.querySelectorAll("[data-copy]").forEach(b=>b.onclick=async()=>{try{await navigator.clipboard.writeText(b.dataset.copy);b.textContent="已複製"}catch(e){const r=document.createRange();r.selectNodeContents(document.getElementById("lineId"));const sel=getSelection();sel.removeAllRanges();sel.addRange(r);b.textContent="已選取"}setTimeout(()=>b.textContent="複製",1500)});
 /* routing */
 const views=["library","graph","deadlines","trial","about"];
 function route(){const h=location.hash.slice(1);const v=views.includes(h)?h:"library";
