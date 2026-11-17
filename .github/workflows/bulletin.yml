@@ -4,7 +4,7 @@ on:
   issues:
     types: [opened, edited, closed, reopened, labeled, unlabeled, deleted]
   schedule:
-    - cron: "*/15 * * * *"   # 每 15 分鐘讀一次表單佈告
+    - cron: "30 */3 * * *"   # 每 3 小時補跑一次
   workflow_dispatch:
 
 permissions:

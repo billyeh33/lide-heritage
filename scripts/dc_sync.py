@@ -148,6 +148,47 @@ def entry(kind, cid, mid, title, content, tags, chname, when, url):
     return e
 
 
+BOARD_OUT = Path(__file__).resolve().parent.parent / "board_dc.json"
+BOARD_PREFIX = re.compile(r"^\s*(?:(?:<[@#][&!]?\d+>|@\S+)\s*)*[【\[]\s*(作業|公告)\s*[】\]]\s*")
+GEN_BY_NAME = {"foxtrot": "F", "gopher": "G", "hawk": "H"}
+DUE = re.compile(r"(?:截止|deadline|due)[^\d]{0,6}(?:(\d{4})[/.-])?(\d{1,2})[/.-](\d{1,2})(?:[^\d]{0,8}?(\d{1,2})[:：](\d{2}))?", re.I)
+
+
+def board_post(m, chname, cid, kind, rest):
+    """DC 訊息開頭是【作業】或【公告】就變成作業佈告的一則。"""
+    import html as _h
+    lines = rest.strip().split("\n")
+    title = clean(URL.sub("", lines[0]))[:80] or kind
+    body = "\n".join(lines[1:]).strip()
+    posted = datetime.fromisoformat(m["timestamp"].replace("Z", "+00:00")).astimezone(timezone(timedelta(hours=8)))
+    due = due_time = ""
+    d = DUE.search(rest)
+    if d:
+        y = int(d[1]) if d[1] else posted.year
+        try:
+            dt = datetime(y, int(d[2]), int(d[3]))
+            if not d[1] and dt.date() < posted.date() - timedelta(days=30):
+                dt = datetime(y + 1, int(d[2]), int(d[3]))
+            due = dt.strftime("%Y-%m-%d")
+            due_time = f"{int(d[4]):02d}:{d[5]}" if d[4] else "23:59"
+        except ValueError:
+            pass
+    cr = next((u for u in URL.findall(rest) if "classroom.google.com" in u), "")
+    def para(t):
+        esc = _h.escape(MENTION.sub("", t))
+        esc = URL.sub(lambda u: f'<a href="{u[0]}" target="_blank" rel="noopener">{u[0]}</a>', esc)
+        return "".join(f"<p>{x.replace(chr(10), '<br>')}</p>" for x in re.split(r"\n\s*\n", esc.strip()) if x.strip())
+    files = "".join(f'<li><a href="{_h.escape(a["url"])}" target="_blank" rel="noopener">{_h.escape(a.get("filename", "附件"))}</a></li>'
+                    for a in m.get("attachments", []))
+    return {
+        "id": "dcb" + m["id"], "number": "dcb" + m["id"], "gen": GEN_BY_NAME.get(chname.lower(), "ALL"),
+        "kind": kind, "title": title, "html": para(body or rest) + (f'<ul class="cr-files">{files}</ul>' if files else ""),
+        "due": due, "dueTime": due_time, "classroom": cr, "author": f"DC #{chname}", "avatar": "",
+        "created": posted.strftime("%Y-%m-%d %H:%M"), "edited": bool(m.get("edited_timestamp")),
+        "url": f"https://discord.com/channels/{GUILD}/{cid}/{m['id']}",
+    }
+
+
 def main():
     if not (TOKEN and GUILD and CHANNELS):
         print("沒有設定 DISCORD_BOT_TOKEN、DISCORD_GUILD_ID 或 DISCORD_CHANNEL_IDS，這次跳過")
@@ -155,7 +196,7 @@ def main():
     chans = {c["id"]: c for c in (get(f"/guilds/{GUILD}/channels") or [])}
     active = (get(f"/guilds/{GUILD}/threads/active") or {}).get("threads", [])
     since = datetime.now(timezone.utc) - timedelta(days=KEEP_DAYS)
-    out = []
+    out, board = [], []
     for cid in CHANNELS:
         c = chans.get(cid)
         if not c:
@@ -186,12 +227,22 @@ def main():
                 out.append(entry("post", t["id"], t["id"], t["name"], first.get("content", ""), tags, name, created or first.get("timestamp", ""), None))
         else:  # 文字、公告頻道：只收有連結的訊息
             for m in get(f"/channels/{cid}/messages?limit=100") or []:
+                bp = BOARD_PREFIX.match(m.get("content", ""))
+                if bp:
+                    board.append(board_post(m, name, cid, bp[1], m["content"][bp.end():]))
+                    continue
                 if not URL.search(m.get("content", "")):
                     continue
                 if datetime.fromisoformat(m["timestamp"].replace("Z", "+00:00")) < since:
                     continue
                 first_line = clean(URL.sub("", m["content"])).split(" ")[0][:40]
                 out.append(entry("msg", cid, m["id"], first_line, m["content"], [], name, m["timestamp"], None))
+    board.sort(key=lambda x: x["created"], reverse=True)
+    bdata = {"updated": datetime.now(timezone(timedelta(hours=8))).strftime("%Y-%m-%d %H:%M"), "posts": board[:80]}
+    bold = json.loads(BOARD_OUT.read_text(encoding="utf-8")) if BOARD_OUT.exists() else {}
+    if bold.get("posts") != bdata["posts"]:
+        BOARD_OUT.write_text(json.dumps(bdata, ensure_ascii=False, indent=1), encoding="utf-8")
+        print(f"board_dc.json 更新：{len(board)} 則 DC 佈告")
     out.sort(key=lambda x: x["date"], reverse=True)
     out = out[:300]
     data = {"updated": datetime.now(timezone(timedelta(hours=8))).strftime("%Y-%m-%d %H:%M"), "entries": out}

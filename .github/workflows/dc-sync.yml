@@ -2,7 +2,7 @@ name: 每天同步 DC、獎學金、行事曆與作業
 
 on:
   schedule:
-    - cron: "0 22 * * *"   # 台灣時間每天早上 6 點
+    - cron: "0 */2 * * *"   # 每兩小時一次（DC 佈告要即時一點）
   workflow_dispatch:        # 也可以在 Actions 頁面手動按 Run workflow
 
 permissions:
@@ -40,10 +40,10 @@ jobs:
         run: python3 scripts/build_ics.py
       - name: 有新內容就更新網站
         run: |
-          if [ -n "$(git status --porcelain -- dc.json scholarships.json calendar.json assignments.json lide.ics 2>/dev/null)" ]; then
+          if [ -n "$(git status --porcelain -- dc.json board_dc.json scholarships.json calendar.json assignments.json lide.ics 2>/dev/null)" ]; then
             git config user.name "lide-heritage-bot"
             git config user.email "lide-heritage-bot@users.noreply.github.com"
-            for f in dc.json scholarships.json calendar.json assignments.json lide.ics; do [ -e "$f" ] && git add "$f"; done
+            for f in dc.json board_dc.json scholarships.json calendar.json assignments.json lide.ics; do [ -e "$f" ] && git add "$f"; done
             git commit -m "每日同步 $(TZ=Asia/Taipei date +%F)"
             git pull --rebase
             git push

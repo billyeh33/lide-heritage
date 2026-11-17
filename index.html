@@ -372,6 +372,8 @@ nav.tabs a{font-size:18px;padding:9px 22px}
 @media (max-width:820px){.cr-body{grid-template-columns:1fr}.cr-banner{min-height:120px}.cr-banner h2{font-size:26px}}
 .cr-files{margin:.4em 0 0;padding-left:1.2em}
 .cr-files a{font-weight:500}
+.cr-eg{background:#f1f3f4;border-radius:6px;padding:8px 10px;margin:8px 0!important;color:#202124!important;font-size:13px!important;line-height:1.6}
+.cr-box p+p{margin-top:8px}
 </style>
 
 <div class="wrap">
@@ -470,7 +472,7 @@ nav.tabs a{font-size:18px;padding:9px 22px}
 <section class="view cr" id="v-board" hidden>
   <div class="cr-top">
     <div class="cr-classes" id="crClasses"></div>
-    <a class="cr-post" id="crPost" href="https://github.com/billyeh33/lide-heritage/issues/new?template=bulletin.yml" target="_blank" rel="noopener">＋ 發布佈告</a>
+    <a class="cr-post" id="crPost" href="https://discord.com/channels/1045122058515910686" target="_blank" rel="noopener">＋ 到 DC 發佈告</a>
   </div>
   <div class="cr-banner" id="crBanner">
     <div><h2 id="crName">全部班級</h2><p id="crSub">立德三屆的公告與作業</p></div>
@@ -479,7 +481,9 @@ nav.tabs a{font-size:18px;padding:9px 22px}
   <div class="cr-body">
     <aside class="cr-side">
       <div class="cr-box"><h3>即將到期</h3><div id="crDue"><p class="cr-empty">太好了，近期沒有要交的作業！</p></div></div>
-      <div class="cr-box"><h3>怎麼發佈告</h3><p>幹部和各屆負責人按右上角「發布佈告」填表單，第一題填發布碼（跟葉家源拿）。可以附檔案或雲端連結，送出後重新整理網頁就會看到。</p></div>
+      <div class="cr-box"><h3>怎麼發佈告</h3><p>在 DC 各屆頻道（#foxtrot、#gopher、#hawk）發訊息，開頭打<b>【作業】</b>或<b>【公告】</b>就會自動收進來。</p>
+        <p class="cr-eg">【作業】期中反思<br>請寫 500 字，截止 11/25 23:59<br>https://classroom.google.com/...</p>
+        <p>第一行是標題，寫「截止 月/日 時:分」會變成截止時間，貼 Classroom 網址會變成繳交按鈕，附檔照平常上傳。每兩小時更新一次。</p></div>
     </aside>
     <div class="cr-stream" id="crStream"><div class="cr-card cr-empty-card"><p>還沒有佈告。管理者按右上角「發布佈告」就會出現在這裡。</p></div></div>
   </div>
@@ -811,7 +815,7 @@ function csvPosts(text){const rows=parseCSV(text.replace(/^\ufeff/,""));const h=
     const body=g("內容").split(/\n\s*\n/).map(p=>`<p>${linkify(p).replace(/\n/g,"<br>")}</p>`).join("")+(files?`<ul class="cr-files">${files}</ul>`:"");
     const cr=g("Classroom 連結");
     return {id:g("編號"),number:g("編號"),gen,kind:g("類型")==="作業"?"作業":"公告",title:g("標題"),html:body,due,dueTime,classroom:cr.startsWith("https://")?cr:"",author:g("發布人")||"立德幹部",created:g("發布時間").slice(0,16),edited:false}}).filter(Boolean)}
-Promise.all([fetch("bulletin.json",{cache:"no-store"}).then(r=>r.ok?r.json():null).catch(()=>null),
+Promise.all([Promise.all(["bulletin.json","board_dc.json"].map(u=>fetch(u,{cache:"no-store"}).then(r=>r.ok?r.json():null).catch(()=>null))).then(([a,b])=>({posts:[...((a&&a.posts)||[]),...((b&&b.posts)||[])]})),
   CFG.bulletinCsv?fetch(CFG.bulletinCsv,{cache:"no-store"}).then(r=>r.ok?r.text():"").catch(()=>""):Promise.resolve("")]).then(([d,csv])=>{
   const base=(d&&Array.isArray(d.posts))?d.posts:[], live=csv?csvPosts(csv):[];
   const map=new Map(); [...base,...live].forEach(p=>map.set(String(p.id),p));

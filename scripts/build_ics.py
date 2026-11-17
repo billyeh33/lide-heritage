@@ -59,7 +59,7 @@ def main():
         if e.get("deadline"):
             add(f"{e['id']}-due", e["deadline"], f"【作業截止{(' ' + e['dueTime']) if e.get('dueTime') else ''}】{e['title']}", e.get("summary", ""), e.get("link", SITE))
     G = {"F": "Foxtrot", "G": "Gopher", "H": "Hawk", "ALL": "全部"}
-    for p in load("bulletin.json").get("posts", []):
+    for p in load("bulletin.json").get("posts", []) + load("board_dc.json").get("posts", []):
         if p.get("kind") == "作業" and p.get("due"):
             add(f"{p['id']}-due", p["due"], f"【{G.get(p['gen'], '')} 作業 {p.get('dueTime', '')}】{p['title']}",
                 "到 Google Classroom 繳交。" + (p.get("classroom") or ""), p.get("classroom") or SITE)
