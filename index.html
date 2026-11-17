@@ -211,6 +211,8 @@ nav.tabs a{font-size:18px;padding:9px 22px}
 .pin-btn b{font-family:var(--f-display);font-weight:400;font-size:28px}
 .pin-btn span{font-size:16px;color:var(--muted)}
 .pb-pi{background:var(--sky-soft)}.pb-wendy{background:var(--pink-soft)}.pb-dc{background:var(--mint-soft)}
+.tag.dl.past{background:#eceff5;color:var(--muted)}
+.card:has(.tag.dl.past){opacity:.72}
 </style>
 
 <div class="wrap">
@@ -348,7 +350,7 @@ chips.addEventListener("click",ev=>{const b=ev.target.closest("[data-cat]");if(!
 $("#gradeSel").onchange=e=>{grade=e.target.value;renderCards()};
 $("#kw").oninput=e=>{kw=e.target.value.trim().toLowerCase();renderCards()};
 function card(e){
-  const dl = e.deadline?`<span class="tag dl">截止 ${e.deadline.slice(5).replace("-","/")}</span>`:"";
+  const dl = e.deadline?(daysLeft(e.deadline)<0?`<span class="tag dl past">已截止 ${e.deadline.slice(5).replace("-","/")}</span>`:`<span class="tag dl">${daysLeft(e.deadline)===0?"今天截止":"截止 "+e.deadline.slice(5).replace("-","/")+"・剩 "+daysLeft(e.deadline)+" 天"}</span>`):"";
   const link = e.link?`<a href="${esc(e.link)}" target="_blank" rel="noopener">${esc(e.linkLabel||"開啟連結")} ↗</a>`:"";
   return `<article class="card c-${e.cat}" id="card-${e.id}">
     <div class="meta"><span class="tag cat">${CATS[e.cat]}</span><span class="tag">${esc(e.grade)}</span>${(e.tags||[]).slice(0,3).map(t=>`<span class="tag">${esc(t)}</span>`).join("")}${dl}</div>
@@ -357,8 +359,14 @@ function card(e){
     ${e.tips&&e.tips.length?`<ul>${e.tips.map(t=>`<li>${esc(t)}</li>`).join("")}</ul>`:""}
     <footer><span>${esc(e.source)}・${esc(e.date)}</span>${link}</footer></article>`;
 }
+/* 排序：先分類，同分類內「還沒截止的照截止日由近到遠」→「沒有截止日的照日期新到舊」→「已截止的放最後」 */
+function dlRank(e){return e.deadline?(daysLeft(e.deadline)>=0?0:2):1}
+function byDeadline(a,b){
+  return (CAT_ORDER[a.cat]-CAT_ORDER[b.cat])||(dlRank(a)-dlRank(b))
+    ||(dlRank(a)===0?a.deadline.localeCompare(b.deadline):dlRank(a)===2?b.deadline.localeCompare(a.deadline):((b.id.startsWith("dc")-a.id.startsWith("dc"))||b.date.localeCompare(a.date)));
+}
 function renderCards(){
-  const list=DATA.entries.filter(e=>(!cat||e.cat===cat)&&(!grade||e.grade===grade)&&(!kw||(e.title+e.summary+(e.tags||[]).join(" ")+(e.tips||[]).join(" ")).toLowerCase().includes(kw))).sort((a,b)=>(CAT_ORDER[a.cat]-CAT_ORDER[b.cat])||(b.id.startsWith("dc")-a.id.startsWith("dc"))||b.date.localeCompare(a.date));
+  const list=DATA.entries.filter(e=>(!cat||e.cat===cat)&&(!grade||e.grade===grade)&&(!kw||(e.title+e.summary+(e.tags||[]).join(" ")+(e.tips||[]).join(" ")).toLowerCase().includes(kw))).sort(byDeadline);
   $("#count").textContent=`${list.length} 筆`;
   $("#cards").innerHTML=list.length?list.map(card).join(""):`<p class="note">沒有符合的家傳。換個關鍵字，或到「試用回饋與投稿」補一筆。</p>`;
 }
