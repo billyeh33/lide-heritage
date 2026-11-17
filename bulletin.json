@@ -1,4 +1,21 @@
 {
- "updated": "2026-11-17 16:19",
- "posts": []
+ "updated": "2026-11-17 16:20",
+ "posts": [
+  {
+   "id": "bb1",
+   "number": 1,
+   "gen": "F",
+   "kind": "作業",
+   "title": "【測試】作業佈告功能測試",
+   "html": "<p dir=\"auto\">這是測試用的佈告，確認網站會不會自動更新。看到就代表成功，之後會關掉。</p>",
+   "due": "2026-11-20",
+   "dueTime": "23:59",
+   "classroom": "https://classroom.google.com/",
+   "author": "billyeh33",
+   "avatar": "https://avatars.githubusercontent.com/u/274403516?v=4",
+   "created": "2026-11-17 16:20",
+   "edited": false,
+   "url": "https://github.com/billyeh33/lide-heritage/issues/1"
+  }
+ ]
 }
