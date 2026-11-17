@@ -1,0 +1,49 @@
+name: 發布作業佈告
+description: 發一則公告或作業到立德家傳的「作業佈告」，只有 repo 管理者發的才會顯示在網站上。
+title: "標題寫在這裡"
+labels: ["佈告"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        作業一律請同學到 **Google Classroom** 繳交，這裡只負責提醒。
+        內文可以直接把檔案或圖片拖進來，送出後幾分鐘網站就會更新。
+  - type: dropdown
+    id: gen
+    attributes:
+      label: 屆別
+      options:
+        - Foxtrot（F）
+        - Gopher（G）
+        - Hawk（H）
+        - 全部
+    validations:
+      required: true
+  - type: dropdown
+    id: kind
+    attributes:
+      label: 類型
+      options:
+        - 公告
+        - 作業
+    validations:
+      required: true
+  - type: input
+    id: due
+    attributes:
+      label: 截止時間
+      description: 作業才需要填，格式 2026-11-29 23:59
+      placeholder: 2026-11-29 23:59
+  - type: input
+    id: classroom
+    attributes:
+      label: Google Classroom 連結
+      description: 作業在 Classroom 的網址，同學會從這裡去交
+      placeholder: https://classroom.google.com/c/...
+  - type: textarea
+    id: body
+    attributes:
+      label: 內容
+      description: 可以拖檔案、貼圖片、貼連結
+    validations:
+      required: true

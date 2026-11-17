@@ -58,6 +58,11 @@ def main():
     for e in load("assignments.json").get("entries", []):
         if e.get("deadline"):
             add(f"{e['id']}-due", e["deadline"], f"【作業截止{(' ' + e['dueTime']) if e.get('dueTime') else ''}】{e['title']}", e.get("summary", ""), e.get("link", SITE))
+    G = {"F": "Foxtrot", "G": "Gopher", "H": "Hawk", "ALL": "全部"}
+    for p in load("bulletin.json").get("posts", []):
+        if p.get("kind") == "作業" and p.get("due"):
+            add(f"{p['id']}-due", p["due"], f"【{G.get(p['gen'], '')} 作業 {p.get('dueTime', '')}】{p['title']}",
+                "到 Google Classroom 繳交。" + (p.get("classroom") or ""), p.get("classroom") or SITE)
     for e in load("calendar.json").get("events", []):
         name = f"{e['label']}開始" if e["kind"] == "break" else "開學上課"
         add(f"cal-{e['date']}-{e['kind']}", e["date"], f"【清大】{name}", e.get("title", ""), SITE)

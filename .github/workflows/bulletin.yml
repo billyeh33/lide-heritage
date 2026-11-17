@@ -1,0 +1,41 @@
+name: 作業佈告更新
+
+on:
+  issues:
+    types: [opened, edited, closed, reopened, labeled, unlabeled, deleted]
+  schedule:
+    - cron: "15 */6 * * *"   # 每 6 小時補跑一次
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  issues: read
+
+concurrency:
+  group: site-write
+  cancel-in-progress: false
+
+jobs:
+  bulletin:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: 整理佈告
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: python3 scripts/bulletin_sync.py
+      - name: 產生訂閱用行事曆
+        run: python3 scripts/build_ics.py
+      - name: 有新內容就更新網站
+        run: |
+          if [ -n "$(git status --porcelain -- bulletin.json lide.ics 2>/dev/null)" ]; then
+            git config user.name "lide-heritage-bot"
+            git config user.email "lide-heritage-bot@users.noreply.github.com"
+            for f in bulletin.json lide.ics; do [ -e "$f" ] && git add "$f"; done
+            git commit -m "更新作業佈告"
+            git pull --rebase
+            git push
+          fi

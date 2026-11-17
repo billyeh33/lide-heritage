@@ -319,6 +319,57 @@ nav.tabs a{font-size:18px;padding:9px 22px}
 .rem-item.hw .rem-date{background:var(--sun)}
 .rem-item.hw .rem-kind{color:#8a5a00}
 .m-i.hw{background:var(--grape)}.m-dot.hw{background:var(--grape)}
+
+/* ---- 作業佈告：Classroom 風格 ---- */
+.cr{--cr-line:#dadce0;--cr-ink:#202124;--cr-mut:#5f6368;font-family:"Google Sans","Noto Sans TC","PingFang TC",Roboto,Arial,sans-serif;color:var(--cr-ink)}
+.cr-top{display:flex;justify-content:space-between;align-items:flex-start;gap:16px;flex-wrap:wrap;margin-bottom:16px}
+.cr-classes{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:12px;flex:1;min-width:0}
+.cr-class{position:relative;display:grid;gap:2px;text-align:left;background:#fff;border:1px solid var(--cr-line);border-radius:10px;padding:56px 14px 12px;cursor:pointer;overflow:hidden;font:inherit;color:inherit;transition:box-shadow .15s}
+.cr-class:hover{box-shadow:0 1px 3px rgba(60,64,67,.3),0 4px 8px 3px rgba(60,64,67,.15)}
+.cr-class.on{outline:3px solid var(--c);outline-offset:-1px}
+.cr-cb{position:absolute;inset:0 0 auto 0;height:46px;background:var(--bg)}
+.cr-class b{font-size:16px;font-weight:500}
+.cr-class span:last-child{font-size:13px;color:var(--cr-mut)}
+.cr-post{align-self:center;background:#1a73e8;color:#fff;text-decoration:none;border-radius:20px;padding:9px 20px;font-weight:500;box-shadow:0 1px 2px rgba(60,64,67,.3)}
+.cr-post:hover{background:#1765cc}
+.cr-banner{border-radius:10px;min-height:170px;padding:24px 28px;display:flex;align-items:flex-end;color:#fff;position:relative;overflow:hidden;margin-bottom:14px}
+.cr-banner::after{content:"";position:absolute;right:-40px;top:-40px;width:260px;height:260px;border-radius:50%;background:rgba(255,255,255,.12);box-shadow:-120px 90px 0 -40px rgba(255,255,255,.1)}
+.cr-banner h2{font-family:inherit;font-size:34px;font-weight:500;margin:0}
+.cr-banner p{margin:4px 0 0;font-size:17px;opacity:.92}
+.cr-note{background:#e8f0fe;border:1px solid #d2e3fc;color:#174ea6;border-radius:10px;padding:12px 16px;margin-bottom:18px;font-size:15px}
+.cr-body{display:grid;grid-template-columns:240px minmax(0,1fr);gap:20px;align-items:start}
+.cr-box{background:#fff;border:1px solid var(--cr-line);border-radius:10px;padding:14px 16px;margin-bottom:14px}
+.cr-box h3{font-family:inherit;font-size:15px;font-weight:500;margin:0 0 10px}
+.cr-box p{font-size:13.5px;color:var(--cr-mut);margin:0}
+.cr-due{display:grid;gap:1px;text-decoration:none;color:var(--cr-ink);padding:6px 0;border-top:1px solid #f1f3f4}
+.cr-due:first-child{border-top:none}
+.cr-due span{font-size:12.5px;color:var(--cr-mut)}
+.cr-due b{font-size:14px;font-weight:500}
+.cr-due:hover b{color:#1a73e8}
+.cr-empty{font-size:13.5px;color:var(--cr-mut);margin:0}
+.cr-stream{display:grid;gap:14px}
+.cr-card{background:#fff;border:1px solid var(--cr-line);border-radius:10px;padding:16px 20px;scroll-margin-top:20px}
+.cr-empty-card p{color:var(--cr-mut);margin:0}
+.cr-h{display:flex;gap:14px;align-items:center;margin-bottom:10px}
+.cr-ic{width:40px;height:40px;border-radius:50%;background:var(--c);flex:none;position:relative}
+.cr-ic.hw::before{content:"";position:absolute;left:12px;top:10px;width:16px;height:20px;border:2.5px solid #fff;border-radius:3px;box-sizing:border-box}
+.cr-ic.hw::after{content:"";position:absolute;left:16px;top:16px;width:8px;height:2.5px;background:#fff;box-shadow:0 5px 0 #fff}
+.cr-ic.ann::before{content:"";position:absolute;left:10px;top:13px;width:14px;height:14px;background:#fff;clip-path:polygon(0 30%,55% 30%,100% 0,100% 100%,55% 70%,0 70%)}
+.cr-ic.ann::after{content:"";position:absolute;left:26px;top:17px;width:5px;height:6px;border:2px solid #fff;border-left:none;border-radius:0 6px 6px 0}
+.cr-t{font-size:16px;font-weight:500;line-height:1.35}
+.cr-m{font-size:13px;color:var(--cr-mut)}
+.cr-duebar{display:inline-block;font-size:13.5px;background:#f1f3f4;border-radius:6px;padding:3px 10px;margin-bottom:8px;color:var(--cr-ink)}
+.cr-duebar.soon{background:#fce8e6;color:#c5221f}
+.cr-duebar.past{color:var(--cr-mut);text-decoration:line-through}
+.cr-content{font-size:15px;line-height:1.7;overflow-wrap:anywhere}
+.cr-content img{max-width:100%;border-radius:8px;border:1px solid var(--cr-line)}
+.cr-content a{color:#1a73e8}
+.cr-content p{margin:.4em 0}
+.cr-actions{display:flex;align-items:center;gap:12px;flex-wrap:wrap;border-top:1px solid #f1f3f4;margin-top:10px;padding-top:12px}
+.cr-go{background:#1e8e3e;color:#fff;text-decoration:none;border-radius:6px;padding:8px 16px;font-weight:500}
+.cr-go:hover{background:#188038}
+.cr-hint{font-size:13px;color:var(--cr-mut)}
+@media (max-width:820px){.cr-body{grid-template-columns:1fr}.cr-banner{min-height:120px}.cr-banner h2{font-size:26px}}
 </style>
 
 <div class="wrap">
@@ -345,6 +396,7 @@ nav.tabs a{font-size:18px;padding:9px 22px}
 
 <nav class="tabs" aria-label="分頁">
   <a href="#library">家傳庫</a>
+  <a href="#board">作業佈告</a>
   <a href="#freshman">立德新生</a>
   <a href="#lide">關於立德</a>
   <a href="#graph">知識圖譜</a>
@@ -411,6 +463,24 @@ nav.tabs a{font-size:18px;padding:9px 22px}
   <div class="legend"><span>線條：先修、接著修、同時準備、學長姐建議接著做</span><span>黃框：跟選取節點有關</span></div>
   <div class="graphbox"><div class="graph" id="graph"></div></div>
   <div class="detail" id="gDetail"><p class="note">還沒選節點。先點「工程統計」或「研究所推甄」看看。</p></div>
+</section>
+
+<section class="view cr" id="v-board" hidden>
+  <div class="cr-top">
+    <div class="cr-classes" id="crClasses"></div>
+    <a class="cr-post" href="https://github.com/billyeh33/lide-heritage/issues/new?template=bulletin.yml" target="_blank" rel="noopener">＋ 發布佈告</a>
+  </div>
+  <div class="cr-banner" id="crBanner">
+    <div><h2 id="crName">全部班級</h2><p id="crSub">立德三屆的公告與作業</p></div>
+  </div>
+  <div class="cr-note"><b>交作業請到 Google Classroom</b>　這裡只負責公告和提醒，作業一律在各屆的 Google Classroom 繳交，每則作業下面都有按鈕可以直接過去。</div>
+  <div class="cr-body">
+    <aside class="cr-side">
+      <div class="cr-box"><h3>即將到期</h3><div id="crDue"><p class="cr-empty">太好了，近期沒有要交的作業！</p></div></div>
+      <div class="cr-box"><h3>怎麼發佈告</h3><p>按右上角「發布佈告」，選屆別、公告或作業，內文可以直接拖檔案和圖片。只有網站管理者發的會顯示，送出後幾分鐘內更新。</p></div>
+    </aside>
+    <div class="cr-stream" id="crStream"><div class="cr-card cr-empty-card"><p>還沒有佈告。管理者按右上角「發布佈告」就會出現在這裡。</p></div></div>
+  </div>
 </section>
 
 <section class="view" id="v-freshman" hidden>
@@ -633,10 +703,11 @@ function renderRemind(){
     {const d=(e.events||[]).find(x=>daysLeft(x)>=0); if(d){const n=daysLeft(d); if(n<=21) items.push({d,n,e,kind:"活動"});}}
     if(e.deadline){const n=daysLeft(e.deadline); if(n>=0&&n<=10) items.push({d:e.deadline,n,e,kind:"報名截止"});}
   }
+  for(const p of (BB||[])){const n=bbDue(p); if(n!==null&&n>=0&&n<=10) items.push({d:p.due,n,e:{id:"bb"+p.number,title:(GENS[p.gen]?GENS[p.gen].code+"｜":"")+p.title},kind:"作業截止 "+p.dueTime,bb:p.number});}
   items.sort((a,b)=>a.d.localeCompare(b.d)||(a.kind==="活動"?1:-1));
   const seen=new Set(), list=items.filter(x=>{const k=x.e.id+x.kind;if(seen.has(k))return false;seen.add(k);return true}).slice(0,8);
   $("#remindBox").hidden=!list.length;
-  $("#remind").innerHTML=list.map(x=>{const dt=new Date(x.d+"T00:00:00");return `<button class="rem-item ${x.kind.startsWith("作業")?"hw":x.kind==="報名截止"?"due":""}" data-entry="${x.e.id}">
+  $("#remind").innerHTML=list.map(x=>{const dt=new Date(x.d+"T00:00:00");return `<button class="rem-item ${x.kind.startsWith("作業")?"hw":x.kind==="報名截止"?"due":""}" ${x.bb?`data-bb="${x.bb}"`:`data-entry="${x.e.id}"`}>
     <span class="rem-date"><b>${dt.getMonth()+1}/${dt.getDate()}</b><small>週${W[dt.getDay()]}</small></span>
     <span class="rem-body"><span class="rem-kind">${x.kind}・${x.n===0?"今天":x.n===1?"明天":"還有 "+x.n+" 天"}</span><span class="rem-title">${esc(x.e.title)}</span></span></button>`}).join("");
 }
@@ -693,8 +764,39 @@ $("#mGrid").addEventListener("click",ev=>{const b=ev.target.closest("[data-entry
 document.querySelector(".seg").addEventListener("click",ev=>{const b=ev.target.closest("[data-view]");if(!b)return;
   document.querySelectorAll(".seg [data-view]").forEach(c=>c.setAttribute("aria-pressed",c===b));
   const mo=b.dataset.view==="month"; $("#monthBox").hidden=!mo; $("#dlList").hidden=mo; if(mo)renderMonth();});
+/* 作業佈告（Classroom 風格） */
+var GENS={F:{name:"Foxtrot",code:"F",full:"第六屆 Foxtrot",color:"#1e8e3e",bg:"linear-gradient(120deg,#1e8e3e,#34a853 60%,#81c995)"},
+  G:{name:"Gopher",code:"G",full:"第七屆 Gopher",color:"#1967d2",bg:"linear-gradient(120deg,#1967d2,#4285f4 60%,#8ab4f8)"},
+  H:{name:"Hawk",code:"H",full:"第八屆 Hawk",color:"#e8710a",bg:"linear-gradient(120deg,#c26401,#e8710a 60%,#fcad70)"}};
+var BB=[], bbGen=(()=>{try{return localStorage.getItem("bbGen")||""}catch(e){return ""}})();
+function bbDue(p){return p.kind==="作業"&&p.due?daysLeft(p.due):null}
+function renderBoard(){
+  const cls=$("#crClasses");
+  cls.innerHTML=[["","全部班級","#5f6368","linear-gradient(120deg,#3c4043,#5f6368)"],...Object.entries(GENS).map(([k,g])=>[k,g.full,g.color,g.bg])].map(([k,n,c,bg])=>{
+    const cnt=BB.filter(p=>(!k||p.gen===k||p.gen==="ALL")&&bbDue(p)!==null&&bbDue(p)>=0).length;
+    return `<button class="cr-class${bbGen===k?" on":""}" data-g="${k}" style="--c:${c};--bg:${bg}"><span class="cr-cb"></span><b>${n}</b><span>${cnt?cnt+" 項作業待交":"沒有待交作業"}</span></button>`}).join("");
+  const g=GENS[bbGen];
+  $("#crBanner").style.background=g?g.bg:"linear-gradient(120deg,#3c4043,#5f6368)";
+  $("#crName").textContent=g?`創新領導 ${g.name}（${g.code}）`:"全部班級";
+  $("#crSub").textContent=g?`${g.full}的公告與作業`:"立德三屆的公告與作業";
+  const list=BB.filter(p=>!bbGen||p.gen===bbGen||p.gen==="ALL");
+  const due=list.filter(p=>bbDue(p)!==null&&bbDue(p)>=0).sort((a,b)=>(a.due+a.dueTime).localeCompare(b.due+b.dueTime));
+  $("#crDue").innerHTML=due.length?due.slice(0,6).map(p=>{const n=bbDue(p);return `<a class="cr-due" href="#bb-${p.number}"><span>${n===0?"今天":n===1?"明天":p.due.slice(5).replace("-","/")} ${esc(p.dueTime)}</span><b>${esc(p.title)}</b></a>`}).join(""):`<p class="cr-empty">太好了，近期沒有要交的作業！</p>`;
+  $("#crStream").innerHTML=list.length?list.map(p=>{
+    const gg=GENS[p.gen], n=bbDue(p), color=gg?gg.color:"#5f6368";
+    return `<article class="cr-card" id="bb-${p.number}">
+      <header class="cr-h"><span class="cr-ic ${p.kind==="作業"?"hw":"ann"}" style="--c:${color}" aria-hidden="true"></span>
+        <div><div class="cr-t">${p.kind==="作業"?"作業：":""}${esc(p.title)}</div><div class="cr-m">${esc(p.author)}・${esc(p.created)}${p.edited?"（已編輯）":""}・${gg?gg.full:"全部班級"}</div></div></header>
+      ${p.kind==="作業"&&p.due?`<div class="cr-duebar ${n!==null&&n<0?"past":n!==null&&n<=2?"soon":""}">截止：${p.due.replace(/-/g,"/")} ${esc(p.dueTime)}${n===null?"":n<0?"・已截止":n===0?"・今天到期":"・還有 "+n+" 天"}</div>`:""}
+      <div class="cr-content">${p.html||""}</div>
+      ${p.kind==="作業"?`<div class="cr-actions"><a class="cr-go" href="${esc(p.classroom||"https://classroom.google.com/")}" target="_blank" rel="noopener">到 Google Classroom 繳交</a><span class="cr-hint">作業不要交在這裡，請到 Classroom 繳交</span></div>`:""}
+    </article>`}).join(""):`<div class="cr-card cr-empty-card"><p>${bbGen?"這個班級還沒有佈告。":"還沒有佈告。"}管理者按右上角「發布佈告」就會出現在這裡。</p></div>`;
+}
+$("#crClasses").addEventListener("click",ev=>{const b=ev.target.closest("[data-g]");if(!b)return;bbGen=b.dataset.g;try{localStorage.setItem("bbGen",bbGen)}catch(e){}renderBoard()});
+renderBoard();
+fetch("bulletin.json",{cache:"no-store"}).then(r=>r.ok?r.json():null).catch(()=>null).then(d=>{if(d&&Array.isArray(d.posts)){BB=d.posts;renderBoard();renderRemind()}});
 /* routing */
-const views=["library","freshman","lide","graph","deadlines","trial","about"];
+const views=["library","board","freshman","lide","graph","deadlines","trial","about"];
 function route(){const h=location.hash.slice(1);const v=views.includes(h)?h:"library";
   views.forEach(x=>{$("#v-"+x).hidden=x!==v});
   document.querySelectorAll("nav.tabs a").forEach(a=>a.toggleAttribute("aria-current",a.getAttribute("href")==="#"+v)&&a.setAttribute("aria-current","page"));
@@ -715,7 +817,7 @@ function showAnswer(text,ids,mode){
   a.innerHTML=`<div class="txt">${esc(text)}</div>${ids.length?`<div class="cites">${ids.filter(i=>byId[i]).map(i=>`<button class="cite" data-entry="${i}">${esc(byId[i].title)}</button>`).join("")}</div>`:""}<div class="mode">${mode}</div>`;
 }
 $("#answer").addEventListener("click",ev=>{const b=ev.target.closest("[data-entry]");if(b)showEntry(b.dataset.entry)});
-$("#remind").addEventListener("click",ev=>{const b=ev.target.closest("[data-entry]");if(b)showEntry(b.dataset.entry)});
+$("#remind").addEventListener("click",ev=>{const bb=ev.target.closest("[data-bb]");if(bb){location.hash="#board";setTimeout(()=>document.getElementById("bb-"+bb.dataset.bb)?.scrollIntoView({behavior:"smooth",block:"center"}),80);return}const b=ev.target.closest("[data-entry]");if(b)showEntry(b.dataset.entry)});
 $("#soon").addEventListener("click",ev=>{const b=ev.target.closest("[data-entry]");if(b)showEntry(b.dataset.entry)});
 let ctrl=null;
 async function ask(q){
