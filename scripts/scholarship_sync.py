@@ -27,6 +27,25 @@ def clean(text):
     return re.sub(r"\s+", " ", text).strip()
 
 
+POOR = re.compile(r"低收|中低|清寒|弱勢|家境|貧|急難|特殊境遇|不利")
+AREA = re.compile(r"設籍|籍貫|縣|市民|同鄉|鄉親|校友")
+
+
+def flags(ident, area, levels, desc, amount_max, title=""):
+    """篩選用標記：open 不限身分、poor 低收清寒、grad 研究生可申請、area 限縣市或特定身分。"""
+    ident, area, levels, desc = ident or "", area or "", levels or "", desc or ""
+    f = []
+    if POOR.search(title + " " + ident + " " + desc[:200]):
+        f.append("poor")
+    if (area and area not in ("不拘", "不限")) or AREA.search(ident + " " + title):
+        f.append("area")
+    if not levels or re.search(r"研究所|碩|博", levels):
+        f.append("grad")
+    if not ident.strip(" 不拘不限一般生本國生、") and "area" not in f and "poor" not in f:
+        f.append("open")
+    return {"flags": f, "amountMax": amount_max}
+
+
 def nthu():
     req = urllib.request.Request(API, headers={"User-Agent": "LideHeritageScholarship (github-actions, 1.0)"})
     with urllib.request.urlopen(req, timeout=30) as r:
@@ -50,12 +69,14 @@ def nthu():
             tips.append("年級：" + "、".join(map(str, grades)))
         tips.append(f"承辦 {a.get('specialist','')} 分機 {a.get('ext','')}".strip())
         att = [x["src"] for x in b.get("attachments", []) if x.get("src", "").lower().endswith(".pdf")][:2]
+        hi = int(float(b.get("bonus_upper_bound") or 0))
+        meta = flags("、".join(ids), "", "、".join(map(str, grades)), desc, hi, name)
         out.append({
             "id": "sch" + a["id"], "cat": "perk", "title": name, "grade": "不限",
             "tags": ["獎學金", kind] if kind else ["獎學金"], "summary": summary, "tips": tips,
             "source": f"清華助學系統 公告 {a['id']}", "date": a.get("announce_start_date", ""),
             "deadline": a.get("receive_end_date") or None, "link": SITE + "/", "linkLabel": "到清華助學系統申請",
-            "extraLinks": att,
+            "extraLinks": att, **meta,
         })
     return out
 
@@ -108,6 +129,7 @@ def moe():
             ident, area = field("獎助身分"), field("戶籍地限制")
             nums = [int(x.replace(",", "")) for x in re.findall(r"[\d,]+", re.sub(r"預計總名額.*", "", field("獎助內容")))]
             amt = money(nums[0], nums[-1]) if nums else ""
+            meta = flags(ident, area, level, "", nums[-1] if nums else 0, name)
             period = field("申請期間")
             how = field("申請方式")
             url = field("說明網址")
@@ -119,7 +141,7 @@ def moe():
                 "tips": [x for x in [f"申請期間 {period}" if period else "", how[:60], f"學制：{level}" if level else ""] if x],
                 "source": "教育部圓夢助學網", "date": datetime.now(TW).strftime("%Y-%m-%d"),
                 "deadline": roc(clean(end)), "link": MOE + href, "linkLabel": "看完整辦法",
-                "extraLinks": [url] if url.startswith("http") else [],
+                "extraLinks": [url] if url.startswith("http") else [], **meta,
             })
             time.sleep(0.5)
     return out

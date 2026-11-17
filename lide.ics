@@ -1,0 +1,802 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//lide-heritage//zh-TW
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME:立德家傳
+X-WR-TIMEZONE:Asia/Taipei
+X-WR-CALDESC:立德 DC 活動、報名截止、獎學金截止與清大寒
+ 暑假
+REFRESH-INTERVAL;VALUE=DURATION:PT12H
+BEGIN:VEVENT
+UID:dc1570604442791706705-ev-2026-11-19@lide-heritage
+DTSTAMP:20261117T074500Z
+DTSTART;VALUE=DATE:20261119
+DTEND;VALUE=DATE:20261120
+SUMMARY:【立德】11/19 Lunch and Learn 徵
+DESCRIPTION:徵小幫手（直接私訊老皮) 11/19(四) 活水創投活
+ 動報名今天截止 徵有空跟老皮一起玩食物的小幫手，當
+ 天10:30開始準備食物，可享用西班牙生火腿和其他員工
+ 餐～圖片是老皮會帶大家一起完成的食物
+URL:https://discord.com/channels/1045122058515910686/1570604442791706705/1
+ 570604442791706705
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:dc1569907070713602058-ev-2026-11-12@lide-heritage
+DTSTAMP:20261117T074500Z
+DTSTART;VALUE=DATE:20261112
+DTEND;VALUE=DATE:20261113
+SUMMARY:【立德】歡迎報名11/16、11/23【午間議題討論會】
+ 🔥
+DESCRIPTION:一頓午餐，兩場對話。聊聊那些課堂上來不及
+ 聊的話題✨ 不限系所，只要對教育或人生有一點好奇，
+ 都很歡迎來參加！ 📌 第一場｜論教育：「老師不夠用
+ 了，然後呢？」 - 一所學校招不到老師，誰會受影響？ 
+ - 明明喜歡教書，為什麼許多教師仍選擇離開？ - 又為
+ 什麼有人，願意留下？ 教師荒不只是教育系的事，你可
+ 能是未來的家長、同事，…
+URL:https://discord.com/channels/1045122058515910686/1569907070713602058/1
+ 569907070713602058
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:dc1569907070713602058-ev-2026-11-16@lide-heritage
+DTSTAMP:20261117T074500Z
+DTSTART;VALUE=DATE:20261116
+DTEND;VALUE=DATE:20261117
+SUMMARY:【立德】歡迎報名11/16、11/23【午間議題討論會】
+ 🔥
+DESCRIPTION:一頓午餐，兩場對話。聊聊那些課堂上來不及
+ 聊的話題✨ 不限系所，只要對教育或人生有一點好奇，
+ 都很歡迎來參加！ 📌 第一場｜論教育：「老師不夠用
+ 了，然後呢？」 - 一所學校招不到老師，誰會受影響？ 
+ - 明明喜歡教書，為什麼許多教師仍選擇離開？ - 又為
+ 什麼有人，願意留下？ 教師荒不只是教育系的事，你可
+ 能是未來的家長、同事，…
+URL:https://discord.com/channels/1045122058515910686/1569907070713602058/1
+ 569907070713602058
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:dc1569907070713602058-ev-2026-11-23@lide-heritage
+DTSTAMP:20261117T074500Z
+DTSTART;VALUE=DATE:20261123
+DTEND;VALUE=DATE:20261124
+SUMMARY:【立德】歡迎報名11/16、11/23【午間議題討論會】
+ 🔥
+DESCRIPTION:一頓午餐，兩場對話。聊聊那些課堂上來不及
+ 聊的話題✨ 不限系所，只要對教育或人生有一點好奇，
+ 都很歡迎來參加！ 📌 第一場｜論教育：「老師不夠用
+ 了，然後呢？」 - 一所學校招不到老師，誰會受影響？ 
+ - 明明喜歡教書，為什麼許多教師仍選擇離開？ - 又為
+ 什麼有人，願意留下？ 教師荒不只是教育系的事，你可
+ 能是未來的家長、同事，…
+URL:https://discord.com/channels/1045122058515910686/1569907070713602058/1
+ 569907070713602058
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:dc1569907070713602058-due@lide-heritage
+DTSTAMP:20261117T074500Z
+DTSTART;VALUE=DATE:20261117
+DTEND;VALUE=DATE:20261118
+SUMMARY:【立德截止】歡迎報名11/16、11/23【午間議題討論
+ 會】🔥
+DESCRIPTION:一頓午餐，兩場對話。聊聊那些課堂上來不及
+ 聊的話題✨ 不限系所，只要對教育或人生有一點好奇，
+ 都很歡迎來參加！ 📌 第一場｜論教育：「老師不夠用
+ 了，然後呢？」 - 一所學校招不到老師，誰會受影響？ 
+ - 明明喜歡教書，為什麼許多教師仍選擇離開？ - 又為
+ 什麼有人，願意留下？ 教師荒不只是教育系的事，你可
+ 能是未來的家長、同事，…
+URL:https://discord.com/channels/1045122058515910686/1569907070713602058/1
+ 569907070713602058
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:dc1567424245594857472-ev-2026-11-12@lide-heritage
+DTSTAMP:20261117T074500Z
+DTSTART;VALUE=DATE:20261112
+DTEND;VALUE=DATE:20261113
+SUMMARY:【立德】【2027 Epoch School｜說說想想，不如放膽去
+ 闖】
+DESCRIPTION:創業究竟是一條怎麼樣的路？ 畢業前如何有效
+ 提升多項技能，並先累積職場經驗？ 該怎麼拓展校園以
+ 外的人脈網絡，甚至把眼界拓展到國際？ 在 Epoch School
+ ，這些想像都有機會成為實際經歷！ 想知道學員們在這
+ 段旅程的成長、突破嗎？ 歡迎直接聽聽他們怎麼說，看
+ 看這裡的資源能如何為你的未來開闢不一樣的路！ ▍202
+ 7 兩大…
+URL:https://discord.com/channels/1045122058515910686/1567424245594857472/1
+ 567424245594857472
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:dc1567424245594857472-ev-2026-11-18@lide-heritage
+DTSTAMP:20261117T074500Z
+DTSTART;VALUE=DATE:20261118
+DTEND;VALUE=DATE:20261119
+SUMMARY:【立德】【2027 Epoch School｜說說想想，不如放膽去
+ 闖】
+DESCRIPTION:創業究竟是一條怎麼樣的路？ 畢業前如何有效
+ 提升多項技能，並先累積職場經驗？ 該怎麼拓展校園以
+ 外的人脈網絡，甚至把眼界拓展到國際？ 在 Epoch School
+ ，這些想像都有機會成為實際經歷！ 想知道學員們在這
+ 段旅程的成長、突破嗎？ 歡迎直接聽聽他們怎麼說，看
+ 看這裡的資源能如何為你的未來開闢不一樣的路！ ▍202
+ 7 兩大…
+URL:https://discord.com/channels/1045122058515910686/1567424245594857472/1
+ 567424245594857472
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:dc1567424245594857472-ev-2026-11-21@lide-heritage
+DTSTAMP:20261117T074500Z
+DTSTART;VALUE=DATE:20261121
+DTEND;VALUE=DATE:20261122
+SUMMARY:【立德】【2027 Epoch School｜說說想想，不如放膽去
+ 闖】
+DESCRIPTION:創業究竟是一條怎麼樣的路？ 畢業前如何有效
+ 提升多項技能，並先累積職場經驗？ 該怎麼拓展校園以
+ 外的人脈網絡，甚至把眼界拓展到國際？ 在 Epoch School
+ ，這些想像都有機會成為實際經歷！ 想知道學員們在這
+ 段旅程的成長、突破嗎？ 歡迎直接聽聽他們怎麼說，看
+ 看這裡的資源能如何為你的未來開闢不一樣的路！ ▍202
+ 7 兩大…
+URL:https://discord.com/channels/1045122058515910686/1567424245594857472/1
+ 567424245594857472
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:dc1567424245594857472-due@lide-heritage
+DTSTAMP:20261117T074500Z
+DTSTART;VALUE=DATE:20261106
+DTEND;VALUE=DATE:20261107
+SUMMARY:【立德截止】【2027 Epoch School｜說說想想，不如放
+ 膽去闖】
+DESCRIPTION:創業究竟是一條怎麼樣的路？ 畢業前如何有效
+ 提升多項技能，並先累積職場經驗？ 該怎麼拓展校園以
+ 外的人脈網絡，甚至把眼界拓展到國際？ 在 Epoch School
+ ，這些想像都有機會成為實際經歷！ 想知道學員們在這
+ 段旅程的成長、突破嗎？ 歡迎直接聽聽他們怎麼說，看
+ 看這裡的資源能如何為你的未來開闢不一樣的路！ ▍202
+ 7 兩大…
+URL:https://discord.com/channels/1045122058515910686/1567424245594857472/1
+ 567424245594857472
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:dc1566687589732188313-ev-2026-11-20@lide-heritage
+DTSTAMP:20261117T074500Z
+DTSTART;VALUE=DATE:20261120
+DTEND;VALUE=DATE:20261121
+SUMMARY:【立德】活動報名：Tesla 特斯拉企業參訪開放報名
+ ！
+DESCRIPTION:時間：11/20（五）下午 14:00–17:00 @everyone這次我
+ 們安排了遊覽車，帶大家中午從清大出發、往返台北。 
+ 歡迎各屆立德夥伴一起參加！ 報名截止：本週五 11/6，2
+ 3:59 報名表（含詳細行程）：
+URL:https://discord.com/channels/1045122058515910686/1566687589732188313/1
+ 566687589732188313
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:dc1566687589732188313-due@lide-heritage
+DTSTAMP:20261117T074500Z
+DTSTART;VALUE=DATE:20261106
+DTEND;VALUE=DATE:20261107
+SUMMARY:【立德截止】活動報名：Tesla 特斯拉企業參訪開放
+ 報名！
+DESCRIPTION:時間：11/20（五）下午 14:00–17:00 @everyone這次我
+ 們安排了遊覽車，帶大家中午從清大出發、往返台北。 
+ 歡迎各屆立德夥伴一起參加！ 報名截止：本週五 11/6，2
+ 3:59 報名表（含詳細行程）：
+URL:https://discord.com/channels/1045122058515910686/1566687589732188313/1
+ 566687589732188313
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:dc1566506322487156848-ev-2026-11-14@lide-heritage
+DTSTAMP:20261117T074500Z
+DTSTART;VALUE=DATE:20261114
+DTEND;VALUE=DATE:20261115
+SUMMARY:【立德】竹東頭前溪生態公園參訪
+DESCRIPTION:🌿 新竹除了巨城，還可以去哪裡？ 想找個地
+ 方走走、接觸大自然嗎？ 想知道我們每天喝的水從哪裡
+ 來、乾淨嗎？ 這次帶你走進竹東頭前溪生態公園！ 有
+ 免費專人導覽，還能學習採集水樣、用顯微鏡觀察水中
+ 的微觀世界 🔬 【竹東頭前溪生態公園參訪】 📅 時間
+ ｜11/14（六）10:00–12:00 📌 地點｜竹東生態河濱公園 
+ 🎟️ 費…
+URL:https://discord.com/channels/1045122058515910686/1566506322487156848/1
+ 566506322487156848
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:dc1565156932182999040-ev-2026-12-09@lide-heritage
+DTSTAMP:20261117T074500Z
+DTSTART;VALUE=DATE:20261209
+DTEND;VALUE=DATE:20261210
+SUMMARY:【立德】Save the date 12/9(三)
+DESCRIPTION:@everyone Foxtrot 的結業式將在12/9 18:30 在名人堂舉
+ 辦，除了為完整參加完六個學期的伙伴慶祝👏🏻 外，
+ 還會和捐款人交流，邀請所有立德夥伴參加，正式報名
+ 表單會在日期接近時發出～🥰
+URL:https://discord.com/channels/1045122058515910686/1565156932182999040/1
+ 565156932182999040
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:dc1562210915061862471-ev-2026-11-02@lide-heritage
+DTSTAMP:20261117T074500Z
+DTSTART;VALUE=DATE:20261102
+DTEND;VALUE=DATE:20261103
+SUMMARY:【立德】分享一個史丹佛難得無償的
+DESCRIPTION:分享一個史丹佛難得無償的 Design Thinking 學習資
+ 源。 這兩個月，在陪大家做專案的過程中，我有感受到
+ ：從「我對這件事有興趣」，走到理解問題、形成專案
+ ，最後真的採取行動，中間其實有一段不容易的探索過
+ 程。 領導不只是有一個好點子，而是能不能把「我在意
+ 的事情」，一步一步變成「我可以和別人一起採取的行
+ 動」。 如果…
+URL:https://discord.com/channels/1045122058515910686/1546100179197886505/1
+ 562210915061862471
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:dc1562210915061862471-ev-2026-11-13@lide-heritage
+DTSTAMP:20261117T074500Z
+DTSTART;VALUE=DATE:20261113
+DTEND;VALUE=DATE:20261114
+SUMMARY:【立德】分享一個史丹佛難得無償的
+DESCRIPTION:分享一個史丹佛難得無償的 Design Thinking 學習資
+ 源。 這兩個月，在陪大家做專案的過程中，我有感受到
+ ：從「我對這件事有興趣」，走到理解問題、形成專案
+ ，最後真的採取行動，中間其實有一段不容易的探索過
+ 程。 領導不只是有一個好點子，而是能不能把「我在意
+ 的事情」，一步一步變成「我可以和別人一起採取的行
+ 動」。 如果…
+URL:https://discord.com/channels/1045122058515910686/1546100179197886505/1
+ 562210915061862471
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:dc1560238808300257382-ev-2026-10-20@lide-heritage
+DTSTAMP:20261117T074500Z
+DTSTART;VALUE=DATE:20261020
+DTEND;VALUE=DATE:20261021
+SUMMARY:【立德】10/20 立德 Epoch 說明會
+DESCRIPTION:大家晚安～ 如之前和大家分享的，我上學期有
+ 參與 Epoch School 的創業競賽，這學期則擔任競賽的招募
+ 人員！ 下週二（10/20）中午 12:10～13:00，我們預計在教
+ 育館的承德空間或 101 教室，舉辦一場專屬立德計畫的 E
+ poch School 經驗分享會。 這次會由我、另一位 Hawk 練習生
+  ，以及 …
+URL:https://discord.com/channels/1045122058515910686/1560238808300257382/1
+ 560238808300257382
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:dc1523840037048025200-ev-2026-11-20@lide-heritage
+DTSTAMP:20261117T074500Z
+DTSTART;VALUE=DATE:20261120
+DTEND;VALUE=DATE:20261121
+SUMMARY:【立德】11/20 特斯拉參訪
+DESCRIPTION:11/20（五）下午安排了在台北的特斯拉參訪，大
+ 家先留時間。
+URL:https://discord.com/channels/1045122058515910686/1523840037048025200/1
+ 523840037048025200
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:sch11501-2525-due@lide-heritage
+DTSTAMP:20261117T074500Z
+DTSTART;VALUE=DATE:20261120
+DTEND;VALUE=DATE:20261121
+SUMMARY:【獎學金截止】財團法人開元宗門文教基金會獎學
+ 金
+DESCRIPTION:金額 15000 元　限 家境清寒。申請資格：凡全國
+ 公私立日間部大學院校清寒優秀學生(含研究所學生；不
+ 含夜間部及進修部)。 凡在同學校前一學年度上下學期
+ 平均成績:（若已領有公費、其他獎助學金者，不在補助
+ 之列） 1.學業-80分以上(含80分) 2.操性-甲等80分以上(含80
+ 分) 獎助員額與獎金：每名新臺幣1萬5千…
+URL:https://meo110.wwlc.nthu.edu.tw/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:sch11501-2511-due@lide-heritage
+DTSTAMP:20261117T074500Z
+DTSTART;VALUE=DATE:20261120
+DTEND;VALUE=DATE:20261121
+SUMMARY:【獎學金截止】主計協進社主計獎學金 (截止日期
+ 以統計所公告為準)
+DESCRIPTION:金額 20000 元。✦本獎學金申請截止日期，請以
+ 各院系公告為準✦ 獎學金之申請方式如為「院/系推薦(
+ 逕向院/系申請)」，申請截止日期以各院系公告為準。 
+ 此類獎學金於本網站公告之收件截止日為院系推薦受獎
+ 名單至生輔組之截止日期，鑒於各院系辦理情形、收件
+ 截止日不一，請務必向所屬系所確認實際收件截止日期
+ 。 …
+URL:https://meo110.wwlc.nthu.edu.tw/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:sch11501-2545-due@lide-heritage
+DTSTAMP:20261117T074500Z
+DTSTART;VALUE=DATE:20261123
+DTEND;VALUE=DATE:20261124
+SUMMARY:【獎學金截止】新竹市至愛服務協會就學障友獎學
+ 金
+DESCRIPTION:金額 6000 元　限 身心障礙學生。申請流程:(1)本
+ 系統點選「我要申請」，留下申請紀錄。(2)申請截止日
+ 前，繳交紙本申請文件至生輔組辦公室。 申請需知 (一)
+ 凡設籍新竹縣、市內清寒家庭之就學身心障礙學生，經
+ 就讀或訓練之公私立學校、或身心障礙福利社團或機構
+ 申請。 (二)申請人須經縣市鄉鎮公所登記為低收入戶者
+ ，或經該…
+URL:https://meo110.wwlc.nthu.edu.tw/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:sch11501-2403-due@lide-heritage
+DTSTAMP:20261117T074500Z
+DTSTART;VALUE=DATE:20261124
+DTEND;VALUE=DATE:20261125
+SUMMARY:【獎學金截止】社團法人中華佛教善緣慈善會誌善
+ 清寒學生進步獎學金
+DESCRIPTION:金額 15000–25000 元。申請流程：本系統線上上
+ 傳電子檔，並於申請截止日前繳交紙本申請資料至生輔
+ 組辦公室，始完成申請流程。 申請對象：限未逾齡之本
+ 國籍專職學生，無雙重國籍國外居留權及無前科或前科
+ 逾3年： 限-現就讀中華民國 教育部核定可招生之國內公
+ 私立高中職專、大、碩在學生。 (一)大專組：大專院校2
+ 至4…
+URL:https://meo110.wwlc.nthu.edu.tw/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:sch11501-2544-due@lide-heritage
+DTSTAMP:20261117T074500Z
+DTSTART;VALUE=DATE:20261130
+DTEND;VALUE=DATE:20261201
+SUMMARY:【獎學金截止】台北市東莞同鄉會獎學金
+DESCRIPTION:金額 3500–6000 元　限 陸生、本國生、僑生、年
+ 滿20歲會員。申請方式：(1)本系統線上點選「我要申請
+ 」，留下申請紀錄。(2)並於收件截止日前，寄送紙本申
+ 請文件至設獎單位指定地址，始完成申請程序。 申請資
+ 格 ◎限制籍貫為東莞 1.限本會會員及其子女，設籍在台
+ 之廣東省東筦籍鄉親子弟及東筦市籍在台就讀之在學學
+ 生 2.甲種獎助學金-學業成績90分…
+URL:https://meo110.wwlc.nthu.edu.tw/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:sch11501-2540-due@lide-heritage
+DTSTAMP:20261117T074500Z
+DTSTART;VALUE=DATE:20261130
+DTEND;VALUE=DATE:20261201
+SUMMARY:【獎學金截止】南投縣政府補助公私立大專院校之
+ 本縣籍學生個人出國學習獎助學金
+DESCRIPTION:金額 最高 500000 元　限 設籍南投縣。補助對象
+ ：就讀公私立大專院校(含碩博士生)及高中職之本縣籍
+ 學生。 補助名額、年限及經費額度： (一)每年補助本縣
+ 籍低收及中低收學生四名，每名至多新臺幣五十萬元。 
+ (二)每年補助本縣籍一般生十名，每名至多新臺幣二十
+ 五萬元。 (三)補助年限：以至少出國一個月至一年以內
+ 為限。同一申請學…
+URL:https://meo110.wwlc.nthu.edu.tw/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:sch11501-2539-due@lide-heritage
+DTSTAMP:20261117T074500Z
+DTSTART;VALUE=DATE:20261130
+DTEND;VALUE=DATE:20261201
+SUMMARY:【獎學金截止】台南一中校友總會-母校畢業生目
+ 前就讀大學系所之傑出獎助學金
+DESCRIPTION:金額 20000–30000 元　限 台南一中畢業校友。申
+ 請流程：(1)本系統線上點選「我要申請」，留下申請紀
+ 錄(2)於收件截止日前，寄送申請文件至至校外設獎單位
+ 指定地址，始完成申請程序。 申請資格：為台南一中畢
+ 業生，且目前就讀國內大學學士學位或碩博士學位課程
+ ，並須具備下列條件之一： (1)前一學年度（含上下學期
+ ）學平均成績均達80分…
+URL:https://meo110.wwlc.nthu.edu.tw/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:sch11501-2534-due@lide-heritage
+DTSTAMP:20261117T074500Z
+DTSTART;VALUE=DATE:20261130
+DTEND;VALUE=DATE:20261201
+SUMMARY:【獎學金截止】廖有章先生獎學金
+DESCRIPTION:金額 最高 200000 元。申請方式：(1)本系統線上
+ 點選「我要申請」，留下申請紀錄。(2)申請截止日前，
+ 寄送紙本資料至校外設獎單位，始完成申請程序。 類別
+  (一)急難救助： 1.急難救助符合以下條件： (1)父母其中
+ 一方因失業或生病，無法負擔學雜費或生活困難者。 (2)
+ 父母離異或父母其中一方亡故，無法負擔…
+URL:https://meo110.wwlc.nthu.edu.tw/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:sch11501-2520-due@lide-heritage
+DTSTAMP:20261117T074500Z
+DTSTART;VALUE=DATE:20261130
+DTEND;VALUE=DATE:20261201
+SUMMARY:【獎學金截止】鳳山佛教蓮社煮雲老和尚大專獎學
+ 金
+DESCRIPTION:金額 8000 元　限 戶籍設於高屏雲嘉南縣市。申
+ 請流程：(1)本系統線上點選「我要申請」，留下申請紀
+ 錄(2)於收件截止日前，寄送申請文件至校外設獎單位指
+ 定地址，始完成申請程序。 獎助學金申請辦法 一、 凡
+ 戶籍設於高屏雲嘉南縣市大學院校學生(不含進修班)【
+ 但全國各大學院校原住民不受區域限制，皆可申請】。 
+ 1、大學(二至四年級)…
+URL:https://meo110.wwlc.nthu.edu.tw/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:sch11501-2512-due@lide-heritage
+DTSTAMP:20261117T074500Z
+DTSTART;VALUE=DATE:20261130
+DTEND;VALUE=DATE:20261201
+SUMMARY:【獎學金截止】日月光環保學術碩、博士論文獎助
+DESCRIPTION:金額 10000–70000 元。申請流程：(1)本系統線上
+ 點選「我要申請」，留下申請紀錄(2)於收件截止日前，
+ 寄送紙本申請資料至校外設獎單位指定地址，始完成申
+ 請程序。 壹、獎助對象 115學年度在學並於民國(以下同)
+ 116年8月31日前畢業之國內大學院校碩、博士研究生。 貳
+ 、獎助內容 （一）本論文獎助經兩階段審…
+URL:https://meo110.wwlc.nthu.edu.tw/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:sch11501-2486-due@lide-heritage
+DTSTAMP:20261117T074500Z
+DTSTART;VALUE=DATE:20261130
+DTEND;VALUE=DATE:20261201
+SUMMARY:【獎學金截止】台北市貴州同鄉會獎學金
+DESCRIPTION:金額 3000–6000 元　限 本國生、祖籍為中國貴州
+ 省者。申請方式：(1)本系統線上點選我要申請，留下申
+ 請紀錄(2)於申請截止日前，逕行寄送申請文件至設獎單
+ 位指定地址，始完成申請流程。 申請資格： 1.設籍中華
+ 民國台灣而祖籍為貴州省，且為30歲以下之在學學生。 2
+ .前一學年學業與操行成績總平均85分以上。 繳交文件：
+  1.申請書。 2.…
+URL:https://meo110.wwlc.nthu.edu.tw/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:sch11501-2453-due@lide-heritage
+DTSTAMP:20261117T074500Z
+DTSTART;VALUE=DATE:20261130
+DTEND;VALUE=DATE:20261201
+SUMMARY:【獎學金截止】祐生研究基金會 碩士學位論文獎
+ 學金
+DESCRIPTION:金額 75000 元。一、獎助對象 國內各大學院校在
+ 學研究生之碩士學位論文寫作 二、獎助名額 24名 三、
+ 獎助方式 每名新臺幣柒萬伍仟元整，前6名另頒發優等
+ 論文獎牌以資鼓勵。所有得獎學生得被邀請參加本會舉
+ 辦之各項研討活動。 四、獎助課題 (一)氣候異變與永續
+ 策略： 1.氣候異變的挑戰與機會之研究或相關…
+URL:https://meo110.wwlc.nthu.edu.tw/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:sch11501-2424-due@lide-heritage
+DTSTAMP:20261117T074500Z
+DTSTART;VALUE=DATE:20261130
+DTEND;VALUE=DATE:20261201
+SUMMARY:【獎學金截止】AI領航青年數位工具補助計畫
+DESCRIPTION:金額 最高 6000 元　限 18至40歲以下設籍新竹市
+ 青年。一、計畫內容簡介如下： (一)補助對象：18至40歲
+ 以下設籍新竹市青年。 (二)補助金額： １、一般青年：
+ 補助購買金額之50%，每人補助上限 3\,000元。 ２、弱勢
+ 資格：具低收、中低收入戶證明者補助購買金額之90%，
+ 每人補助上限6\,000元。 (三)補助次數：同一申請人於該
+ 中心…
+URL:https://meo110.wwlc.nthu.edu.tw/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:sch11501-2421-due@lide-heritage
+DTSTAMP:20261117T074500Z
+DTSTART;VALUE=DATE:20261130
+DTEND;VALUE=DATE:20261201
+SUMMARY:【獎學金截止】新光鋼添澄癲癇之友獎助學金
+DESCRIPTION:金額 10000 元　限 持續治療中之癲癇學生。申請
+ 流程：(1)本系統線上點選「我要申請」，留下申請紀錄(
+ 2)於收件截止日前，寄送申請文件至至校外設獎單位指
+ 定地址，始完成申請程序。 申請對象： (一)「獎學金」
+ 申請對象：目前就讀國小、國中、高中/職、五專、大學
+ 或研究所且持續治療中之癲癇朋友(不含進修、推廣教育
+ 之學生)。 (二)…
+URL:https://meo110.wwlc.nthu.edu.tw/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:sch11501-2369-due@lide-heritage
+DTSTAMP:20261117T074500Z
+DTSTART;VALUE=DATE:20261130
+DTEND;VALUE=DATE:20261201
+SUMMARY:【獎學金截止】財團法人永齡教育基金會-永齡銘
+ 日希望獎助學金
+DESCRIPTION:金額 6000 元　限 本國生。申請流程：(1)本系統
+ 點選「我要申請」，留下申請紀錄。(2)並於收件截止日
+ 前，至設獎單位指定網站線上申請，始完成申請程序。 
+ 申請資格：申請人須同時符合下列各項資格條件： 1.具
+ 中華民國國籍，並就讀國內、外大專校院，包含日間部
+ 、進修學士班、碩士班及博士班，具正式學籍且仍於修
+ 業年限內…
+URL:https://meo110.wwlc.nthu.edu.tw/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:sch11402-2292-due@lide-heritage
+DTSTAMP:20261117T074500Z
+DTSTART;VALUE=DATE:20261130
+DTEND;VALUE=DATE:20261201
+SUMMARY:【獎學金截止】AI領航青年數位工具補助計畫
+DESCRIPTION:金額 最高 6000 元　限 18至40歲以下設籍新竹市
+ 青年。一、計畫內容簡介如下： (一)補助對象：18至40歲
+ 以下設籍新竹市青年。 (二)補助金額： １、一般青年：
+ 補助購買金額之50%，每人補助上限 3\,000元。 ２、弱勢
+ 資格：具低收、中低收入戶證明者補助購買金額之90%，
+ 每人補助上限6\,000元。 (三)補助次數：同一申請人於該
+ 中心…
+URL:https://meo110.wwlc.nthu.edu.tw/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:moe882AC6F2C0F2D795-due@lide-heritage
+DTSTAMP:20261117T074500Z
+DTSTART;VALUE=DATE:20261130
+DTEND;VALUE=DATE:20261201
+SUMMARY:【獎學金截止】「感恩與傳承獎學金」、「感恩與
+ 傳承藝文獎」
+DESCRIPTION:提供單位：中華國際財經創意交流協會。
+URL:https://www.edu.tw/helpdreams/Grants_Content.aspx?n=2BBF7170197CE7D3&s
+ ms=0A01A72AAB9E5CD4&s=882AC6F2C0F2D795
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:sch11501-2531-due@lide-heritage
+DTSTAMP:20261117T074500Z
+DTSTART;VALUE=DATE:20261207
+DTEND;VALUE=DATE:20261208
+SUMMARY:【獎學金截止】TSIA半導體獎 (截止日期以各院/系
+ 公告為準)
+DESCRIPTION:金額 80000 元。✦本獎學金申請截止日期，請以
+ 各院/系公告為準✦ 獎學金之申請方式如為「院/系推薦(
+ 逕向院/系申請)」，申請截止日期以各院系公告為準。 
+ 此類獎學金於本網站公告之收件截止日為院系推薦受獎
+ 名單至生輔組之截止日期，鑒於各院系辦理情形、收件
+ 截止日不一，請務必向所屬系所確認實際收件截止日期
+ 。…
+URL:https://meo110.wwlc.nthu.edu.tw/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:sch11501-2542-due@lide-heritage
+DTSTAMP:20261117T074500Z
+DTSTART;VALUE=DATE:20261215
+DTEND;VALUE=DATE:20261216
+SUMMARY:【獎學金截止】中山青年論文獎助學金
+DESCRIPTION:金額 20000 元。申請流程：(1)本系統線上點選「
+ 我要申請」，留下申請紀錄(2)於收件截止日前，寄送紙
+ 本申請資料至設獎單位，並將申請書電子檔及學位論文
+ 大綱，以PDF檔以電子郵件傳送該會信箱，始完成申請程
+ 序。 申請資格： (一)具有中華民國國籍之國民。 (二)教
+ 育部立案之公私立大學校院畢業之博、碩士…
+URL:https://meo110.wwlc.nthu.edu.tw/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:sch11501-2541-due@lide-heritage
+DTSTAMP:20261117T074500Z
+DTSTART;VALUE=DATE:20261215
+DTEND;VALUE=DATE:20261216
+SUMMARY:【獎學金截止】內政部移民署-新住民及子女築夢
+ 計畫
+DESCRIPTION:金額 最高 80000 元　限 新住民、新住民子女。
+ 為協助新住民及子女完成夢想，推展多元文化及營造友
+ 善社會環境，本署辦理「第12屆新住民及子女築夢計畫
+ 」，報名期間自即日起至114年11月30日止，歡迎符合資格
+ 者踴躍報名。 本次報名採線上及紙本程序，請報名者依
+ 序完成線上及紙本報名程序，為確保資料無誤，審核內
+ 容將以書面報名資料為主。 …
+URL:https://meo110.wwlc.nthu.edu.tw/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:sch11501-2524-due@lide-heritage
+DTSTAMP:20261117T074500Z
+DTSTART;VALUE=DATE:20261221
+DTEND;VALUE=DATE:20261222
+SUMMARY:【獎學金截止】財團法人嘉義西區扶輪社教育事務
+ 基金會獎學金
+DESCRIPTION:金額 50000 元　限 新住民、本國生、設籍嘉義市
+ 。申請流程：(1)本系統線上點選「我要申請」，留下申
+ 請紀錄(2)於收件截止日前，寄送紙本申請資料至校外設
+ 獎單位指定地址，始完成申請程序。 申請資格： 1.非扶
+ 輪社員之子女者。 2.限設籍在嘉義縣市之大學部在學學
+ 生 (受獎名額中保留1席優先錄取新住民子女)。 3.前一學
+ 年度學業成績總…
+URL:https://meo110.wwlc.nthu.edu.tw/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:sch11501-2533-due@lide-heritage
+DTSTAMP:20261117T074500Z
+DTSTART;VALUE=DATE:20261224
+DTEND;VALUE=DATE:20261225
+SUMMARY:【獎學金截止】永昌慈善基金會清寒獎學金
+DESCRIPTION:金額 50000 元　限 低收入、中低收入、家境清寒
+ 者。申請流程：(1)本系統線上點選「我要申請」(2)並於
+ 申請截止日前，備齊紙本資料至生輔組辦公室。 申請資
+ 格： 1.大學部三年級（含）以上暨碩士班在校學生。 2.
+ 全學年成績總平均85分以上，且在該系名列前20%者。 3.
+ 操行成績在80分以上者。 4.家境清寒。 5.未領得他處獎
+ 學金及…
+URL:https://meo110.wwlc.nthu.edu.tw/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:sch11501-2473-due@lide-heritage
+DTSTAMP:20261117T074500Z
+DTSTART;VALUE=DATE:20261231
+DTEND;VALUE=DATE:20270101
+SUMMARY:【獎學金截止】晶豪科技教育基金會【大專院校學
+ 生公益服務獎助】
+DESCRIPTION:金額 1000–200000 元。請於收件截止日前，寄E-mai
+ l至設獎單位信箱並寄送正本申請文件至校外設獎單位，
+ 始完成申請程序 【獎助對象】 年滿18歲之國內各公私立
+ 大專院校之在學學生 (優先評選對象請參考申請辦法) 【
+ 服務主題】 自行設計與規畫公益服務內容，主題須符合
+ 以下四大類別之一： 愛心志工類❤️ 用陪伴…
+URL:https://meo110.wwlc.nthu.edu.tw/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:sch11501-2318-due@lide-heritage
+DTSTAMP:20261117T074500Z
+DTSTART;VALUE=DATE:20261231
+DTEND;VALUE=DATE:20270101
+SUMMARY:【獎學金截止】新生代希望工程
+DESCRIPTION:金額 10000 元　限 中低收入、低收入、邊緣戶遭
+ 逢變故。限制條件 一、服務對象： 設籍高雄及台南之
+ 列冊低收/中低收入戶或邊緣戶遭逢變故等經濟弱勢家庭
+ 且目前就讀（或即將就讀）高中以上之青年學子。 二、
+ 申請條件： （一）高中學期成績平均70分以上，大學平
+ 均75分以上者；或成績未達上述標準，但經師長推薦及
+ 慈善會訪視評估，得列為該計畫助學生者…
+URL:https://meo110.wwlc.nthu.edu.tw/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:sch11402-2310-due@lide-heritage
+DTSTAMP:20261117T074500Z
+DTSTART;VALUE=DATE:20261231
+DTEND;VALUE=DATE:20270101
+SUMMARY:【獎學金截止】感恩聖仁社會福利慈善基金會-急
+ 難救助
+DESCRIPTION:金額 5000–15000 元　限 中低收入、低收入、特
+ 境家庭、脆弱家庭、且具急難事由致生活陷入困境急需
+ 關懷者。申請文件請送至生輔組轉介或校外機關推薦申
+ 請。 申請資格 1.具低收入戶、中低收入戶或邊緣戶之貧
+ 困家庭、獨居(偶居)老人之貧戶…等對象，經濟頓失依
+ 靠，需及時資助之經濟弱勢個案或家庭等。 2.發生急難
+ 事由致生活陷困急需關懷者為對象，例：罹患傷(疾)病
+ 必須治療或療養，致無法工作者或醫療…
+URL:https://meo110.wwlc.nthu.edu.tw/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:sch11501-2288-due@lide-heritage
+DTSTAMP:20261117T074500Z
+DTSTART;VALUE=DATE:20261231
+DTEND;VALUE=DATE:20270101
+SUMMARY:【獎學金截止】財團法人褒忠亭義民中學財團大學
+ 院校客家信仰文化研究生獎學金
+DESCRIPTION:金額 最高 200000 元　限 論文主題為研究義民爺
+ 信仰及客家傳統文化。請協助登入「清華助學系統」，
+ 並留下申請紀錄 申請文件紙本寄至「財團法人褒忠亭義
+ 民中學財團(303新竹縣新埔鎮義民路三段360號）」 電子
+ 檔傳至電子信箱：ym.mm@msa.hinet.net 一、申請資格： （一
+ ）台灣各大學校院研究所之研究生。 （二）論文主題為
+ 研究義民爺信仰及客…
+URL:https://meo110.wwlc.nthu.edu.tw/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:sch11402-2164-due@lide-heritage
+DTSTAMP:20261117T074500Z
+DTSTART;VALUE=DATE:20261231
+DTEND;VALUE=DATE:20270101
+SUMMARY:【獎學金截止】中華開發文教基金會技藝職能獎學
+ 金
+DESCRIPTION:限 低收入、中低收入、本國生、家境清寒。申
+ 請方式：請於申請截止日前，寄送紙本申請文件至校外
+ 設獎單位，始完成申請程序。 申請條件 (一)本獎學金申
+ 請對象為具中華民國國民身分且經教育部認可之各公私
+ 立高中職、大學院校(含研究所、碩士班)藝術、體育、
+ 技職類(不包含外語類、商業與管理類、電機電子資訊類
+ )清寒優秀在學學生。 (二)…
+URL:https://meo110.wwlc.nthu.edu.tw/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:moe0984A85A3A9A6677-due@lide-heritage
+DTSTAMP:20261117T074500Z
+DTSTART;VALUE=DATE:20261231
+DTEND;VALUE=DATE:20270101
+SUMMARY:【獎學金截止】行天宮急難濟助
+DESCRIPTION:金額 30000–50000 元。提供單位：財團法人台北
+ 行天宮。
+URL:https://www.edu.tw/helpdreams/Grants_Content.aspx?n=2BBF7170197CE7D3&s
+ ms=0A01A72AAB9E5CD4&s=0984A85A3A9A6677
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:moe6A6B57F5FE966020-due@lide-heritage
+DTSTAMP:20261117T074500Z
+DTSTART;VALUE=DATE:20261231
+DTEND;VALUE=DATE:20270101
+SUMMARY:【獎學金截止】麗寶福容獎助學金
+DESCRIPTION:金額 3000–10000 元　限 低收入戶學生、中低收
+ 入戶學生、特殊境遇家庭子女、身心障礙學生。提供單
+ 位：財團法人麗寶文化藝術基金會。
+URL:https://www.edu.tw/helpdreams/Grants_Content.aspx?n=2BBF7170197CE7D3&s
+ ms=0A01A72AAB9E5CD4&s=6A6B57F5FE966020
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:sch11501-2543-due@lide-heritage
+DTSTAMP:20261117T074500Z
+DTSTART;VALUE=DATE:20270215
+DTEND;VALUE=DATE:20270216
+SUMMARY:【獎學金截止】三重東區扶輪社獎助學金
+DESCRIPTION:金額 20000 元　限 限設籍新北市三重、蘆洲、新
+ 莊、五股、泰山、八里、林口等區學生。申請流程：(1)
+ 本系統線上點選「我要申請」(2)並於申請截止日前，備
+ 齊紙本資料至生輔組辦公室。 申請資格：限設籍新北市
+ 三重、蘆洲、新莊、五股、泰山、八里、林口等七區大
+ 學生 (不含研究生)。 申請類別： (一)清寒優秀獎學金 1.
+ 現為公私立大專院校在學學生(不包含研究所)。 2.父…
+URL:https://meo110.wwlc.nthu.edu.tw/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:cal-2026-12-28-break@lide-heritage
+DTSTAMP:20261117T074500Z
+DTSTART;VALUE=DATE:20261228
+DTEND;VALUE=DATE:20261229
+SUMMARY:【清大】寒假開始
+DESCRIPTION:寒假開始
+URL:https://billyeh33.github.io/lide-heritage/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:cal-2027-02-15-classes@lide-heritage
+DTSTAMP:20261117T074500Z
+DTSTART;VALUE=DATE:20270215
+DTEND;VALUE=DATE:20270216
+SUMMARY:【清大】開學上課
+DESCRIPTION:全校各級學生上課開始、註冊日
+URL:https://billyeh33.github.io/lide-heritage/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:cal-2027-06-07-break@lide-heritage
+DTSTAMP:20261117T074500Z
+DTSTART;VALUE=DATE:20270607
+DTEND;VALUE=DATE:20270608
+SUMMARY:【清大】暑假開始
+DESCRIPTION:暑假開始
+URL:https://billyeh33.github.io/lide-heritage/
+TRANSP:TRANSPARENT
+END:VEVENT
+END:VCALENDAR

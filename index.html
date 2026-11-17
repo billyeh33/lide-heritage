@@ -255,6 +255,46 @@ nav.tabs a{font-size:18px;padding:9px 22px}
 .hero .d1{top:auto;bottom:150px;right:40px}
 .hero .d4{top:150px;right:250px}
 @media (max-width:720px){.countdown{position:static;transform:none;justify-self:start;margin-bottom:6px;min-width:0}.cd-num b{font-size:40px}}
+
+.quick{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:12px;margin:4px 0 24px}
+.qk{display:grid;gap:2px;text-decoration:none;color:var(--ink);border:3px solid var(--line);border-radius:18px;padding:10px 14px;box-shadow:3px 3px 0 var(--ink);background:#fff;transition:transform .08s}
+.qk:hover{transform:translate(-2px,-2px)}
+.qk b{font-family:var(--f-display);font-weight:400;font-size:18px}
+.qk span{font-size:13px;color:var(--muted)}
+.q1,.q5{background:var(--sky-soft)}.q2,.q6{background:var(--mint-soft)}.q3,.q7{background:var(--sun-soft)}.q4,.q8{background:var(--pink-soft)}
+.sub{display:flex;gap:10px;flex-wrap:wrap;align-items:center;border-top:2px dashed #4a5070;padding-top:12px}
+.sub-t{color:#c9cee6;font-size:14px}
+.sub-b{font:inherit;font-family:var(--f-display);font-size:15px;color:var(--ink);background:var(--sun);border:2.5px solid #fff;border-radius:999px;padding:4px 14px;text-decoration:none;cursor:pointer}
+.sub-b:hover{background:#fff}
+.sch-bar{background:var(--sun-soft);border:2.5px solid var(--line);border-radius:18px;padding:10px 14px}
+.fresh-intro h2{font-size:32px;margin-bottom:6px}
+.fresh-intro p{margin:0 0 18px;font-size:17px;max-width:70ch}
+.fresh{list-style:none;margin:0;padding:0;display:grid;gap:18px;position:relative}
+.fresh>li{display:grid;grid-template-columns:150px minmax(0,1fr);gap:18px;align-items:start}
+.f-when{font-family:var(--f-display);font-size:20px;background:var(--ink);color:#fff;border-radius:16px;padding:10px 12px;text-align:center;box-shadow:3px 3px 0 var(--sun);position:sticky;top:10px}
+.fresh>li>div{background:#fff;border:3px solid var(--line);border-radius:20px;padding:14px 20px;box-shadow:4px 4px 0 var(--ink)}
+.fresh>li:nth-child(5n+1)>div{background:var(--sky-soft)}.fresh>li:nth-child(5n+2)>div{background:var(--mint-soft)}.fresh>li:nth-child(5n+3)>div{background:var(--pink-soft)}.fresh>li:nth-child(5n+4)>div{background:var(--sun-soft)}.fresh>li:nth-child(5n)>div{background:var(--grape-soft)}
+.fresh h3{font-size:22px;margin-bottom:6px}
+.fresh ul{margin:0;padding-left:1.2em;display:grid;gap:6px;font-size:16.5px}
+.dl-top{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:12px}
+.dl-top .note{margin:0}
+.seg{display:flex;gap:6px}
+.month{background:#fff;border:3px solid var(--line);border-radius:22px;padding:16px;box-shadow:5px 5px 0 var(--ink);overflow-x:auto}
+.m-nav{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-bottom:12px}
+.m-nav h3{font-size:24px}
+.m-grid{display:grid;grid-template-columns:repeat(7,minmax(110px,1fr));gap:6px;min-width:780px}
+.m-w{text-align:center;font-family:var(--f-display);font-size:15px;color:var(--muted)}
+.m-c{min-height:104px;border:2px solid var(--soft-line);border-radius:12px;padding:4px 6px;display:flex;flex-direction:column;gap:3px;background:#fbfdff}
+.m-c.empty{border:none;background:none}
+.m-c.has{border-color:var(--line)}
+.m-c.today{background:var(--sun-soft);border:3px solid var(--line)}
+.m-d{font-family:var(--f-display);font-size:16px}
+.m-i{font:inherit;font-size:12px;text-align:left;border:none;border-radius:6px;padding:1px 6px;cursor:pointer;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:100%;color:var(--ink)}
+.m-i.ev{background:var(--sky)}.m-i.due{background:var(--pink)}.m-i.sch{background:var(--sun)}.m-i.cal{background:var(--mint);cursor:default}
+.m-more{font-size:11px;color:var(--muted)}
+.m-dot{display:inline-block;width:12px;height:12px;border-radius:4px;margin:0 4px 0 10px;vertical-align:-1px;border:1.5px solid var(--line)}
+.m-dot.ev{background:var(--sky)}.m-dot.due{background:var(--pink)}.m-dot.sch{background:var(--sun)}.m-dot.cal{background:var(--mint)}
+@media (max-width:720px){.fresh>li{grid-template-columns:1fr}.f-when{position:static;justify-self:start}.quick{grid-template-columns:repeat(2,1fr)}}
 </style>
 
 <div class="wrap">
@@ -281,6 +321,7 @@ nav.tabs a{font-size:18px;padding:9px 22px}
 
 <nav class="tabs" aria-label="分頁">
   <a href="#library">家傳庫</a>
+  <a href="#freshman">新生專區</a>
   <a href="#graph">知識圖譜</a>
   <a href="#deadlines">截止日</a>
   <a href="#trial">分享家傳・聯絡</a>
@@ -288,9 +329,25 @@ nav.tabs a{font-size:18px;padding:9px 22px}
 </nav>
 
 <section class="view" id="v-library">
+  <nav class="quick" aria-label="校園常用連結">
+    <a class="qk q1" href="https://www.ccxp.nthu.edu.tw/ccxp/INQUIRE/" target="_blank" rel="noopener"><b>校務資訊系統</b><span>選課・成績・請假</span></a>
+    <a class="qk q2" href="https://eeclass.nthu.edu.tw/" target="_blank" rel="noopener"><b>eeclass</b><span>講義・作業・公告</span></a>
+    <a class="qk q3" href="https://curricul.site.nthu.edu.tw/" target="_blank" rel="noopener"><b>課務組</b><span>選課時程・課程公告</span></a>
+    <a class="qk q4" href="https://meo110.wwlc.nthu.edu.tw/" target="_blank" rel="noopener"><b>清華助學系統</b><span>獎學金申請</span></a>
+    <a class="qk q5" href="https://www.lib.nthu.edu.tw/" target="_blank" rel="noopener"><b>圖書館</b><span>借書・研究小間</span></a>
+    <a class="qk q6" href="https://affairs.site.nthu.edu.tw/p/404-1165-317480.php?Lang=zh-tw" target="_blank" rel="noopener"><b>校園公車</b><span>本學期時刻表</span></a>
+    <a class="qk q7" href="https://dgaa.site.nthu.edu.tw/p/412-1209-2942.php?Lang=zh-tw" target="_blank" rel="noopener"><b>學校行事曆</b><span>考試・假期・選課</span></a>
+    <a class="qk q8" href="https://sthousing.site.nthu.edu.tw/" target="_blank" rel="noopener"><b>住宿組</b><span>宿舍申請・公告</span></a>
+  </nav>
   <section class="remind" id="remindBox" hidden aria-labelledby="remH">
     <div class="rem-head"><span class="rem-bell" aria-hidden="true"></span><h2 id="remH">近期提醒</h2><span class="note">接下來三週的立德活動與報名截止</span></div>
     <div class="rem-list" id="remind"></div>
+    <div class="sub">
+      <span class="sub-t">把立德活動、截止日、寒暑假加進手機行事曆，會自動更新：</span>
+      <a class="sub-b" href="https://calendar.google.com/calendar/r?cid=webcal%3A%2F%2Fbillyeh33.github.io%2Flide-heritage%2Flide.ics" target="_blank" rel="noopener">加到 Google 行事曆</a>
+      <a class="sub-b" href="webcal://billyeh33.github.io/lide-heritage/lide.ics">加到 iPhone／Mac 行事曆</a>
+      <button class="sub-b" type="button" data-copy="https://billyeh33.github.io/lide-heritage/lide.ics">複製訂閱網址</button>
+    </div>
   </section>
   <section class="pin" aria-labelledby="pinH">
     <div class="pin-head"><span class="pin-tag">置頂</span><h2 id="pinH">聊勝於無：跟老皮、Wendy 約一對一</h2></div>
@@ -310,6 +367,16 @@ nav.tabs a{font-size:18px;padding:9px 22px}
     <input id="kw" placeholder="篩選關鍵字，例如 考古、電機、海報">
     <span class="count" id="count"></span>
   </div>
+  <div class="filters sch-bar" id="schBar" hidden>
+    <span class="count">獎學金篩選</span>
+    <button class="chip" data-f="" aria-pressed="true">全部</button>
+    <button class="chip" data-f="open" aria-pressed="false">不限身分</button>
+    <button class="chip" data-f="poor" aria-pressed="false">低收・清寒</button>
+    <button class="chip" data-f="grad" aria-pressed="false">研究生可申請</button>
+    <button class="chip" data-f="area" aria-pressed="false">限縣市或特定身分</button>
+    <label for="schSort" class="count">排序</label>
+    <select id="schSort"><option value="dl">截止日由近到遠</option><option value="amt">金額由高到低</option></select>
+  </div>
   <div class="grid" id="cards"></div>
 </section>
 
@@ -320,9 +387,41 @@ nav.tabs a{font-size:18px;padding:9px 22px}
   <div class="detail" id="gDetail"><p class="note">還沒選節點。先點「工程統計」或「研究所推甄」看看。</p></div>
 </section>
 
+<section class="view" id="v-freshman" hidden>
+  <div class="fresh-intro"><h2>新生專區：剛進清大、剛進立德先看這裡</h2><p>照時間排好，每一步都附上要去的網站。有問題就到「分享家傳・聯絡」找葉家源，或約老皮、Wendy 聊聊。</p></div>
+  <ol class="fresh">
+    <li><span class="f-when">開學前</span><div><h3>帳號、宿舍、行事曆先搞定</h3><ul>
+      <li>先登入 <a href="https://www.ccxp.nthu.edu.tw/ccxp/INQUIRE/" target="_blank" rel="noopener">校務資訊系統</a> 和 <a href="https://eeclass.nthu.edu.tw/" target="_blank" rel="noopener">eeclass</a>，確認帳號能用。選課、成績、請假都在校務資訊系統。</li>
+      <li>要住宿舍的話，大學部新生大約 8 月申請學年住宿，時程看 <a href="https://sthousing.site.nthu.edu.tw/" target="_blank" rel="noopener">住宿組</a> 公告。</li>
+      <li>把 <a href="https://dgaa.site.nthu.edu.tw/p/412-1209-2942.php?Lang=zh-tw" target="_blank" rel="noopener">學校行事曆</a> 存起來，上課開始、加退選、停修、寒暑假都在上面。也可以直接訂閱本站的行事曆。</li></ul></div></li>
+    <li><span class="f-when">開學第一週</span><div><h3>選課與加退選</h3><ul>
+      <li>每學期有好幾次選課，最後還有加退選，時程看 <a href="https://curricul.site.nthu.edu.tw/" target="_blank" rel="noopener">課務組</a>。下學期的第一次選課在寒假前就開始了，別錯過。</li>
+      <li>講義、作業、公告幾乎都在 eeclass，每門課第一週都要點進去看一次。</li>
+      <li>不知道修哪門好，先看本站「學業專區」的考古和修課心得，或在 DC 問學長姐。</li></ul></div></li>
+    <li><span class="f-when">第一個月</span><div><h3>進入立德</h3><ul>
+      <li>加入立德 DC，常看 #1-8屆交流 和 #在校立德聊天室，活動、資源、福利都會發在那裡，本站每天也會自動整理。</li>
+      <li>立德第一年以小組合作為主，練團隊精神和實作能力。實作計畫可以申請經費，細節看家傳庫的「立德學生實作計畫」。</li>
+      <li>想聊修課、專案或生活，直接約老皮或 Wendy 的「聊勝於無」一對一，時段表在家傳庫最上面。</li></ul></div></li>
+    <li><span class="f-when">期中前後</span><div><h3>考試與停修</h3><ul>
+      <li>考古先看本站學業專區，找不到就在 DC 問。</li>
+      <li>期中後有一段可以申請停修的時間，課真的撐不住可以考慮，日期看行事曆。</li>
+      <li>要借教室討論或辦活動，看總務處 <a href="https://affairs.site.nthu.edu.tw/p/412-1165-15285.php" target="_blank" rel="noopener">場地使用</a> 的說明。</li></ul></div></li>
+    <li><span class="f-when">期末到寒假</span><div><h3>獎學金與下學期</h3><ul>
+      <li>很多校外獎學金在 11 到 12 月收件，本站「獎學金與好康」每天自動更新，可以篩選自己能申請的。</li>
+      <li>下學期選課在寒假前就開始，記得回頭看課務組公告。</li>
+      <li>寒假前後是整理家傳的好時機，把這學期的筆記、考古分享給學弟妹。</li></ul></div></li>
+  </ol>
+</section>
+
 <section class="view" id="v-deadlines" hidden>
-  <p class="note">有截止日的家傳。已經截止的保留在下面，明年同一時間可以留意。</p>
+  <div class="dl-top"><p class="note">有截止日的家傳與立德活動。已經截止的保留在下面。</p>
+    <div class="seg" role="group" aria-label="檢視方式"><button class="chip" data-view="list" aria-pressed="true">列表</button><button class="chip" data-view="month" aria-pressed="false">月曆</button></div></div>
   <div class="dl-list" id="dlList"></div>
+  <div class="month" id="monthBox" hidden>
+    <div class="m-nav"><button class="btn ghost" type="button" id="mPrev">‹ 上個月</button><h3 id="mTitle"></h3><button class="btn ghost" type="button" id="mNext">下個月 ›</button></div>
+    <div class="m-grid" id="mGrid"></div>
+    <p class="note"><span class="m-dot ev"></span>立德活動　<span class="m-dot due"></span>報名截止　<span class="m-dot sch"></span>獎學金截止　<span class="m-dot cal"></span>清大寒暑假與開學</p>
+  </div>
 </section>
 
 <section class="view" id="v-trial" hidden>
@@ -377,7 +476,7 @@ function renderStats(){$("#stats").innerHTML = (DC.n?`<span><b>${DC.n}</b>則立
 const DC={n:0,updated:""};renderStats();
 
 /* library */
-let cat="", grade="", kw="";
+let cat="", grade="", kw="", schF="", schSort="dl";
 const chips=$("#catChips");
 function renderChips(){chips.innerHTML = [["","全部"],...Object.entries(CATS)].map(([k,v])=>`<button class="chip" data-cat="${k}" aria-pressed="${k===cat}">${v} <span class="count">${k?DATA.entries.filter(e=>e.cat===k).length:DATA.entries.length}</span></button>`).join("");}
 renderChips();
@@ -401,7 +500,9 @@ function byDeadline(a,b){
     ||(dlRank(a)===0?a.deadline.localeCompare(b.deadline):dlRank(a)===2?b.deadline.localeCompare(a.deadline):((b.id.startsWith("dc")-a.id.startsWith("dc"))||b.date.localeCompare(a.date)));
 }
 function renderCards(){
-  const list=DATA.entries.filter(e=>(!cat||e.cat===cat)&&(!grade||e.grade===grade)&&(!kw||(e.title+e.summary+(e.tags||[]).join(" ")+(e.tips||[]).join(" ")).toLowerCase().includes(kw))).sort(byDeadline);
+  $("#schBar").hidden=cat!=="perk";
+  let list=DATA.entries.filter(e=>(!cat||e.cat===cat)&&(!grade||e.grade===grade)&&(!kw||(e.title+e.summary+(e.tags||[]).join(" ")+(e.tips||[]).join(" ")).toLowerCase().includes(kw))&&(cat!=="perk"||!schF||(e.flags||[]).includes(schF))).sort(byDeadline);
+  if(cat==="perk"&&schSort==="amt") list=list.sort((a,b)=>(dlRank(a)===2)-(dlRank(b)===2)||(b.amountMax||0)-(a.amountMax||0));
   $("#count").textContent=`${list.length} 筆`;
   $("#cards").innerHTML=list.length?list.map(card).join(""):`<p class="note">沒有符合的家傳。換個關鍵字，或到「分享家傳・聯絡」找葉家源補一筆。</p>`;
 }
@@ -475,10 +576,12 @@ renderDeadlines();
 /* trial + forms */
 
 
-document.querySelectorAll("[data-copy]").forEach(b=>b.onclick=async()=>{try{await navigator.clipboard.writeText(b.dataset.copy);b.textContent="已複製"}catch(e){const r=document.createRange();r.selectNodeContents(document.getElementById("lineId"));const sel=getSelection();sel.removeAllRanges();sel.addRange(r);b.textContent="已選取"}setTimeout(()=>b.textContent="複製",1500)});
+document.querySelectorAll("[data-copy]").forEach(b=>{const orig=b.textContent;b.onclick=async()=>{try{await navigator.clipboard.writeText(b.dataset.copy);b.textContent="已複製";setTimeout(()=>b.textContent=orig,1500)}catch(e){b.textContent=b.dataset.copy;const r=document.createRange();r.selectNodeContents(b);const sel=getSelection();sel.removeAllRanges();sel.addRange(r)}}});
 /* 寒暑假／開學倒數：讀 calendar.json（每天從清大教務處行事曆同步），沒有就用內建的 */
 const CAL0 = [{"date": "2026-06-15", "kind": "break", "label": "暑假", "title": "暑假開始Summer"}, {"date": "2026-09-07", "kind": "classes", "label": "開學", "title": "全校各級學生上課開始、註冊日"}, {"date": "2026-12-28", "kind": "break", "label": "寒假", "title": "寒假開始"}, {"date": "2027-02-15", "kind": "classes", "label": "開學", "title": "全校各級學生上課開始、註冊日"}, {"date": "2027-06-07", "kind": "break", "label": "暑假", "title": "暑假開始"}];
+let CAL_NOW=CAL0;
 function renderCountdown(cal){
+  if(cal&&cal.events)CAL_NOW=cal.events;
   const ev=((cal&&cal.events)||CAL0||[]).filter(e=>daysLeft(e.date)>=0);
   const br=ev.find(e=>e.kind==="break"), cl=ev.find(e=>e.kind==="classes");
   const pick=br&&(!cl||br.date<cl.date)?br:cl; if(!pick)return;
@@ -490,8 +593,37 @@ function renderCountdown(cal){
 }
 renderCountdown(null);
 fetch("calendar.json",{cache:"no-store"}).then(r=>r.ok?r.json():null).then(c=>{if(c)renderCountdown(c)}).catch(()=>{});
+$("#schBar").addEventListener("click",ev=>{const b=ev.target.closest("[data-f]");if(!b)return;schF=b.dataset.f;$("#schBar").querySelectorAll("[data-f]").forEach(c=>c.setAttribute("aria-pressed",c===b));renderCards()});
+$("#schSort").onchange=e=>{schSort=e.target.value;renderCards()};
+/* 月曆 */
+let mOff=0;
+function renderMonth(){
+  const base=new Date(today.getFullYear(),today.getMonth()+mOff,1), y=base.getFullYear(), m=base.getMonth();
+  $("#mTitle").textContent=`${y} 年 ${m+1} 月`;
+  const map={}, put=(d,o)=>{(map[d]=map[d]||[]).push(o)};
+  for(const e of DATA.entries){
+    const kind=e.id.startsWith("dc")?"due":e.cat==="perk"?"sch":"due";
+    if(e.deadline) put(e.deadline,{e,k:kind,t:"截止"});
+    if(e.id.startsWith("dc")) for(const d of (e.events||[]).slice(0,3)) put(d,{e,k:"ev",t:""});
+  }
+  for(const c of (CAL_NOW||[])) put(c.date,{k:"cal",t:c.kind==="break"?c.label+"開始":"開學上課"});
+  const first=new Date(y,m,1).getDay(), days=new Date(y,m+1,0).getDate();
+  let h=["日","一","二","三","四","五","六"].map(w=>`<div class="m-w">${w}</div>`).join("");
+  for(let i=0;i<first;i++) h+=`<div class="m-c empty"></div>`;
+  for(let d=1;d<=days;d++){
+    const key=`${y}-${String(m+1).padStart(2,"0")}-${String(d).padStart(2,"0")}`, items=map[key]||[];
+    const isToday=daysLeft(key)===0;
+    h+=`<div class="m-c${isToday?" today":""}${items.length?" has":""}"><span class="m-d">${d}</span>${items.slice(0,3).map(x=>x.e?`<button class="m-i ${x.k}" data-entry="${x.e.id}" title="${esc(x.e.title)}">${x.t?x.t+"・":""}${esc(x.e.title)}</button>`:`<span class="m-i cal">${esc(x.t)}</span>`).join("")}${items.length>3?`<span class="m-more">還有 ${items.length-3} 筆</span>`:""}</div>`;
+  }
+  $("#mGrid").innerHTML=h;
+}
+$("#mPrev").onclick=()=>{mOff--;renderMonth()}; $("#mNext").onclick=()=>{mOff++;renderMonth()};
+$("#mGrid").addEventListener("click",ev=>{const b=ev.target.closest("[data-entry]");if(b)showEntry(b.dataset.entry)});
+document.querySelector(".seg").addEventListener("click",ev=>{const b=ev.target.closest("[data-view]");if(!b)return;
+  document.querySelectorAll(".seg [data-view]").forEach(c=>c.setAttribute("aria-pressed",c===b));
+  const mo=b.dataset.view==="month"; $("#monthBox").hidden=!mo; $("#dlList").hidden=mo; if(mo)renderMonth();});
 /* routing */
-const views=["library","graph","deadlines","trial","about"];
+const views=["library","freshman","graph","deadlines","trial","about"];
 function route(){const h=location.hash.slice(1);const v=views.includes(h)?h:"library";
   views.forEach(x=>{$("#v-"+x).hidden=x!==v});
   document.querySelectorAll("nav.tabs a").forEach(a=>a.toggleAttribute("aria-current",a.getAttribute("href")==="#"+v)&&a.setAttribute("aria-current","page"));
@@ -548,7 +680,7 @@ Promise.all([getJSON("dc.json"),getJSON("scholarships.json")]).then(([dc,sch])=>
   const a=mergeExtra(dc), b=mergeExtra(sch);
   if(!a.length&&!b.length)return;
   DC.n=a.length;DC.updated=(dc&&dc.updated)||(sch&&sch.updated)||"";DC.sch=b.length;
-  renderStats();renderChips();renderCards();renderDeadlines();
+  renderStats();renderChips();renderCards();renderDeadlines();if(!$("#monthBox").hidden)renderMonth();
 });
 </script>
 </body></html>

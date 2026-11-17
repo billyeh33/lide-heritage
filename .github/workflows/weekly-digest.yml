@@ -1,0 +1,19 @@
+name: 每週一 DC 提醒
+
+on:
+  schedule:
+    - cron: "30 0 * * 1"   # 台灣時間每週一早上 8:30（在每天 6 點同步之後）
+  workflow_dispatch:
+
+jobs:
+  digest:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: 發每週提醒到 DC
+        env:
+          DISCORD_WEBHOOK_URL: ${{ secrets.DISCORD_WEBHOOK_URL }}
+        run: python3 scripts/weekly_digest.py

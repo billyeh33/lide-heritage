@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-17 14:59",
+ "updated": "2026-11-17 15:44",
  "entries": [
   {
    "id": "sch11501-2525",
@@ -23,7 +23,12 @@
    "linkLabel": "到清華助學系統申請",
    "extraLinks": [
     "https://nthu-scholarship-files.s3.ap-northeast-1.amazonaws.com/tC0wsJcOYGGzkgZFvnPFvIz7jvAAC1hiBMii_CGErws.pdf"
-   ]
+   ],
+   "flags": [
+    "poor",
+    "grad"
+   ],
+   "amountMax": 15000
   },
   {
    "id": "sch11501-2511",
@@ -49,7 +54,12 @@
    "extraLinks": [
     "https://nthu-scholarship-files.s3.ap-northeast-1.amazonaws.com/cudVqBsYopu9jucPArTpEpNcb0gqtTt17U8bCSbMh_c.pdf",
     "https://nthu-scholarship-files.s3.ap-northeast-1.amazonaws.com/YyRBh7nf6jayFCjQuu3jYmw9IWMxbR9d2HSfRx7Vi3E.pdf"
-   ]
+   ],
+   "flags": [
+    "grad",
+    "open"
+   ],
+   "amountMax": 20000
   },
   {
    "id": "sch11501-2545",
@@ -73,7 +83,12 @@
    "linkLabel": "到清華助學系統申請",
    "extraLinks": [
     "https://nthu-scholarship-files.s3.ap-northeast-1.amazonaws.com/bQxKeKtUpj9mPQuoEMAx0bMwim9Cf2CPsaX2x2CEChY.pdf"
-   ]
+   ],
+   "flags": [
+    "poor",
+    "grad"
+   ],
+   "amountMax": 6000
   },
   {
    "id": "sch11501-2403",
@@ -98,7 +113,12 @@
    "linkLabel": "到清華助學系統申請",
    "extraLinks": [
     "https://nthu-scholarship-files.s3.ap-northeast-1.amazonaws.com/0996b9fd1524b8bed42878299b3bcbdb.pdf"
-   ]
+   ],
+   "flags": [
+    "poor",
+    "grad"
+   ],
+   "amountMax": 25000
   },
   {
    "id": "sch11501-2544",
@@ -123,7 +143,12 @@
    "linkLabel": "到清華助學系統申請",
    "extraLinks": [
     "https://nthu-scholarship-files.s3.ap-northeast-1.amazonaws.com/CPCpZ_6aLhcXOi1L2_dZ7H6qa0wtU_FE14zKHUl4u4w.pdf"
-   ]
+   ],
+   "flags": [
+    "area",
+    "grad"
+   ],
+   "amountMax": 6000
   },
   {
    "id": "sch11501-2540",
@@ -145,7 +170,13 @@
    "deadline": "2026-11-30",
    "link": "https://meo110.wwlc.nthu.edu.tw/",
    "linkLabel": "到清華助學系統申請",
-   "extraLinks": []
+   "extraLinks": [],
+   "flags": [
+    "poor",
+    "area",
+    "grad"
+   ],
+   "amountMax": 500000
   },
   {
    "id": "sch11501-2539",
@@ -169,7 +200,12 @@
    "linkLabel": "到清華助學系統申請",
    "extraLinks": [
     "https://nthu-scholarship-files.s3.ap-northeast-1.amazonaws.com/2Dps2KZT83xlnLkzN7Dfewh4cf7QEqS5dOJqobPNzwo.pdf"
-   ]
+   ],
+   "flags": [
+    "area",
+    "grad"
+   ],
+   "amountMax": 30000
   },
   {
    "id": "sch11501-2534",
@@ -194,7 +230,12 @@
    "extraLinks": [
     "https://nthu-scholarship-files.s3.ap-northeast-1.amazonaws.com/t0p0Me2ubKbxY-v4Qa-536_qAQEhJh8J98GNFJm3EO4.pdf",
     "https://nthu-scholarship-files.s3.ap-northeast-1.amazonaws.com/JSQL0cg-d-Ph4RzguBiTp9vt8rD8RKNYt5vXbaba-6k.pdf"
-   ]
+   ],
+   "flags": [
+    "poor",
+    "grad"
+   ],
+   "amountMax": 200000
   },
   {
    "id": "sch11501-2520",
@@ -219,7 +260,11 @@
    "linkLabel": "到清華助學系統申請",
    "extraLinks": [
     "https://nthu-scholarship-files.s3.ap-northeast-1.amazonaws.com/h7VQbmB20UVmrzspuC_htJtDfUBnAcXXmugYRz9rB54.pdf"
-   ]
+   ],
+   "flags": [
+    "area"
+   ],
+   "amountMax": 8000
   },
   {
    "id": "sch11501-2512",
@@ -245,7 +290,12 @@
    "extraLinks": [
     "https://nthu-scholarship-files.s3.ap-northeast-1.amazonaws.com/KeHJ48bF-gtlf4ILGeu6CatuggLou5QzjDCt1Yt-Lz0.pdf",
     "https://nthu-scholarship-files.s3.ap-northeast-1.amazonaws.com/L0XY3i0iF5ess_RJC6bR8O5pjlfbgP0cIB-5d0zNqXA.pdf"
-   ]
+   ],
+   "flags": [
+    "grad",
+    "open"
+   ],
+   "amountMax": 70000
   },
   {
    "id": "sch11501-2486",
@@ -269,7 +319,12 @@
    "linkLabel": "到清華助學系統申請",
    "extraLinks": [
     "https://nthu-scholarship-files.s3.ap-northeast-1.amazonaws.com/L_8rwwLpbjQIsFj1jkRTfNQMSaw_b7DSdfiDjbti0Hg.pdf"
-   ]
+   ],
+   "flags": [
+    "area",
+    "grad"
+   ],
+   "amountMax": 6000
   },
   {
    "id": "sch11501-2453",
@@ -294,7 +349,12 @@
    "linkLabel": "到清華助學系統申請",
    "extraLinks": [
     "https://nthu-scholarship-files.s3.ap-northeast-1.amazonaws.com/naOhcQ1sZZam_wxFRofn3O5E3nSEIVsv7b8vK0-OWVo.pdf"
-   ]
+   ],
+   "flags": [
+    "grad",
+    "open"
+   ],
+   "amountMax": 75000
   },
   {
    "id": "sch11501-2424",
@@ -319,7 +379,13 @@
    "extraLinks": [
     "https://nthu-scholarship-files.s3.ap-northeast-1.amazonaws.com/1cd89ff610921ee7bedbdd912dc19350.PDF",
     "https://nthu-scholarship-files.s3.ap-northeast-1.amazonaws.com/5793d7cfd4b247f6f1389f733d9ead89.pdf"
-   ]
+   ],
+   "flags": [
+    "poor",
+    "area",
+    "grad"
+   ],
+   "amountMax": 6000
   },
   {
    "id": "sch11501-2421",
@@ -343,7 +409,12 @@
    "linkLabel": "到清華助學系統申請",
    "extraLinks": [
     "https://nthu-scholarship-files.s3.ap-northeast-1.amazonaws.com/cT0gYMKbdcpFfvU4KqI5YQXfKL7ffNvH5Pgzns562mY.pdf"
-   ]
+   ],
+   "flags": [
+    "poor",
+    "grad"
+   ],
+   "amountMax": 10000
   },
   {
    "id": "sch11501-2369",
@@ -368,7 +439,12 @@
    "linkLabel": "到清華助學系統申請",
    "extraLinks": [
     "https://nthu-scholarship-files.s3.ap-northeast-1.amazonaws.com/2694a8c9af1b9b37364ca7a84abff86c.pdf"
-   ]
+   ],
+   "flags": [
+    "grad",
+    "open"
+   ],
+   "amountMax": 6000
   },
   {
    "id": "sch11402-2292",
@@ -393,7 +469,13 @@
    "extraLinks": [
     "https://nthu-scholarship-files.s3.ap-northeast-1.amazonaws.com/1cd89ff610921ee7bedbdd912dc19350.PDF",
     "https://nthu-scholarship-files.s3.ap-northeast-1.amazonaws.com/5793d7cfd4b247f6f1389f733d9ead89.pdf"
-   ]
+   ],
+   "flags": [
+    "poor",
+    "area",
+    "grad"
+   ],
+   "amountMax": 6000
   },
   {
    "id": "moe882AC6F2C0F2D795",
@@ -415,7 +497,12 @@
    "deadline": "2026-11-30",
    "link": "https://www.edu.tw/helpdreams/Grants_Content.aspx?n=2BBF7170197CE7D3&sms=0A01A72AAB9E5CD4&s=882AC6F2C0F2D795",
    "linkLabel": "看完整辦法",
-   "extraLinks": []
+   "extraLinks": [],
+   "flags": [
+    "grad",
+    "open"
+   ],
+   "amountMax": 0
   },
   {
    "id": "sch11501-2531",
@@ -440,7 +527,12 @@
    "linkLabel": "到清華助學系統申請",
    "extraLinks": [
     "https://nthu-scholarship-files.s3.ap-northeast-1.amazonaws.com/nOJMyrIM7LxZB6ep183yt6GYyvjwmfVToqgW9EBDxns.pdf"
-   ]
+   ],
+   "flags": [
+    "grad",
+    "open"
+   ],
+   "amountMax": 80000
   },
   {
    "id": "sch11501-2542",
@@ -464,7 +556,12 @@
    "linkLabel": "到清華助學系統申請",
    "extraLinks": [
     "https://nthu-scholarship-files.s3.ap-northeast-1.amazonaws.com/x3wUpuetODySOLraBr-9k04vvUphm2KPo-RqX7nVDWE.pdf"
-   ]
+   ],
+   "flags": [
+    "grad",
+    "open"
+   ],
+   "amountMax": 20000
   },
   {
    "id": "sch11501-2541",
@@ -488,7 +585,11 @@
    "linkLabel": "到清華助學系統申請",
    "extraLinks": [
     "https://nthu-scholarship-files.s3.ap-northeast-1.amazonaws.com/Xf-jFEZgj9Wi2c2VGsv6dGJHzgux_-y7237WQ5qfSNI.pdf"
-   ]
+   ],
+   "flags": [
+    "grad"
+   ],
+   "amountMax": 80000
   },
   {
    "id": "sch11501-2524",
@@ -513,7 +614,11 @@
    "linkLabel": "到清華助學系統申請",
    "extraLinks": [
     "https://nthu-scholarship-files.s3.ap-northeast-1.amazonaws.com/QohEYvpT4XzqvPRrjXM0SACeuVWFHYJjaVVQZloHcjc.pdf"
-   ]
+   ],
+   "flags": [
+    "area"
+   ],
+   "amountMax": 50000
   },
   {
    "id": "sch11501-2533",
@@ -538,7 +643,12 @@
    "linkLabel": "到清華助學系統申請",
    "extraLinks": [
     "https://nthu-scholarship-files.s3.ap-northeast-1.amazonaws.com/k73gHmMTX5vabtahGnJj--c2QIFhju8FRrkoMyyq39E.pdf"
-   ]
+   ],
+   "flags": [
+    "poor",
+    "grad"
+   ],
+   "amountMax": 50000
   },
   {
    "id": "sch11501-2473",
@@ -563,7 +673,12 @@
    "extraLinks": [
     "https://nthu-scholarship-files.s3.ap-northeast-1.amazonaws.com/lcVuDIMtl21cs3rKI8rMNPMPHtc1THLJ-GlbI2UNkfM.pdf",
     "https://nthu-scholarship-files.s3.ap-northeast-1.amazonaws.com/n0e-M8MJSB7swx1OVxXUlG9WGM5ia5yO4BA51rEgLvU.pdf"
-   ]
+   ],
+   "flags": [
+    "grad",
+    "open"
+   ],
+   "amountMax": 200000
   },
   {
    "id": "sch11501-2318",
@@ -587,7 +702,12 @@
    "linkLabel": "到清華助學系統申請",
    "extraLinks": [
     "https://nthu-scholarship-files.s3.ap-northeast-1.amazonaws.com/5c60fb37b5dd3ba60862066856ecd7d8.pdf"
-   ]
+   ],
+   "flags": [
+    "poor",
+    "grad"
+   ],
+   "amountMax": 10000
   },
   {
    "id": "sch11402-2310",
@@ -611,7 +731,12 @@
    "linkLabel": "到清華助學系統申請",
    "extraLinks": [
     "https://nthu-scholarship-files.s3.ap-northeast-1.amazonaws.com/1baf1a39df258709f3ed8c516ce97875.pdf"
-   ]
+   ],
+   "flags": [
+    "poor",
+    "grad"
+   ],
+   "amountMax": 15000
   },
   {
    "id": "sch11501-2288",
@@ -636,7 +761,11 @@
    "linkLabel": "到清華助學系統申請",
    "extraLinks": [
     "https://nthu-scholarship-files.s3.ap-northeast-1.amazonaws.com/3f75b35b1004d3054bf8d8109f13c80c.pdf"
-   ]
+   ],
+   "flags": [
+    "grad"
+   ],
+   "amountMax": 200000
   },
   {
    "id": "sch11402-2164",
@@ -661,7 +790,12 @@
    "linkLabel": "到清華助學系統申請",
    "extraLinks": [
     "https://nthu-scholarship-files.s3.ap-northeast-1.amazonaws.com/be4dbe307b87f5e62a37421fbcb2bf93.pdf"
-   ]
+   ],
+   "flags": [
+    "poor",
+    "grad"
+   ],
+   "amountMax": 0
   },
   {
    "id": "moe0984A85A3A9A6677",
@@ -683,7 +817,11 @@
    "deadline": "2026-12-31",
    "link": "https://www.edu.tw/helpdreams/Grants_Content.aspx?n=2BBF7170197CE7D3&sms=0A01A72AAB9E5CD4&s=0984A85A3A9A6677",
    "linkLabel": "看完整辦法",
-   "extraLinks": []
+   "extraLinks": [],
+   "flags": [
+    "poor"
+   ],
+   "amountMax": 50000
   },
   {
    "id": "moe6A6B57F5FE966020",
@@ -705,7 +843,12 @@
    "deadline": "2026-12-31",
    "link": "https://www.edu.tw/helpdreams/Grants_Content.aspx?n=2BBF7170197CE7D3&sms=0A01A72AAB9E5CD4&s=6A6B57F5FE966020",
    "linkLabel": "看完整辦法",
-   "extraLinks": []
+   "extraLinks": [],
+   "flags": [
+    "poor",
+    "grad"
+   ],
+   "amountMax": 10000
   },
   {
    "id": "sch11501-2543",
@@ -731,7 +874,12 @@
    "extraLinks": [
     "https://nthu-scholarship-files.s3.ap-northeast-1.amazonaws.com/GQUAJBxpLAI2YMKgAom0dDACk6815ZjIOc33qh3nBaw.pdf",
     "https://nthu-scholarship-files.s3.ap-northeast-1.amazonaws.com/guZ4G2H29LnXrlBbtG-0K-aPLrjJfsmnWR63FTlAAJ8.pdf"
-   ]
+   ],
+   "flags": [
+    "poor",
+    "area"
+   ],
+   "amountMax": 20000
   }
  ]
 }
