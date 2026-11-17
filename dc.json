@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-17 13:50",
+ "updated": "2026-11-17 14:39",
  "entries": [
   {
    "id": "dc1570604442791706705",
@@ -1102,6 +1102,44 @@
    "kind": "msg"
   },
   {
+   "id": "dc1482990515845599374",
+   "cat": "lead",
+   "title": "@everyone",
+   "grade": "不限",
+   "tags": [
+    "DC"
+   ],
+   "summary": "@everyone 【告急】厚德院生快來報名！這周三跟院長吃飯聊書院 (幫好同事宣傳🥺 )",
+   "tips": [],
+   "source": "立德 DC #foxtrot",
+   "date": "2026-03-16",
+   "link": "https://discord.com/channels/1045122058515910686/1204956212504961085/1482990515845599374",
+   "linkLabel": "到 DC 看原文",
+   "extraLinks": [
+    "https://docs.google.com/forms/d/e/1FAIpQLScc6JJnlJSmNsBGnCWAJsO2cgUsK2kG6ElQWA6NWIedE0pPsA/viewform?usp=preview"
+   ],
+   "kind": "msg"
+  },
+  {
+   "id": "dc1482990541670055936",
+   "cat": "lead",
+   "title": "@everyone",
+   "grade": "不限",
+   "tags": [
+    "DC"
+   ],
+   "summary": "@everyone 【告急】厚德院生快來報名！這周三跟院長吃飯聊書院 (幫好同事宣傳🥺 )",
+   "tips": [],
+   "source": "立德 DC #gopher",
+   "date": "2026-03-16",
+   "link": "https://discord.com/channels/1045122058515910686/1331107968338493511/1482990541670055936",
+   "linkLabel": "到 DC 看原文",
+   "extraLinks": [
+    "https://docs.google.com/forms/d/e/1FAIpQLScc6JJnlJSmNsBGnCWAJsO2cgUsK2kG6ElQWA6NWIedE0pPsA/viewform?usp=preview"
+   ],
+   "kind": "msg"
+  },
+  {
    "id": "dc1482890986966351935",
    "cat": "lead",
    "title": "—-",
@@ -1193,6 +1231,82 @@
    "linkLabel": "到 DC 看原文",
    "extraLinks": [
     "https://www.facebook.com/share/p/14Z83xneRME/"
+   ],
+   "kind": "msg"
+  },
+  {
+   "id": "dc1478326622414442526",
+   "cat": "lead",
+   "title": "@everyone",
+   "grade": "不限",
+   "tags": [
+    "DC"
+   ],
+   "summary": "@everyone 嗨嗨大家！這周末陸續到來兩場工作坊，其中週日的【民防基礎營】，我們除了立德同學外，另開放30位給全校人員參與(費用全額由立德支持還有便當！)，歡迎推薦給你有興趣的朋友們唷！(表單開放到這周四，要搶要快！)",
+   "tips": [],
+   "source": "立德 DC #foxtrot",
+   "date": "2026-03-03",
+   "link": "https://discord.com/channels/1045122058515910686/1204956212504961085/1478326622414442526",
+   "linkLabel": "到 DC 看原文",
+   "extraLinks": [
+    "https://forms.gle/GsjM3w6nhzZVCbFQ7"
+   ],
+   "kind": "msg"
+  },
+  {
+   "id": "dc1478326676965294150",
+   "cat": "lead",
+   "title": "@everyone",
+   "grade": "不限",
+   "tags": [
+    "DC"
+   ],
+   "summary": "@everyone 嗨嗨大家！這周末陸續到來兩場工作坊，其中週日的【民防基礎營】，我們除了立德同學外，另開放30位給全校人員參與(費用全額由立德支持還有便當！)，歡迎推薦給你有興趣的朋友們唷！(表單開放到這周四，要搶要快！)",
+   "tips": [],
+   "source": "立德 DC #gopher",
+   "date": "2026-03-03",
+   "link": "https://discord.com/channels/1045122058515910686/1331107968338493511/1478326676965294150",
+   "linkLabel": "到 DC 看原文",
+   "extraLinks": [
+    "https://forms.gle/GsjM3w6nhzZVCbFQ7"
+   ],
+   "kind": "msg"
+  },
+  {
+   "id": "dc1469142832806891530",
+   "cat": "lead",
+   "title": "（沒有標題）",
+   "grade": "不限",
+   "tags": [
+    "DC"
+   ],
+   "summary": "",
+   "tips": [],
+   "source": "立德 DC #foxtrot",
+   "date": "2026-02-06",
+   "link": "https://discord.com/channels/1045122058515910686/1204956212504961085/1469142832806891530",
+   "linkLabel": "到 DC 看原文",
+   "extraLinks": [
+    "https://youtu.be/9tiW5urdR6A?si=Y5efAvp-km_CIP6F"
+   ],
+   "kind": "msg"
+  },
+  {
+   "id": "dc1469142561347211415",
+   "cat": "lead",
+   "title": "大家早安",
+   "grade": "不限",
+   "tags": [
+    "DC"
+   ],
+   "summary": "大家早安 大家的寒假還好嗎？是不是放假放到不知道在幹嘛了？沒關係這裡有可以讓你充實自己的機會！這是下學期的專案，Sw@p school ，發現寒假太無聊的話，歡迎點進連結了解🤭 專案前期需要大家在天下學習平台上自學，鼓勵大家寒假有空的時間就可以先做這部分喔～",
+   "tips": [],
+   "source": "立德 DC #foxtrot",
+   "date": "2026-02-06",
+   "link": "https://discord.com/channels/1045122058515910686/1204956212504961085/1469142561347211415",
+   "linkLabel": "到 DC 看原文",
+   "extraLinks": [
+    "https://docs.google.com/document/d/1d-M1tDRjfyfOVZCjHbQKJIRFOESpXjQQ83KMZnzER0U/edit?usp=drivesdk"
    ],
    "kind": "msg"
   },
