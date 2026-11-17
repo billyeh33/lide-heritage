@@ -219,6 +219,10 @@ nav.tabs a{font-size:18px;padding:9px 22px}
 .c-k{font-family:var(--f-display);background:var(--mint-soft);border:2px solid var(--line);border-radius:999px;padding:0 12px;font-size:15px}
 .c-v{font-variant-numeric:tabular-nums}
 .c-copy{padding:2px 12px;font-size:14px}
+.share{max-width:860px}
+.share h2{font-size:28px}
+.exchange{display:grid;gap:4px;background:var(--grape-soft);border:2.5px dashed var(--line);border-radius:16px;padding:12px 16px;margin-bottom:10px}
+.exchange b{font-family:var(--f-display);font-weight:400;font-size:19px}
 </style>
 
 <div class="wrap">
@@ -246,7 +250,7 @@ nav.tabs a{font-size:18px;padding:9px 22px}
   <a href="#library">家傳庫</a>
   <a href="#graph">知識圖譜</a>
   <a href="#deadlines">截止日</a>
-  <a href="#trial">試用回饋與投稿</a>
+  <a href="#trial">分享家傳・聯絡</a>
   <a href="#about">收錄規則</a>
 </nav>
 
@@ -285,32 +289,16 @@ nav.tabs a{font-size:18px;padding:9px 22px}
 </section>
 
 <section class="view" id="v-trial" hidden>
-  <div class="trial">
-    <div class="panel">
-      <h2>試用三個小任務</h2>
-      <p>先按開始計時，再用這個網站完成下面三件事，最後填回饋表。大約 5 分鐘。</p>
-      <ol class="tasks">
-        <li>找出工程統計有哪些考古，打開雲端資料夾。</li>
-        <li>找出研究所推甄最早截止的是哪一間學校。</li>
-        <li>用上面的「問家傳」問一個你最近真的想知道的問題。</li>
-      </ol>
-      <div style="display:flex;gap:10px;align-items:center;flex-wrap:wrap">
-        <span class="timer" id="timer">00:00</span>
-        <button class="btn ghost" id="timerBtn" type="button">開始計時</button>
-      </div>
-      <p class="note">做完把時間記下來，回饋表會問你花了多久。</p>
-      <p><a class="btn" id="formBtn" target="_blank" rel="noopener">填試用回饋表</a></p>
+  <div class="panel share">
+    <h2>有問題、想分享家傳，都找葉家源</h2>
+    <p>修課心得、考古連結、活動或競賽經驗、獎學金資訊都可以。私訊我，整理好會放上來，並寫上你的屆別。網站哪裡壞了、資料不對，也直接跟我說。</p>
+    <div class="contact">
+      <b>聯絡葉家源</b>
+      <div class="c-row"><span class="c-k">LINE ID</span><span class="c-v" id="lineId">0968157896</span><button class="btn ghost c-copy" type="button" data-copy="0968157896">複製</button></div>
+      <div class="c-row"><span class="c-k">IG</span><span class="c-v">搜尋 葉家源 <a href="https://www.instagram.com/y.c.y.2004/" target="_blank" rel="noopener">y.c.y.2004</a></span></div>
     </div>
-    <div class="panel">
-      <h2>我也有家傳想分享</h2>
-      <p>修課心得、考古連結、活動或競賽經驗、獎學金資訊都可以。私訊我，審核後會放上來，並寫上你的屆別。</p>
-      <div class="contact">
-        <b>聯絡葉家源</b>
-        <div class="c-row"><span class="c-k">LINE ID</span><span class="c-v" id="lineId">0968157896</span><button class="btn ghost c-copy" type="button" data-copy="0968157896">複製</button></div>
-        <div class="c-row"><span class="c-k">IG</span><span class="c-v">搜尋 葉家源 <a href="https://www.instagram.com/y.c.y.2004/" target="_blank" rel="noopener">y.c.y.2004</a></span></div>
-      </div>
-      <p class="note">考古和講義只收你自己整理或原作者同意分享的。不放解答本、整本課本和別人的個資。</p>
-    </div>
+    <div class="exchange"><b>之後會改成「以家傳換家傳」</b><span>學業專區的考古和課程資料，之後要先分享一份自己的家傳，才能交換看到裡面的內容。現在先開放，歡迎趁早分享。</span></div>
+    <p class="note">考古和講義只收你自己整理或原作者同意分享的。不放解答本、整本課本和別人的個資。</p>
   </div>
 </section>
 
@@ -321,7 +309,7 @@ nav.tabs a{font-size:18px;padding:9px 22px}
       <li>每一筆都寫出處和日期。資訊會過期，以官網或簡章為準。</li>
       <li>考古與課程資料只收自己整理或原作者同意分享的。註明「勿外流」的資料不收。</li>
       <li>不放整本課本、解答本，也不放別人的學號、姓名等個資。</li>
-      <li>有疑慮的內容先下架再確認，請在 DC 私訊管理員。</li>
+      <li>有疑慮的內容先下架再確認，請聯絡葉家源。</li>
       <li>這個網站只在立德內部分享，請不要轉傳到公開社群。</li>
     </ol>
     <h2 style="margin-top:18px">怎麼維護</h2>
@@ -331,7 +319,7 @@ nav.tabs a{font-size:18px;padding:9px 22px}
 </section>
 <footer class="site-foot">
   <div class="foot-brand">立德家傳</div>
-  <p>每天早上 6 點自動同步立德 Discord 與清華助學系統的獎學金。資料有疑慮請在 DC 私訊管理員。</p>
+  <p>每天早上 6 點自動同步立德 Discord 與清華助學系統的獎學金。有問題請到「分享家傳・聯絡」找葉家源（LINE ID 0968157896）。</p>
   <p class="foot-credit">設計者　<b>工院27 葉家源</b>・創新領導專題六 Foxtrot</p>
 </footer>
 </div>
@@ -378,7 +366,7 @@ function byDeadline(a,b){
 function renderCards(){
   const list=DATA.entries.filter(e=>(!cat||e.cat===cat)&&(!grade||e.grade===grade)&&(!kw||(e.title+e.summary+(e.tags||[]).join(" ")+(e.tips||[]).join(" ")).toLowerCase().includes(kw))).sort(byDeadline);
   $("#count").textContent=`${list.length} 筆`;
-  $("#cards").innerHTML=list.length?list.map(card).join(""):`<p class="note">沒有符合的家傳。換個關鍵字，或到「試用回饋與投稿」補一筆。</p>`;
+  $("#cards").innerHTML=list.length?list.map(card).join(""):`<p class="note">沒有符合的家傳。換個關鍵字，或到「分享家傳・聯絡」找葉家源補一筆。</p>`;
 }
 renderCards();
 function showEntry(id){
@@ -435,11 +423,7 @@ $("#dlList").innerHTML=dls.length?"":`<p class="note">目前沒有即將截止�
 renderDeadlines();
 
 /* trial + forms */
-function setForm(el,url,label){if(url){el.href=url}else{el.removeAttribute("href");el.setAttribute("aria-disabled","true");el.classList.add("ghost");el.textContent=label+"（準備中）";el.style.opacity=.6}}
-setForm($("#formBtn"),CFG.feedbackForm,"試用回饋表");
-let t0=null,tick=null;
-$("#timerBtn").onclick=()=>{if(tick){clearInterval(tick);tick=null;$("#timerBtn").textContent="重新計時";return}
-  t0=Date.now();$("#timerBtn").textContent="停止";tick=setInterval(()=>{const s=Math.floor((Date.now()-t0)/1000);$("#timer").textContent=`${String(Math.floor(s/60)).padStart(2,"0")}:${String(s%60).padStart(2,"0")}`},500)};
+
 
 document.querySelectorAll("[data-copy]").forEach(b=>b.onclick=async()=>{try{await navigator.clipboard.writeText(b.dataset.copy);b.textContent="已複製"}catch(e){const r=document.createRange();r.selectNodeContents(document.getElementById("lineId"));const sel=getSelection();sel.removeAllRanges();sel.addRange(r);b.textContent="已選取"}setTimeout(()=>b.textContent="複製",1500)});
 /* routing */
@@ -469,7 +453,7 @@ let ctrl=null;
 async function ask(q){
   q=q.trim();if(!q)return;
   const btn=$("#askBtn");btn.disabled=true;
-  const fallback=()=>{const hits=keywordSearch(q);showAnswer(hits.length?`找到 ${hits.length} 筆可能相關的家傳，點下面的標題直接看：`:"家傳裡還沒有這個資訊。可以到「試用回饋與投稿」補一筆，或在 DC 問學長姐。",hits.map(h=>h.id),"關鍵字搜尋（這個瀏覽器沒有開啟 AI 問答）")};
+  const fallback=()=>{const hits=keywordSearch(q);showAnswer(hits.length?`找到 ${hits.length} 筆可能相關的家傳，點下面的標題直接看：`:"家傳裡還沒有這個資訊。可以到「分享家傳・聯絡」找葉家源補一筆，或在 DC 問學長姐。",hits.map(h=>h.id),"關鍵字搜尋（這個瀏覽器沒有開啟 AI 問答）")};
   try{
     const sample=sampleOff?null:await getSample();
     if(!sample){fallback();return}
