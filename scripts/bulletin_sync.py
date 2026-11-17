@@ -3,7 +3,7 @@
 只收 repo 擁有者、協作者發的 Issue（路人開的不會上網站）。
 Issue 關閉就從網站下架。內文用 GitHub 轉好的 HTML（GitHub 會先過濾危險內容），檔案和圖片沿用 GitHub 的附件網址。
 """
-import json, os, re, urllib.request
+import csv, html, io, json, os, re, urllib.request
 from datetime import datetime, timedelta, timezone
 from pathlib import Path
 
@@ -49,6 +49,54 @@ def render(md):
     return api("/markdown", accept="text/html", data={"text": md, "mode": "gfm", "context": REPO})
 
 
+CSV_URL = os.environ.get("BULLETIN_CSV", "").strip()
+URL = re.compile(r"https?://[^\s<>\"]+")
+
+
+def text_html(t):
+    out = []
+    for para in re.split(r"\n\s*\n", (t or "").strip()):
+        esc = html.escape(para)
+        esc = URL.sub(lambda m: f'<a href="{m[0]}" target="_blank" rel="noopener">{m[0]}</a>', esc)
+        out.append("<p>" + esc.replace("\n", "<br>") + "</p>")
+    return "".join(out)
+
+
+def form_posts():
+    """讀 Google 表單公開佈告試算表（發布到網路的 CSV）。只收狀態是上架的。"""
+    if not CSV_URL:
+        return []
+    req = urllib.request.Request(CSV_URL, headers={"User-Agent": "LideHeritageBulletin (1.0)"})
+    with urllib.request.urlopen(req, timeout=30) as r:
+        rows = list(csv.DictReader(io.StringIO(r.read().decode("utf-8-sig"))))
+    posts = []
+    for row in rows:
+        g = lambda k: (row.get(k) or "").strip()
+        if not g("編號") or not g("標題") or g("狀態") == "下架":
+            continue
+        gen_raw = g("屆別")
+        gen = "F" if gen_raw.startswith("Foxtrot") else "G" if gen_raw.startswith("Gopher") else "H" if gen_raw.startswith("Hawk") else "ALL"
+        m = re.match(r"(\d{4})[-/.](\d{1,2})[-/.](\d{1,2})", g("截止日期"))
+        due = f"{int(m[1]):04d}-{int(m[2]):02d}-{int(m[3]):02d}" if m else ""
+        tm = re.match(r"(\d{1,2}):(\d{2})", g("截止時間"))
+        due_time = f"{int(tm[1]):02d}:{tm[2]}" if tm else ("23:59" if due else "")
+        files = []
+        for line in g("附件").splitlines():
+            u = URL.search(line)
+            if u:
+                name = line[:u.start()].strip() or "附件"
+                files.append(f'<li><a href="{html.escape(u[0])}" target="_blank" rel="noopener">{html.escape(name)}</a></li>')
+        body = text_html(g("內容")) + (f"<ul class=\"cr-files\">{''.join(files)}</ul>" if files else "")
+        cr = g("Classroom 連結")
+        posts.append({
+            "id": g("編號"), "number": g("編號"), "gen": gen, "kind": "作業" if g("類型") == "作業" else "公告",
+            "title": g("標題"), "html": body, "due": due, "dueTime": due_time,
+            "classroom": cr if cr.startswith("https://") else "", "author": g("發布人") or "立德幹部", "avatar": "",
+            "created": g("發布時間")[:16], "edited": False, "url": "",
+        })
+    return posts
+
+
 def main():
     issues, page = [], 1
     while True:
@@ -82,6 +130,12 @@ def main():
             "created": created.strftime("%Y-%m-%d %H:%M"), "edited": i["updated_at"] != i["created_at"],
             "url": i["html_url"],
         })
+    try:
+        fp = form_posts()
+        print(f"表單佈告：{len(fp)} 則")
+        posts += fp
+    except Exception as e:
+        print("表單佈告讀取失敗：", e)
     posts.sort(key=lambda p: p["created"], reverse=True)
     data = {"updated": datetime.now(TW).strftime("%Y-%m-%d %H:%M"), "posts": posts}
     old = json.loads(OUT.read_text(encoding="utf-8")) if OUT.exists() else {}
