@@ -316,6 +316,9 @@ nav.tabs a{font-size:18px;padding:9px 22px}
 .lide-gens{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:18px}
 .lide-gens a{font-family:var(--f-display);text-decoration:none;color:var(--ink);background:var(--pink-soft);border:2.5px solid var(--line);border-radius:999px;padding:4px 16px;box-shadow:2px 2px 0 var(--ink)}
 .lide-contact{font-size:14px}
+.rem-item.hw .rem-date{background:var(--sun)}
+.rem-item.hw .rem-kind{color:#8a5a00}
+.m-i.hw{background:var(--grape)}.m-dot.hw{background:var(--grape)}
 </style>
 
 <div class="wrap">
@@ -363,7 +366,7 @@ nav.tabs a{font-size:18px;padding:9px 22px}
     <a class="qk q8" href="https://sthousing.site.nthu.edu.tw/" target="_blank" rel="noopener"><b>住宿組</b><span>宿舍申請・公告</span></a>
   </nav>
   <section class="remind" id="remindBox" hidden aria-labelledby="remH">
-    <div class="rem-head"><span class="rem-bell" aria-hidden="true"></span><h2 id="remH">近期提醒</h2><span class="note">接下來三週的立德活動與報名截止</span></div>
+    <div class="rem-head"><span class="rem-bell" aria-hidden="true"></span><h2 id="remH">近期提醒</h2><span class="note">接下來三週的立德活動、報名截止與作業</span></div>
     <div class="rem-list" id="remind"></div>
     <div class="sub">
       <span class="sub-t">把立德活動、截止日、寒暑假加進手機行事曆，會自動更新：</span>
@@ -486,7 +489,7 @@ nav.tabs a{font-size:18px;padding:9px 22px}
   <div class="month" id="monthBox" hidden>
     <div class="m-nav"><button class="btn ghost" type="button" id="mPrev">‹ 上個月</button><h3 id="mTitle"></h3><button class="btn ghost" type="button" id="mNext">下個月 ›</button></div>
     <div class="m-grid" id="mGrid"></div>
-    <p class="note"><span class="m-dot ev"></span>立德活動　<span class="m-dot due"></span>報名截止　<span class="m-dot sch"></span>獎學金截止　<span class="m-dot cal"></span>清大寒暑假與開學</p>
+    <p class="note"><span class="m-dot ev"></span>立德活動　<span class="m-dot due"></span>報名截止　<span class="m-dot sch"></span>獎學金截止　<span class="m-dot hw"></span>作業截止　<span class="m-dot cal"></span>清大寒暑假與開學</p>
   </div>
 </section>
 
@@ -624,14 +627,16 @@ new ResizeObserver(drawEdges).observe(gEl);
 /* deadlines */
 function renderRemind(){
   const W=["日","一","二","三","四","五","六"], items=[];
-  for(const e of DATA.entries){ if(!e.id.startsWith("dc"))continue;
+  for(const e of DATA.entries){
+    if(e.id.startsWith("hw")){ if(e.deadline){const n=daysLeft(e.deadline); if(n>=0&&n<=10) items.push({d:e.deadline,n,e,kind:"作業截止"+(e.dueTime?" "+e.dueTime:"")});} continue; }
+    if(!e.id.startsWith("dc"))continue;
     {const d=(e.events||[]).find(x=>daysLeft(x)>=0); if(d){const n=daysLeft(d); if(n<=21) items.push({d,n,e,kind:"活動"});}}
     if(e.deadline){const n=daysLeft(e.deadline); if(n>=0&&n<=10) items.push({d:e.deadline,n,e,kind:"報名截止"});}
   }
-  items.sort((a,b)=>a.d.localeCompare(b.d)||(a.kind==="報名截止"?-1:1));
-  const seen=new Set(), list=items.filter(x=>{const k=x.e.id+x.kind;if(seen.has(k))return false;seen.add(k);return true}).slice(0,6);
+  items.sort((a,b)=>a.d.localeCompare(b.d)||(a.kind==="活動"?1:-1));
+  const seen=new Set(), list=items.filter(x=>{const k=x.e.id+x.kind;if(seen.has(k))return false;seen.add(k);return true}).slice(0,8);
   $("#remindBox").hidden=!list.length;
-  $("#remind").innerHTML=list.map(x=>{const dt=new Date(x.d+"T00:00:00");return `<button class="rem-item ${x.kind==="報名截止"?"due":""}" data-entry="${x.e.id}">
+  $("#remind").innerHTML=list.map(x=>{const dt=new Date(x.d+"T00:00:00");return `<button class="rem-item ${x.kind.startsWith("作業")?"hw":x.kind==="報名截止"?"due":""}" data-entry="${x.e.id}">
     <span class="rem-date"><b>${dt.getMonth()+1}/${dt.getDate()}</b><small>週${W[dt.getDay()]}</small></span>
     <span class="rem-body"><span class="rem-kind">${x.kind}・${x.n===0?"今天":x.n===1?"明天":"還有 "+x.n+" 天"}</span><span class="rem-title">${esc(x.e.title)}</span></span></button>`}).join("");
 }
@@ -668,8 +673,8 @@ function renderMonth(){
   $("#mTitle").textContent=`${y} 年 ${m+1} 月`;
   const map={}, put=(d,o)=>{(map[d]=map[d]||[]).push(o)};
   for(const e of DATA.entries){
-    const kind=e.id.startsWith("dc")?"due":e.cat==="perk"?"sch":"due";
-    if(e.deadline) put(e.deadline,{e,k:kind,t:"截止"});
+    const kind=e.id.startsWith("hw")?"hw":e.id.startsWith("dc")?"due":e.cat==="perk"?"sch":"due";
+    if(e.deadline) put(e.deadline,{e,k:kind,t:kind==="hw"?"作業":"截止"});
     if(e.id.startsWith("dc")) for(const d of (e.events||[]).slice(0,3)) put(d,{e,k:"ev",t:""});
   }
   for(const c of (CAL_NOW||[])) put(c.date,{k:"cal",t:c.kind==="break"?c.label+"開始":"開學上課"});
@@ -742,9 +747,9 @@ function mergeExtra(d){
   return fresh;
 }
 const getJSON=u=>fetch(u,{cache:"no-store"}).then(r=>r.ok?r.json():null).catch(()=>null);
-Promise.all([getJSON("dc.json"),getJSON("scholarships.json")]).then(([dc,sch])=>{
-  const a=mergeExtra(dc), b=mergeExtra(sch);
-  if(!a.length&&!b.length)return;
+Promise.all([getJSON("dc.json"),getJSON("scholarships.json"),getJSON("assignments.json")]).then(([dc,sch,hw])=>{
+  const a=mergeExtra(dc), b=mergeExtra(sch), c=mergeExtra(hw);
+  if(!a.length&&!b.length&&!c.length)return;
   DC.n=a.length;DC.updated=(dc&&dc.updated)||(sch&&sch.updated)||"";DC.sch=b.length;
   renderStats();renderChips();renderCards();renderDeadlines();if(!$("#monthBox").hidden)renderMonth();
 });

@@ -1,4 +1,4 @@
-name: 每天同步 DC 家傳與獎學金
+name: 每天同步 DC、獎學金、行事曆與作業
 
 on:
   schedule:
@@ -26,12 +26,18 @@ jobs:
         run: python3 scripts/scholarship_sync.py || echo "獎學金這次抓取失敗，沿用舊資料"
       - name: 讀清大行事曆（寒暑假與開學）
         run: python3 scripts/calendar_sync.py || echo "行事曆這次抓取失敗，沿用舊資料"
+      - name: 讀 Classroom 作業截止日
+        env:
+          CLASSROOM_ICS: ${{ secrets.CLASSROOM_ICS }}
+        run: python3 scripts/classroom_sync.py || echo "作業這次抓取失敗，沿用舊資料"
+      - name: 產生訂閱用行事曆
+        run: python3 scripts/build_ics.py
       - name: 有新內容就更新網站
         run: |
-          if [ -n "$(git status --porcelain dc.json scholarships.json calendar.json)" ]; then
+          if [ -n "$(git status --porcelain dc.json scholarships.json calendar.json assignments.json lide.ics)" ]; then
             git config user.name "lide-heritage-bot"
             git config user.email "lide-heritage-bot@users.noreply.github.com"
-            git add dc.json scholarships.json calendar.json
-            git commit -m "同步 DC 家傳與獎學金 $(TZ=Asia/Taipei date +%F)"
+            git add dc.json scholarships.json calendar.json assignments.json lide.ics
+            git commit -m "每日同步 $(TZ=Asia/Taipei date +%F)"
             git push
           fi

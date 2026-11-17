@@ -55,6 +55,9 @@ def main():
     for e in load("scholarships.json").get("entries", []):
         if e.get("deadline"):
             add(f"{e['id']}-due", e["deadline"], f"【獎學金截止】{e['title']}", e.get("summary", ""), e.get("link", SITE))
+    for e in load("assignments.json").get("entries", []):
+        if e.get("deadline"):
+            add(f"{e['id']}-due", e["deadline"], f"【作業截止{(' ' + e['dueTime']) if e.get('dueTime') else ''}】{e['title']}", e.get("summary", ""), e.get("link", SITE))
     for e in load("calendar.json").get("events", []):
         name = f"{e['label']}開始" if e["kind"] == "break" else "開學上課"
         add(f"cal-{e['date']}-{e['kind']}", e["date"], f"【清大】{name}", e.get("title", ""), SITE)
