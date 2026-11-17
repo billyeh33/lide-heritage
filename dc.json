@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-17 14:39",
+ "updated": "2026-11-17 15:18",
  "entries": [
   {
    "id": "dc1570604442791706705",
@@ -19,7 +19,10 @@
    "extraLinks": [
     "https://docs.google.com/forms/d/e/1FAIpQLSe7TE7msHALOjUzlXgYSLQaik5DeyVv553pgEAesz39o6PRKQ/viewform"
    ],
-   "kind": "post"
+   "kind": "post",
+   "events": [
+    "2026-11-19"
+   ]
   },
   {
    "id": "dc1570332788555518022",
@@ -61,7 +64,12 @@
     "https://www.instagram.com/p/DeE1MvWFMba/?obrf=c3NyMDg5M3B0ZmVq"
    ],
    "kind": "post",
-   "deadline": "2026-11-17"
+   "deadline": "2026-11-17",
+   "events": [
+    "2026-11-12",
+    "2026-11-16",
+    "2026-11-23"
+   ]
   },
   {
    "id": "dc1567974647532757033",
@@ -105,7 +113,14 @@
     "https://www.instagram.com/epoch_school"
    ],
    "kind": "post",
-   "deadline": "2026-11-06"
+   "deadline": "2026-11-06",
+   "events": [
+    "2026-11-12",
+    "2026-11-18",
+    "2026-11-21",
+    "2026-11-24",
+    "2026-11-30"
+   ]
   },
   {
    "id": "dc1567195299842105394",
@@ -147,7 +162,10 @@
     "https://forms.gle/BbhX5iw9rz8H9Dei9"
    ],
    "kind": "post",
-   "deadline": "2026-11-06"
+   "deadline": "2026-11-06",
+   "events": [
+    "2026-11-20"
+   ]
   },
   {
    "id": "dc1566506322487156848",
@@ -167,7 +185,10 @@
    "extraLinks": [
     "https://forms.gle/w5iQFWxavaKaSa1H9"
    ],
-   "kind": "post"
+   "kind": "post",
+   "events": [
+    "2026-11-14"
+   ]
   },
   {
    "id": "dc1565156932182999040",
@@ -185,7 +206,10 @@
    "link": "https://discord.com/channels/1045122058515910686/1565156932182999040/1565156932182999040",
    "linkLabel": "到 DC 看原文",
    "extraLinks": [],
-   "kind": "post"
+   "kind": "post",
+   "events": [
+    "2026-12-09"
+   ]
   },
   {
    "id": "dc1563696494765150329",
@@ -284,7 +308,11 @@
    "extraLinks": [
     "https://dschool.stanford.edu/creative-shake-up"
    ],
-   "kind": "msg"
+   "kind": "msg",
+   "events": [
+    "2026-11-02",
+    "2026-11-13"
+   ]
   },
   {
    "id": "dc1560841003663884400",
@@ -325,7 +353,10 @@
    "extraLinks": [
     "https://forms.gle/kMTuuThPJgJPMNGm7"
    ],
-   "kind": "post"
+   "kind": "post",
+   "events": [
+    "2026-10-20"
+   ]
   },
   {
    "id": "dc1559182205190799400",
@@ -403,7 +434,10 @@
    "link": "https://discord.com/channels/1045122058515910686/1555223370679980082/1555223370679980082",
    "linkLabel": "到 DC 看原文",
    "extraLinks": [],
-   "kind": "post"
+   "kind": "post",
+   "events": [
+    "2026-10-02"
+   ]
   },
   {
    "id": "dc1553942321286877297",
@@ -445,7 +479,10 @@
     "https://www.instagram.com/p/DdO1dhBku9n/?stkn=MXY3cnB4MnB3NHVwNQ=="
    ],
    "kind": "post",
-   "deadline": "2026-10-06"
+   "deadline": "2026-10-06",
+   "events": [
+    "2026-10-13"
+   ]
   },
   {
    "id": "dc1548879796833099857",
@@ -524,7 +561,10 @@
     "https://www.instagram.com/p/DcbRPFhlA6D/?img_index=1"
    ],
    "kind": "post",
-   "deadline": "2026-09-08"
+   "deadline": "2026-09-08",
+   "events": [
+    "2026-09-15"
+   ]
   },
   {
    "id": "dc1537348699452215306",
@@ -565,7 +605,10 @@
    "extraLinks": [
     "https://reurl.cc/GgmAaA"
    ],
-   "kind": "post"
+   "kind": "post",
+   "events": [
+    "2026-08-01"
+   ]
   },
   {
    "id": "dc1526770563928821873",
@@ -602,7 +645,10 @@
    "link": "https://discord.com/channels/1045122058515910686/1523840037048025200/1523840037048025200",
    "linkLabel": "到 DC 看原文",
    "extraLinks": [],
-   "kind": "post"
+   "kind": "post",
+   "events": [
+    "2026-11-20"
+   ]
   },
   {
    "id": "dc1519964148107313253",
@@ -620,7 +666,10 @@
    "link": "https://discord.com/channels/1045122058515910686/1519964148107313253/1519964148107313253",
    "linkLabel": "到 DC 看原文",
    "extraLinks": [],
-   "kind": "post"
+   "kind": "post",
+   "events": [
+    "2026-06-26"
+   ]
   },
   {
    "id": "dc1515502659744956557",
@@ -775,7 +824,10 @@
     "https://forms.gle/8m4qTURheAznvSDC6",
     "https://www.facebook.com/rocktwycc"
    ],
-   "kind": "post"
+   "kind": "post",
+   "events": [
+    "2026-08-13"
+   ]
   },
   {
    "id": "dc1508950875719077909",
@@ -815,7 +867,10 @@
    "extraLinks": [
     "https://www.facebook.com/share/p/18iJjTTxtE/?mibextid=wwXIfr"
    ],
-   "kind": "post"
+   "kind": "post",
+   "events": [
+    "2026-05-20"
+   ]
   },
   {
    "id": "dc1505091561090977816",
@@ -836,7 +891,10 @@
    "extraLinks": [
     "https://www.facebook.com/share/p/1a8VFyeiYz/?mibextid=wwXIfr"
    ],
-   "kind": "post"
+   "kind": "post",
+   "events": [
+    "2026-05-20"
+   ]
   },
   {
    "id": "dc1503982202382450798",
@@ -856,7 +914,10 @@
    "extraLinks": [
     "https://forms.gle/78QaRXzFdgmPhfVM6"
    ],
-   "kind": "post"
+   "kind": "post",
+   "events": [
+    "2026-05-16"
+   ]
   },
   {
    "id": "dc1503225593758748672",
@@ -877,7 +938,10 @@
    "extraLinks": [
     "https://www.facebook.com/share/p/1DijZcCbvN/?mibextid=wwXIfr"
    ],
-   "kind": "post"
+   "kind": "post",
+   "events": [
+    "2026-05-19"
+   ]
   },
   {
    "id": "dc1502171529658503319",
@@ -898,7 +962,10 @@
    "extraLinks": [
     "https://www.facebook.com/share/p/1GthHQDLdU/?mibextid=wwXIfr"
    ],
-   "kind": "post"
+   "kind": "post",
+   "events": [
+    "2026-05-25"
+   ]
   },
   {
    "id": "dc1502171146013900880",
@@ -919,7 +986,10 @@
    "extraLinks": [
     "https://www.facebook.com/share/p/1ATgoKmKjf/?mibextid=wwXIfr"
    ],
-   "kind": "post"
+   "kind": "post",
+   "events": [
+    "2026-05-21"
+   ]
   },
   {
    "id": "dc1501610600940437624",
@@ -961,7 +1031,10 @@
    "extraLinks": [
     "https://www.facebook.com/share/p/18W36216s1/"
    ],
-   "kind": "post"
+   "kind": "post",
+   "events": [
+    "2026-05-21"
+   ]
   },
   {
    "id": "dc1499186002865033237",
@@ -981,7 +1054,10 @@
    "extraLinks": [
     "https://www.facebook.com/share/p/17oNCg2Bg3/"
    ],
-   "kind": "post"
+   "kind": "post",
+   "events": [
+    "2026-05-05"
+   ]
   },
   {
    "id": "dc1498846301285253231",
@@ -1021,7 +1097,10 @@
    "extraLinks": [
     "https://forms.gle/XgzegFyWkkwtwYrJ8"
    ],
-   "kind": "post"
+   "kind": "post",
+   "events": [
+    "2026-05-04"
+   ]
   },
   {
    "id": "dc1491527987043107058",
@@ -1080,7 +1159,10 @@
    "extraLinks": [
     "https://www.facebook.com/share/v/1J9Yyx4ptt/?mibextid=wwXIfr"
    ],
-   "kind": "msg"
+   "kind": "msg",
+   "events": [
+    "2026-04-15"
+   ]
   },
   {
    "id": "dc1483228467532136528",
@@ -1369,7 +1451,10 @@
    "extraLinks": [
     "https://meet.google.com/bof-dzrd-jsj"
    ],
-   "kind": "post"
+   "kind": "post",
+   "events": [
+    "2026-01-13"
+   ]
   },
   {
    "id": "dc1448303677864546497",
@@ -1416,7 +1501,11 @@
     "https://luma.com/w7px7x1p",
     "https://www.instagram.com/p/DRmmQfTiQ40/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA=="
    ],
-   "kind": "post"
+   "kind": "post",
+   "events": [
+    "2025-12-20",
+    "2025-12-22"
+   ]
   },
   {
    "id": "dc1446545200859058246",
@@ -1479,7 +1568,11 @@
    "extraLinks": [
     "https://docs.google.com/document/d/1l_hADw1QibPW1iLgdLBVDKE_WDY8eMJE/edit?usp=sharing&ouid=105181934302724063711&rtpof=true&sd=true"
    ],
-   "kind": "post"
+   "kind": "post",
+   "events": [
+    "2026-01-30",
+    "2026-02-01"
+   ]
   },
   {
    "id": "dc1439056639348183092",
@@ -1499,7 +1592,10 @@
    "extraLinks": [
     "https://docs.google.com/forms/d/e/1FAIpQLSeV35xq0gEa9d502YKb36Lt5LejcXxjjYNuu-wWCsjwjno9KA/viewform"
    ],
-   "kind": "post"
+   "kind": "post",
+   "events": [
+    "2025-11-19"
+   ]
   },
   {
    "id": "dc1436286199869341767",
@@ -1520,7 +1616,10 @@
    "extraLinks": [
     "https://forms.gle/1gL6n3rcrWgWuKHF7"
    ],
-   "kind": "post"
+   "kind": "post",
+   "events": [
+    "2025-11-13"
+   ]
   },
   {
    "id": "dc1435876024096129025",
@@ -1541,7 +1640,11 @@
    "extraLinks": [
     "https://www.youtube.com/watch?v=yEaFNNeWd60"
    ],
-   "kind": "post"
+   "kind": "post",
+   "events": [
+    "2026-03-07",
+    "2026-03-08"
+   ]
   },
   {
    "id": "dc1432244275319406602",
@@ -1563,7 +1666,11 @@
     "https://forms.gle/qFn8AQJmdsxEx6ia9"
    ],
    "kind": "post",
-   "deadline": "2025-10-30"
+   "deadline": "2025-10-30",
+   "events": [
+    "2025-10-29",
+    "2025-11-01"
+   ]
   }
  ]
 }
