@@ -250,7 +250,7 @@ const today = new Date(); today.setHours(0,0,0,0);
 const daysLeft = d=>Math.round((new Date(d+"T00:00:00")-today)/864e5);
 
 /* stats */
-function renderStats(){$("#stats").innerHTML = (DC.n?`<span><b>${DC.n}</b>則立德 DC 貼文・${esc(DC.updated)} 更新</span>`:"")+`<span><b>${DATA.entries.filter(e=>e.cat==="lead").length}</b>筆立德與活動</span><span><b>${DATA.entries.length}</b>筆家傳</span><span><b>${DATA.entries.filter(e=>e.drive).length}</b>科課業雲端資料</span>`;}
+function renderStats(){$("#stats").innerHTML = (DC.n?`<span><b>${DC.n}</b>則立德 DC 貼文・${esc(DC.updated)} 更新</span>`:"")+(DC.sch?`<span><b>${DC.sch}</b>筆收件中的獎學金</span>`:"")+`<span><b>${DATA.entries.filter(e=>e.cat==="lead").length}</b>筆立德與活動</span><span><b>${DATA.entries.length}</b>筆家傳</span><span><b>${DATA.entries.filter(e=>e.drive).length}</b>科課業雲端資料</span>`;}
 const DC={n:0,updated:""};renderStats();
 
 /* library */
@@ -326,7 +326,7 @@ $("#gDetail").addEventListener("click",ev=>{const j=ev.target.closest("[data-jum
 new ResizeObserver(drawEdges).observe(gEl);
 
 /* deadlines */
-function renderDeadlines(){const up=DATA.entries.filter(e=>e.deadline&&daysLeft(e.deadline)>=0).sort((a,b)=>a.deadline.localeCompare(b.deadline)).slice(0,3);const recent=DATA.entries.filter(e=>e.id.startsWith("dc")&&!up.includes(e)).sort((a,b)=>b.date.localeCompare(a.date)).slice(0,6-up.length);const soon=[...up,...recent];$("#soonBox").hidden=!soon.length;$("#soon").innerHTML=soon.map(e=>`<button class="soon-card" data-entry="${e.id}"><span class="soon-d">${e.deadline&&daysLeft(e.deadline)>=0?(daysLeft(e.deadline)===0?"今天截止":`還有 ${daysLeft(e.deadline)} 天`):esc(e.date.slice(5).replace("-","/"))}</span><b>${esc(e.title)}</b><span class="note">${esc(e.source)}</span></button>`).join("");const dls=DATA.entries.filter(e=>e.deadline&&daysLeft(e.deadline)>-30).sort((a,b)=>daysLeft(a.deadline)<0===daysLeft(b.deadline)<0?(daysLeft(a.deadline)<0?b.deadline.localeCompare(a.deadline):a.deadline.localeCompare(b.deadline)):(daysLeft(a.deadline)<0?1:-1));
+function renderDeadlines(){const up=DATA.entries.filter(e=>e.id.startsWith("dc")&&e.deadline&&daysLeft(e.deadline)>=0).sort((a,b)=>a.deadline.localeCompare(b.deadline)).slice(0,3);const recent=DATA.entries.filter(e=>e.id.startsWith("dc")&&!up.includes(e)).sort((a,b)=>b.date.localeCompare(a.date)).slice(0,6-up.length);const soon=[...up,...recent];$("#soonBox").hidden=!soon.length;$("#soon").innerHTML=soon.map(e=>`<button class="soon-card" data-entry="${e.id}"><span class="soon-d">${e.deadline&&daysLeft(e.deadline)>=0?(daysLeft(e.deadline)===0?"今天截止":`還有 ${daysLeft(e.deadline)} 天`):esc(e.date.slice(5).replace("-","/"))}</span><b>${esc(e.title)}</b><span class="note">${esc(e.source)}</span></button>`).join("");const dls=DATA.entries.filter(e=>e.deadline&&daysLeft(e.deadline)>-30).sort((a,b)=>daysLeft(a.deadline)<0===daysLeft(b.deadline)<0?(daysLeft(a.deadline)<0?b.deadline.localeCompare(a.deadline):a.deadline.localeCompare(b.deadline)):(daysLeft(a.deadline)<0?1:-1));
 $("#dlList").innerHTML=dls.length?"":`<p class="note">目前沒有即將截止的活動。DC 上的活動、競賽和獎學金同步進來後會出現在這裡。</p>`;if(dls.length)$("#dlList").innerHTML=dls.map(e=>{const d=daysLeft(e.deadline);return `<div class="dl-row"><span class="d">${e.deadline.replace(/-/g,"/")}</span><div><b>${esc(e.title)}</b><div class="note">${esc(e.summary)}</div></div><span class="left${d<0?" past":""}">${d<0?(e.id.startsWith("dc")?"已截止":"已截止，明年留意"):d===0?"今天截止":`還有 ${d} 天`}</span></div>`}).join("");}
 renderDeadlines();
 
@@ -379,15 +379,22 @@ async function ask(q){
 $("#askForm").addEventListener("submit",ev=>{ev.preventDefault();ask($("#q").value)});
 document.querySelectorAll("[data-q]").forEach(b=>b.onclick=()=>{$("#q").value=b.dataset.q;ask(b.dataset.q)});
 
-/* DC 每日同步：有 dc.json 就併進家傳 */
-fetch("dc.json",{cache:"no-store"}).then(r=>r.ok?r.json():null).then(d=>{
-  if(!d||!Array.isArray(d.entries)||!d.entries.length)return;
+/* 每日同步：DC 貼文、清華助學系統獎學金 */
+function mergeExtra(d){
+  if(!d||!Array.isArray(d.entries))return [];
   const fresh=d.entries.filter(e=>e&&e.id&&e.title&&CATS[e.cat]&&!byId[e.id]);
   DATA.entries.push(...fresh);
   byId=Object.fromEntries(DATA.entries.map(e=>[e.id,e]));
   corpus=DATA.entries.map(e=>({e,text:(e.title+" "+e.summary+" "+(e.tags||[]).join(" ")+" "+(e.tips||[]).join(" ")+" "+e.grade).toLowerCase()}));
-  kb=DATA.entries.map(e=>`[${e.id}] ${e.title}｜${e.grade}｜${CATS[e.cat]}｜${e.summary}｜出處 ${e.source} ${e.date}`).join("\n");
-  DC.n=fresh.length;DC.updated=d.updated||"";renderStats();renderChips();renderCards();renderDeadlines();
-}).catch(()=>{});
+  kb=DATA.entries.map(e=>`[${e.id}] ${e.title}｜${e.grade}｜${CATS[e.cat]}｜${e.summary}${e.deadline?"｜截止 "+e.deadline:""}｜出處 ${e.source} ${e.date}`).join("\n");
+  return fresh;
+}
+const getJSON=u=>fetch(u,{cache:"no-store"}).then(r=>r.ok?r.json():null).catch(()=>null);
+Promise.all([getJSON("dc.json"),getJSON("scholarships.json")]).then(([dc,sch])=>{
+  const a=mergeExtra(dc), b=mergeExtra(sch);
+  if(!a.length&&!b.length)return;
+  DC.n=a.length;DC.updated=(dc&&dc.updated)||(sch&&sch.updated)||"";DC.sch=b.length;
+  renderStats();renderChips();renderCards();renderDeadlines();
+});
 </script>
 </body></html>

@@ -1,4 +1,4 @@
-name: 每天同步 DC 家傳
+name: 每天同步 DC 家傳與獎學金
 
 on:
   schedule:
@@ -22,12 +22,14 @@ jobs:
           DISCORD_GUILD_ID: ${{ secrets.DISCORD_GUILD_ID }}
           DISCORD_CHANNEL_IDS: ${{ secrets.DISCORD_CHANNEL_IDS }}
         run: python3 scripts/dc_sync.py
+      - name: 讀清華助學系統的獎學金
+        run: python3 scripts/scholarship_sync.py || echo "獎學金這次抓取失敗，沿用舊資料"
       - name: 有新內容就更新網站
         run: |
-          if [ -n "$(git status --porcelain dc.json)" ]; then
+          if [ -n "$(git status --porcelain dc.json scholarships.json)" ]; then
             git config user.name "lide-heritage-bot"
             git config user.email "lide-heritage-bot@users.noreply.github.com"
-            git add dc.json
-            git commit -m "同步 DC 家傳 $(TZ=Asia/Taipei date +%F)"
+            git add dc.json scholarships.json
+            git commit -m "同步 DC 家傳與獎學金 $(TZ=Asia/Taipei date +%F)"
             git push
           fi
