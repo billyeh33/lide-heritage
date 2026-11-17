@@ -199,6 +199,18 @@ nav.tabs a{font-size:18px;padding:9px 22px}
   .grid,.soon{grid-template-columns:1fr}
   .lede{font-size:17px}
 }
+
+.pin{position:relative;background:var(--sun-soft);border:3px solid var(--line);border-radius:26px;padding:22px 26px;box-shadow:6px 6px 0 var(--ink);margin:6px 0 30px;display:grid;gap:12px}
+.pin-head{display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+.pin-head h2{font-size:30px}
+.pin-tag{font-family:var(--f-display);background:var(--pink);border:2.5px solid var(--line);border-radius:999px;padding:2px 14px;font-size:16px;transform:rotate(-5deg);box-shadow:2px 2px 0 var(--ink)}
+.pin-lede{margin:0;font-size:18px}
+.pin-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px}
+.pin-btn{display:grid;gap:2px;text-decoration:none;color:var(--ink);background:#fff;border:3px solid var(--line);border-radius:20px;padding:14px 20px;box-shadow:4px 4px 0 var(--ink);transition:transform .08s,box-shadow .08s}
+.pin-btn:hover{transform:translate(-2px,-2px);box-shadow:6px 6px 0 var(--ink)}
+.pin-btn b{font-family:var(--f-display);font-weight:400;font-size:28px}
+.pin-btn span{font-size:16px;color:var(--muted)}
+.pb-pi{background:var(--sky-soft)}.pb-wendy{background:var(--pink-soft)}.pb-dc{background:var(--mint-soft)}
 </style>
 
 <div class="wrap">
@@ -231,6 +243,16 @@ nav.tabs a{font-size:18px;padding:9px 22px}
 </nav>
 
 <section class="view" id="v-library">
+  <section class="pin" aria-labelledby="pinH">
+    <div class="pin-head"><span class="pin-tag">置頂</span><h2 id="pinH">聊勝於無：跟老皮、Wendy 約一對一</h2></div>
+    <p class="pin-lede">想聊修課、專案、升學或生活，都可以約。先看時段表找空檔，再到 DC 原文照聯絡方式約時間。</p>
+    <div class="pin-grid">
+      <a class="pin-btn pb-pi" href="https://docs.google.com/spreadsheets/d/1rtxgvZ6X_pGOIjntugnHllgKG6WuUg0ZmfYQ0zWJjp8/edit?usp=sharing" target="_blank" rel="noopener"><b>老皮</b><span>聊勝於無時段表 ↗</span></a>
+      <a class="pin-btn pb-wendy" href="https://docs.google.com/spreadsheets/d/1tXHoxKuKb3dFvKmy2cdFlS7B0SMxQKUs/edit?gid=156806811" target="_blank" rel="noopener"><b>Wendy</b><span>聊勝於無時段表 ↗</span></a>
+      <a class="pin-btn pb-dc" href="https://discord.com/channels/1045122058515910686/1336965701055025214/threads/1559354081426804797" target="_blank" rel="noopener"><b>怎麼約</b><span>到 DC 看聯絡方式 ↗</span></a>
+    </div>
+    <p class="note">約的時候告訴對方三件事：你是誰、哪一屆，想約的時段，想聊的主題。</p>
+  </section>
   <div id="soonBox" hidden><h2 class="soon-h">立德最近的活動</h2><div class="soon" id="soon"></div></div>
   <div class="filters" id="catChips"></div>
   <div class="filters">
