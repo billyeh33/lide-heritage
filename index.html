@@ -972,7 +972,7 @@ Promise.all([Promise.all(["bulletin.json","board_dc.json"].map(u=>fetch(u,{cache
   BB=[...map.values()].sort((a,b)=>b.created.localeCompare(a.created)); renderBoard(); renderRemind();
 });
 /* 立德課表 */
-var SCHED={"term": "115 學年第 1 學期", "classes": {"F": [{"date": "2026-09-09", "title": "定向立德咖啡館", "type": "課程"}, {"date": "2026-09-16", "title": "典範學習：Talent Booster 洪偉騰", "type": "典範學習"}, {"date": "2026-09-30", "title": "典範學習", "type": "典範學習", "note": "講者待補"}, {"date": "2026-10-14", "title": "典範學習：顏志行 James", "type": "典範學習"}, {"date": "2026-11-18", "title": "專題最後細修工作坊", "type": "工作坊", "note": "原定 Derrick 的典範學習，改成專題最後細修工作坊"}, {"date": "2026-11-20", "title": "Tesla 企業參訪", "type": "參訪", "note": "另行報名"}, {"date": "2026-11-25", "title": "專題發表／影響力特展", "type": "發表"}, {"date": "2026-12-09", "time": "18:30", "title": "Foxtrot 結業式", "type": "典禮", "note": "地點名人堂，資料來自 DC 公告"}], "G": [], "H": []}};
+var SCHED={"term": "115 學年第 1 學期", "classes": {"F": [{"date": "2026-09-09", "title": "定向立德咖啡館", "type": "課程"}, {"date": "2026-09-16", "title": "典範學習：Talent Booster 洪偉騰", "type": "典範學習"}, {"date": "2026-09-30", "title": "典範學習：蔣敬三 Happy 哥", "type": "典範學習"}, {"date": "2026-10-14", "title": "典範學習：顏志行 James", "type": "典範學習"}, {"date": "2026-11-18", "title": "專題最後細修工作坊", "type": "工作坊", "note": "原定 Derrick 的典範學習，改成專題最後細修工作坊"}, {"date": "2026-11-20", "title": "Tesla 企業參訪", "type": "參訪", "note": "另行報名"}, {"date": "2026-11-25", "title": "專題發表／影響力特展", "type": "發表"}, {"date": "2026-12-09", "time": "18:30", "title": "Foxtrot 結業式", "type": "典禮", "note": "地點名人堂，資料來自 DC 公告"}], "G": [], "H": []}};
 let scGen=(()=>{try{return localStorage.getItem("scGen")||"F"}catch(e){return "F"}})();
 function renderSchedule(){
   const W=["日","一","二","三","四","五","六"], C=(SCHED&&SCHED.classes)||{};
