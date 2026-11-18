@@ -430,6 +430,34 @@ nav.tabs a{font-size:18px;padding:9px 22px}
 .lide-logo{width:150px;height:auto;background:#002e4f;border-radius:22px;padding:16px;border:3px solid var(--line);box-shadow:4px 4px 0 var(--ink)}
 @media (max-width:720px){.site-foot{grid-template-columns:1fr}.site-foot>*{grid-column:1!important}.foot-logo{grid-row:auto;width:90px}.lide-hero{grid-template-columns:1fr}.lide-logo{width:110px}}
 @media (max-width:1000px){.hero .deco{display:none}}
+
+.sc-head{display:flex;justify-content:space-between;align-items:flex-end;gap:16px;flex-wrap:wrap;margin-bottom:16px}
+.sc-head h2{font-size:32px}
+.sc-head p{margin:4px 0 0;color:var(--muted)}
+.sc-tabs{display:flex;gap:10px;flex-wrap:wrap}
+.sc-tab{display:grid;gap:0;text-align:left;font:inherit;font-family:var(--f-display);font-size:17px;background:#fff;color:var(--ink);border:3px solid var(--line);border-radius:16px;padding:6px 16px 6px 14px;cursor:pointer;box-shadow:3px 3px 0 var(--ink);border-top:10px solid var(--c)}
+.sc-tab span{font-family:var(--f-body);font-size:12px;color:var(--muted)}
+.sc-tab.on{background:var(--bg);color:#fff}
+.sc-tab.on span{color:#fff;opacity:.9}
+.sc-next{display:grid;gap:2px;background:#fff;border:3px solid var(--line);border-left:12px solid var(--c);border-radius:20px;padding:14px 20px;box-shadow:5px 5px 0 var(--ink);margin-bottom:18px}
+.sc-nk{font-family:var(--f-display);font-size:15px;color:var(--c)}
+.sc-next b{font-family:var(--f-display);font-weight:400;font-size:24px}
+.sc-next span:last-child{color:var(--muted);font-size:15px}
+.sc-list{list-style:none;margin:0 0 14px;padding:0;display:grid;gap:10px;position:relative}
+.sc-item{display:grid;grid-template-columns:90px minmax(0,1fr) auto;gap:14px;align-items:center;background:#fff;border:2.5px solid var(--line);border-radius:16px;padding:10px 16px;box-shadow:3px 3px 0 var(--ink)}
+.sc-item.past{opacity:.55;box-shadow:none}
+.sc-item.today,.sc-item.next{border-color:var(--c);box-shadow:4px 4px 0 var(--c)}
+.sc-item.today{background:var(--sun-soft)}
+.sc-date{display:grid;justify-items:center;line-height:1.15;border-right:2px dashed var(--soft-line);padding-right:12px}
+.sc-date b{font-family:var(--f-display);font-weight:400;font-size:24px}
+.sc-date small{font-size:12.5px;color:var(--muted)}
+.sc-t{font-family:var(--f-display);font-size:19px;display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.sc-badge{font-family:var(--f-body);font-size:12px;background:var(--c);color:#fff;border-radius:999px;padding:1px 10px}
+.sc-note{font-size:14px;color:var(--muted)}
+.sc-type{font-size:13px;background:var(--sky-soft);border:2px solid var(--line);border-radius:999px;padding:1px 10px;white-space:nowrap}
+.sc-empty{background:#fff;border:2.5px dashed var(--soft-line);border-radius:16px;padding:20px;color:var(--muted)}
+.rem-item.sc .rem-date{background:var(--mint)}
+@media (max-width:640px){.sc-item{grid-template-columns:72px minmax(0,1fr)}.sc-type{grid-column:2;justify-self:start}}
 </style>
 
 <div class="wrap">
@@ -457,6 +485,7 @@ nav.tabs a{font-size:18px;padding:9px 22px}
 <nav class="tabs" aria-label="分頁">
   <a href="#library">家傳庫</a>
   <a href="#board">作業佈告</a>
+  <a href="#schedule">立德課表</a>
   <a href="#freshman">立德新生</a>
   <a href="#lide">關於立德</a>
   <a href="#map">興趣地圖</a>
@@ -560,6 +589,14 @@ nav.tabs a{font-size:18px;padding:9px 22px}
     <div class="cr-stream" id="crStream"><div class="cr-card cr-empty-card"><p>還沒有佈告。管理者按右上角「發布佈告」就會出現在這裡。</p></div></div>
     </div>
   </div>
+</section>
+
+<section class="view" id="v-schedule" hidden>
+  <div class="sc-head"><div><h2>本學期立德課表</h2><p id="scTerm"></p></div>
+    <div class="sc-tabs" id="scTabs" role="tablist"></div></div>
+  <div class="sc-next" id="scNext" hidden></div>
+  <ol class="sc-list" id="scList"></ol>
+  <p class="note">課表有異動或要補 G、H 屆，請聯絡葉家源。接下來三週的課也會出現在首頁近期提醒和訂閱行事曆。</p>
 </section>
 
 <section class="view" id="v-freshman" hidden>
@@ -799,10 +836,11 @@ function renderRemind(){
     if(e.deadline){const n=daysLeft(e.deadline); if(n>=0&&n<=10) items.push({d:e.deadline,n,e,kind:"報名截止"});}
   }
   for(const p of (typeof allPosts==="function"&&typeof MY!=="undefined"?allPosts():(BB||[]))){if(p.done)continue;const n=bbDue(p); if(n!==null&&n>=0&&n<=10) items.push({d:p.due,n,e:{id:"bb"+p.number,title:(p.mine?"我的｜":GENS[p.gen]?GENS[p.gen].code+"｜":"")+p.title},kind:"作業截止 "+p.dueTime,bb:p.number});}
+  for(const [g,arr] of Object.entries((typeof SCHED!=="undefined"&&SCHED&&SCHED.classes)||{})) for(const x of arr){const n=daysLeft(x.date); if(n>=0&&n<=21) items.push({d:x.date,n,e:{id:"sc"+g+x.date,title:g+"｜"+x.title},kind:"立德課程"+(x.time?" "+x.time:""),sc:g});}
   items.sort((a,b)=>a.d.localeCompare(b.d)||(a.kind==="活動"?1:-1));
   const seen=new Set(), list=items.filter(x=>{const k=x.e.id+x.kind;if(seen.has(k))return false;seen.add(k);return true}).slice(0,8);
   $("#remindBox").hidden=!list.length;
-  $("#remind").innerHTML=list.map(x=>{const dt=new Date(x.d+"T00:00:00");return `<button class="rem-item ${x.kind.startsWith("作業")?"hw":x.kind==="報名截止"?"due":""}" ${x.bb?`data-bb="${x.bb}"`:`data-entry="${x.e.id}"`}>
+  $("#remind").innerHTML=list.map(x=>{const dt=new Date(x.d+"T00:00:00");return `<button class="rem-item ${x.kind.startsWith("作業")?"hw":x.kind==="報名截止"?"due":x.sc?"sc":""}" ${x.sc?`data-sc="${x.sc}"`:x.bb?`data-bb="${x.bb}"`:`data-entry="${x.e.id}"`}>
     <span class="rem-date"><b>${dt.getMonth()+1}/${dt.getDate()}</b><small>週${W[dt.getDay()]}</small></span>
     <span class="rem-body"><span class="rem-kind">${x.kind}・${x.n===0?"今天":x.n===1?"明天":"還有 "+x.n+" 天"}</span><span class="rem-title">${esc(x.e.title)}</span></span></button>`}).join("");
 }
@@ -932,8 +970,28 @@ Promise.all([Promise.all(["bulletin.json","board_dc.json"].map(u=>fetch(u,{cache
   if(csv){ for(const p of base){ if(String(p.id).startsWith("gf")&&!live.find(x=>String(x.id)===String(p.id))) map.delete(String(p.id)); } }
   BB=[...map.values()].sort((a,b)=>b.created.localeCompare(a.created)); renderBoard(); renderRemind();
 });
+/* 立德課表 */
+var SCHED={"term": "115 學年第 1 學期", "classes": {"F": [{"date": "2026-09-09", "title": "定向立德咖啡館", "type": "課程"}, {"date": "2026-09-16", "title": "典範學習：Talent Booster 洪偉騰", "type": "典範學習"}, {"date": "2026-09-30", "title": "典範學習", "type": "典範學習", "note": "講者待補"}, {"date": "2026-10-14", "title": "典範學習：顏志行 James", "type": "典範學習"}, {"date": "2026-11-18", "title": "專題最後細修工作坊", "type": "工作坊", "note": "原定 Derrick 的典範學習，改成專題最後細修工作坊"}, {"date": "2026-11-20", "title": "Tesla 企業參訪", "type": "參訪", "note": "另行報名"}, {"date": "2026-11-25", "title": "專題發表／影響力特展", "type": "發表"}, {"date": "2026-12-09", "time": "18:30", "title": "Foxtrot 結業式", "type": "典禮", "note": "地點名人堂，資料來自 DC 公告"}], "G": [], "H": []}};
+let scGen=(()=>{try{return localStorage.getItem("scGen")||"F"}catch(e){return "F"}})();
+function renderSchedule(){
+  const W=["日","一","二","三","四","五","六"], C=(SCHED&&SCHED.classes)||{};
+  $("#scTerm").textContent=(SCHED&&SCHED.term?SCHED.term+"・":"")+"F、G、H 三屆分開看";
+  $("#scTabs").innerHTML=Object.entries(GENS).map(([k,g])=>`<button class="sc-tab${scGen===k?" on":""}" data-g="${k}" role="tab" aria-selected="${scGen===k}" style="--c:${g.color};--bg:${g.bg}">${g.full}<span>${(C[k]||[]).length?(C[k]||[]).length+" 堂":"未提供"}</span></button>`).join("");
+  const list=[...(C[scGen]||[])].sort((a,b)=>a.date.localeCompare(b.date));
+  const nextI=list.findIndex(x=>daysLeft(x.date)>=0), nx=list[nextI];
+  $("#scNext").hidden=!nx;
+  if(nx){const n=daysLeft(nx.date), dt=new Date(nx.date+"T00:00:00");
+    $("#scNext").innerHTML=`<span class="sc-nk">${n===0?"今天":"下一堂"}</span><b>${dt.getMonth()+1}/${dt.getDate()}（${W[dt.getDay()]}）${nx.time?" "+esc(nx.time):""}　${esc(nx.title)}</b><span>${n===0?"就是今天":n===1?"明天":"還有 "+n+" 天"}${nx.note?"・"+esc(nx.note):""}</span>`;
+    $("#scNext").style.setProperty("--c",GENS[scGen].color)}
+  $("#scList").innerHTML=list.length?list.map((x,i)=>{const n=daysLeft(x.date), dt=new Date(x.date+"T00:00:00"), st=n<0?"past":n===0?"today":i===nextI?"next":"";
+    return `<li class="sc-item ${st}" style="--c:${GENS[scGen].color}"><span class="sc-date"><b>${dt.getMonth()+1}/${dt.getDate()}</b><small>週${W[dt.getDay()]}${x.time?" "+esc(x.time):""}</small></span>
+      <div class="sc-body"><div class="sc-t">${esc(x.title)}${st==="today"?'<span class="sc-badge">今天</span>':st==="next"?'<span class="sc-badge">下一堂</span>':""}</div>${x.note?`<div class="sc-note">${esc(x.note)}</div>`:""}</div>
+      <span class="sc-type">${esc(x.type||"課程")}</span></li>`}).join(""):`<li class="sc-empty">${GENS[scGen].full}的課表還沒有資料，拿到後請聯絡葉家源補上。</li>`;
+}
+$("#scTabs").addEventListener("click",ev=>{const b=ev.target.closest("[data-g]");if(!b)return;scGen=b.dataset.g;try{localStorage.setItem("scGen",scGen)}catch(e){}renderSchedule()});
+renderSchedule();
 /* routing */
-const views=["library","board","freshman","lide","map","deadlines","trial","about"];
+const views=["library","board","schedule","freshman","lide","map","deadlines","trial","about"];
 function route(){const h=location.hash.slice(1);const v=views.includes(h)?h:"library";
   views.forEach(x=>{$("#v-"+x).hidden=x!==v});
   document.querySelectorAll("nav.tabs a").forEach(a=>a.toggleAttribute("aria-current",a.getAttribute("href")==="#"+v)&&a.setAttribute("aria-current","page"));
@@ -954,7 +1012,7 @@ function showAnswer(text,ids,mode){
   a.innerHTML=`<div class="txt">${esc(text)}</div>${ids.length?`<div class="cites">${ids.filter(i=>byId[i]).map(i=>`<button class="cite" data-entry="${i}">${esc(byId[i].title)}</button>`).join("")}</div>`:""}<div class="mode">${mode}</div>`;
 }
 $("#answer").addEventListener("click",ev=>{const b=ev.target.closest("[data-entry]");if(b)showEntry(b.dataset.entry)});
-$("#remind").addEventListener("click",ev=>{const bb=ev.target.closest("[data-bb]");if(bb){location.hash="#board";setTimeout(()=>document.getElementById("bb-"+bb.dataset.bb)?.scrollIntoView({behavior:"smooth",block:"center"}),80);return}const b=ev.target.closest("[data-entry]");if(b)showEntry(b.dataset.entry)});
+$("#remind").addEventListener("click",ev=>{const sc=ev.target.closest("[data-sc]");if(sc){scGen=sc.dataset.sc;renderSchedule();location.hash="#schedule";return}const bb=ev.target.closest("[data-bb]");if(bb){location.hash="#board";setTimeout(()=>document.getElementById("bb-"+bb.dataset.bb)?.scrollIntoView({behavior:"smooth",block:"center"}),80);return}const b=ev.target.closest("[data-entry]");if(b)showEntry(b.dataset.entry)});
 $("#soon").addEventListener("click",ev=>{const b=ev.target.closest("[data-entry]");if(b)showEntry(b.dataset.entry)});
 let ctrl=null;
 async function ask(q){

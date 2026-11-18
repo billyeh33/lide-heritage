@@ -63,6 +63,10 @@ def main():
         if p.get("kind") == "作業" and p.get("due"):
             add(f"{p['id']}-due", p["due"], f"【{G.get(p['gen'], '')} 作業 {p.get('dueTime', '')}】{p['title']}",
                 "到 Google Classroom 繳交。" + (p.get("classroom") or ""), p.get("classroom") or SITE)
+    for g, arr in (load("schedule.json").get("classes") or {}).items():
+        for x in arr:
+            add(f"sc-{g}-{x['date']}", x["date"], f"【立德 {g} 課程{(' ' + x['time']) if x.get('time') else ''}】{x['title']}",
+                x.get("note", ""), SITE + "#schedule")
     for e in load("calendar.json").get("events", []):
         name = f"{e['label']}開始" if e["kind"] == "break" else "開學上課"
         add(f"cal-{e['date']}-{e['kind']}", e["date"], f"【清大】{name}", e.get("title", ""), SITE)
