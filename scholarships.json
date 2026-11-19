@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-19 05:44",
+ "updated": "2026-11-19 20:33",
  "entries": [
   {
    "id": "sch11501-2525",
@@ -27,6 +27,36 @@
    "flags": [
     "poor",
     "grad"
+   ],
+   "amountMax": 15000
+  },
+  {
+   "id": "sch11501-2523",
+   "cat": "perk",
+   "title": "中華國際財經創意交流協會感恩與傳承獎學金暨藝文獎",
+   "grade": "不限",
+   "tags": [
+    "獎學金",
+    "校外"
+   ],
+   "summary": "金額 3000–15000 元。申請流程：(1)本系統線上點選「我要申請」，留下申請紀錄 (2)並於申請截止日前繳交紙本申請文件至生輔組辦公室，始完成申請程序。惟申請藝文獎者，請逕行向校外單位提出申請，無須繳交紙本文件至生輔組。 一、 2026年第12屆中華國際財經創意交流協會「感恩與傳承」獎學金 （一）「感恩…",
+   "tips": [
+    "收件 2026-10-06 到 2026-11-20",
+    "系統登記後繳紙本",
+    "年級：大二、大三、大四、大四(含)以上、碩班不限、博班不限",
+    "承辦 林哲瑄 分機 34647"
+   ],
+   "source": "清華助學系統 公告 11501-2523",
+   "date": "2026-10-06",
+   "deadline": "2026-11-20",
+   "link": "https://meo110.wwlc.nthu.edu.tw/",
+   "linkLabel": "到清華助學系統申請",
+   "extraLinks": [
+    "https://nthu-scholarship-files.s3.ap-northeast-1.amazonaws.com/bG8sTVQLWm5YlehVK8TDjzP7rs97bL7TZEasmsz9nIc.pdf"
+   ],
+   "flags": [
+    "grad",
+    "open"
    ],
    "amountMax": 15000
   },
@@ -476,33 +506,6 @@
     "grad"
    ],
    "amountMax": 6000
-  },
-  {
-   "id": "moe882AC6F2C0F2D795",
-   "cat": "perk",
-   "title": "「感恩與傳承獎學金」、「感恩與傳承藝文獎」",
-   "grade": "不限",
-   "tags": [
-    "獎學金",
-    "民間"
-   ],
-   "summary": "提供單位：中華國際財經創意交流協會。",
-   "tips": [
-    "申請期間 115/11/01～115/11/30",
-    "學校/機構報名；推薦報名；個人報名",
-    "學制：研究所、大專院校"
-   ],
-   "source": "教育部圓夢助學網",
-   "date": "2026-11-19",
-   "deadline": "2026-11-30",
-   "link": "https://www.edu.tw/helpdreams/Grants_Content.aspx?n=2BBF7170197CE7D3&sms=0A01A72AAB9E5CD4&s=882AC6F2C0F2D795",
-   "linkLabel": "看完整辦法",
-   "extraLinks": [],
-   "flags": [
-    "grad",
-    "open"
-   ],
-   "amountMax": 0
   },
   {
    "id": "sch11501-2546",
