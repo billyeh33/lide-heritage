@@ -1,35 +1,6 @@
 {
- "updated": "2026-11-23 01:39",
+ "updated": "2026-11-24 01:57",
  "entries": [
-  {
-   "id": "sch11501-2545",
-   "cat": "perk",
-   "title": "新竹市至愛服務協會就學障友獎學金",
-   "grade": "不限",
-   "tags": [
-    "獎學金",
-    "校外"
-   ],
-   "summary": "金額 6000 元　限 身心障礙學生。申請流程:(1)本系統點選「我要申請」，留下申請紀錄。(2)申請截止日前，繳交紙本申請文件至生輔組辦公室。 申請需知 (一)凡設籍新竹縣、市內清寒家庭之就學身心障礙學生，經就讀或訓練之公私立學校、或身心障礙福利社團或機構申請。 (二)申請人須經縣市鄉鎮公所登記為低收入戶者，或經該…",
-   "tips": [
-    "收件 2026-11-09 到 2026-11-23",
-    "系統登記後繳紙本",
-    "承辦 林哲瑄 分機 34647"
-   ],
-   "source": "清華助學系統 公告 11501-2545",
-   "date": "2026-11-09",
-   "deadline": "2026-11-23",
-   "link": "https://meo110.wwlc.nthu.edu.tw/",
-   "linkLabel": "到清華助學系統申請",
-   "extraLinks": [
-    "https://nthu-scholarship-files.s3.ap-northeast-1.amazonaws.com/bQxKeKtUpj9mPQuoEMAx0bMwim9Cf2CPsaX2x2CEChY.pdf"
-   ],
-   "flags": [
-    "poor",
-    "grad"
-   ],
-   "amountMax": 6000
-  },
   {
    "id": "sch11501-2403",
    "cat": "perk",
@@ -433,7 +404,7 @@
     "學制：研究所、大專院校"
    ],
    "source": "教育部圓夢助學網",
-   "date": "2026-11-23",
+   "date": "2026-11-24",
    "deadline": "2026-11-30",
    "link": "https://www.edu.tw/helpdreams/Grants_Content.aspx?n=2BBF7170197CE7D3&sms=0A01A72AAB9E5CD4&s=882AC6F2C0F2D795",
    "linkLabel": "看完整辦法",
@@ -784,7 +755,7 @@
     "學制：大學院校、大專院校、高中職、國中、國小"
    ],
    "source": "教育部圓夢助學網",
-   "date": "2026-11-23",
+   "date": "2026-11-24",
    "deadline": "2026-12-31",
    "link": "https://www.edu.tw/helpdreams/Grants_Content.aspx?n=2BBF7170197CE7D3&sms=0A01A72AAB9E5CD4&s=0984A85A3A9A6677",
    "linkLabel": "看完整辦法",
@@ -810,7 +781,7 @@
     "學制：研究所、大專院校、五專前三年、高中職、國中、國小"
    ],
    "source": "教育部圓夢助學網",
-   "date": "2026-11-23",
+   "date": "2026-11-24",
    "deadline": "2026-12-31",
    "link": "https://www.edu.tw/helpdreams/Grants_Content.aspx?n=2BBF7170197CE7D3&sms=0A01A72AAB9E5CD4&s=6A6B57F5FE966020",
    "linkLabel": "看完整辦法",
