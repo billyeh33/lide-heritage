@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-24 01:57",
+ "updated": "2026-11-24 11:54",
  "entries": [
   {
    "id": "sch11501-2403",
@@ -416,6 +416,37 @@
    "amountMax": 0
   },
   {
+   "id": "sch11501-2548",
+   "cat": "perk",
+   "title": "嘉義市補助高中職及大專院校學生學習活動計畫",
+   "grade": "不限",
+   "tags": [
+    "獎學金",
+    "校外"
+   ],
+   "summary": "金額 最高 18000 元　限 低收入、中低收入、設籍嘉義市。申請流程：(1)本系統線上點選「我要申請」，留下申請紀錄(2)於收件截止日前，寄送申請文件至校外設獎單位指定地址，始完成申請程序。 條件資格： (一)設籍嘉義市一年以上，現就讀國內大專院校且具有學籍之在學學生。 (二)符合社會救助法之中低收、低收入戶標準。 補助方式及內容： 為鼓…",
+   "tips": [
+    "收件 2026-11-24 到 2026-12-04",
+    "系統登記後繳紙本",
+    "年級：大學部不限",
+    "承辦 林哲瑄 分機 34647"
+   ],
+   "source": "清華助學系統 公告 11501-2548",
+   "date": "2026-11-24",
+   "deadline": "2026-12-04",
+   "link": "https://meo110.wwlc.nthu.edu.tw/",
+   "linkLabel": "到清華助學系統申請",
+   "extraLinks": [
+    "https://nthu-scholarship-files.s3.ap-northeast-1.amazonaws.com/64f467e06ba83afc30f9add243630353.pdf",
+    "https://nthu-scholarship-files.s3.ap-northeast-1.amazonaws.com/a674c8efbb8548296d09432cc47f0bb6.pdf"
+   ],
+   "flags": [
+    "poor",
+    "area"
+   ],
+   "amountMax": 18000
+  },
+  {
    "id": "sch11501-2546",
    "cat": "perk",
    "title": "桃園市高級中等以上學校清寒優秀學生獎學金等六項獎學學金",
@@ -791,6 +822,36 @@
     "grad"
    ],
    "amountMax": 10000
+  },
+  {
+   "id": "sch11501-2547",
+   "cat": "perk",
+   "title": "TSIA半導體設備創新獎  (截止日期以各院/系公告為準)",
+   "grade": "不限",
+   "tags": [
+    "獎學金",
+    "校外"
+   ],
+   "summary": "金額 100000 元。✦本獎學金申請截止日期，請以各院/系公告為準✦ 獎學金之申請方式如為「院/系推薦(逕向院/系申請)」，申請截止日期以各院系公告為準。 此類獎學金於本網站公告之收件截止日為院系推薦受獎名單至生輔組之截止日期，鑒於各院系辦理情形、收件截止日不一，請務必向所屬系所確認實際收件截止日期。…",
+   "tips": [
+    "收件 2026-11-24 到 2027-01-22",
+    "系統登記後繳紙本",
+    "年級：碩班不限、博班不限",
+    "承辦 林哲瑄 分機 34647"
+   ],
+   "source": "清華助學系統 公告 11501-2547",
+   "date": "2026-11-24",
+   "deadline": "2027-01-22",
+   "link": "https://meo110.wwlc.nthu.edu.tw/",
+   "linkLabel": "到清華助學系統申請",
+   "extraLinks": [
+    "https://nthu-scholarship-files.s3.ap-northeast-1.amazonaws.com/-lU2dx2KDasDbPWYiwVgPQ0wY5XLfrTzfru3e5X7B7s.pdf"
+   ],
+   "flags": [
+    "grad",
+    "open"
+   ],
+   "amountMax": 100000
   },
   {
    "id": "sch11501-2543",
