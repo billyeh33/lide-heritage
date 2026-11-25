@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-25 08:24",
+ "updated": "2026-11-25 18:56",
  "entries": [
   {
    "id": "moe53182B822F41930C",
@@ -819,6 +819,60 @@
     "grad"
    ],
    "amountMax": 10000
+  },
+  {
+   "id": "moeF513185E9C28D29C",
+   "cat": "perk",
+   "title": "大專青年築夢助學金",
+   "grade": "不限",
+   "tags": [
+    "獎學金",
+    "民間"
+   ],
+   "summary": "金額 最高 4000 元。提供單位：社團法人台北市榮盛關懷協會。",
+   "tips": [
+    "申請期間 115/12/02～116/01/01",
+    "請於申請期限內填寫協會之報名表，臺灣、港澳及國際學生專區：：https://forms.gle/MEABJUhCWac5",
+    "學制：研究所、大專院校"
+   ],
+   "source": "教育部圓夢助學網",
+   "date": "2026-11-25",
+   "deadline": "2027-01-01",
+   "link": "https://www.edu.tw/helpdreams/Grants_Content.aspx?n=2BBF7170197CE7D3&sms=0A01A72AAB9E5CD4&s=F513185E9C28D29C",
+   "linkLabel": "看完整辦法",
+   "extraLinks": [],
+   "flags": [
+    "grad",
+    "open"
+   ],
+   "amountMax": 4000
+  },
+  {
+   "id": "moe1E77F44E3255EFB0",
+   "cat": "perk",
+   "title": "社團法人中華民國隧道協會「福清青年獎學金」",
+   "grade": "不限",
+   "tags": [
+    "獎學金",
+    "民間"
+   ],
+   "summary": "金額 30000 元。提供單位：中華民國隧道協會。",
+   "tips": [
+    "申請期間 115/11/25～116/01/05",
+    "向該協會申請https://forms.gle/Sibq68RM3wQH1DR97",
+    "學制：研究所、大學院校、大專院校"
+   ],
+   "source": "教育部圓夢助學網",
+   "date": "2026-11-25",
+   "deadline": "2027-01-05",
+   "link": "https://www.edu.tw/helpdreams/Grants_Content.aspx?n=2BBF7170197CE7D3&sms=0A01A72AAB9E5CD4&s=1E77F44E3255EFB0",
+   "linkLabel": "看完整辦法",
+   "extraLinks": [],
+   "flags": [
+    "grad",
+    "open"
+   ],
+   "amountMax": 30000
   },
   {
    "id": "sch11501-2547",
