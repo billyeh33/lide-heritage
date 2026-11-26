@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-26 11:58",
+ "updated": "2026-11-26 21:44",
  "entries": [
   {
    "id": "sch11501-2544",
@@ -907,6 +907,36 @@
     "area"
    ],
    "amountMax": 20000
+  },
+  {
+   "id": "sch11501-2549",
+   "cat": "perk",
+   "title": "台積電生物多樣性獎學金暨提案獎勵",
+   "grade": "不限",
+   "tags": [
+    "獎學金",
+    "校外"
+   ],
+   "summary": "金額 80000–2000000 元。申請方式：請逕至設獎單位網頁提出申請，https://ecoplus-biodiversityaward.com/zh-TW 申請資格 針對大專院校生物多樣性保育相關社團、博碩士班學籍者，以及研究機構，分別頒發新秀獎、菁英獎、提案獎，詳情請參考附件辦法。 新秀獎：大專院校生物資源…",
+   "tips": [
+    "收件 2027-02-01 到 2027-03-15",
+    "系統登記後繳紙本",
+    "承辦 林哲瑄 分機 34647"
+   ],
+   "source": "清華助學系統 公告 11501-2549",
+   "date": "2026-11-26",
+   "deadline": "2027-03-15",
+   "link": "https://meo110.wwlc.nthu.edu.tw/",
+   "linkLabel": "到清華助學系統申請",
+   "extraLinks": [
+    "https://nthu-scholarship-files.s3.ap-northeast-1.amazonaws.com/HzQ35TyfCukcRKwIZcCHeJKINsq4Bi_O77FOmhJFLDM.pdf",
+    "https://nthu-scholarship-files.s3.ap-northeast-1.amazonaws.com/04J5bL70XFWNPKkGYXpMLqZtk4CDMLtttpLdyHjv_ho.pdf"
+   ],
+   "flags": [
+    "grad",
+    "open"
+   ],
+   "amountMax": 2000000
   }
  ]
 }
